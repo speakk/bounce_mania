@@ -73,5 +73,4 @@ common/physics_ticks_per_second=180
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 textures/canvas_textures/default_texture_filter=0
