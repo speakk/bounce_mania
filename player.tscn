@@ -33,10 +33,7 @@ radius = 16.0312
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8i0r"]
 radius = 17.1172
 
-[node name="Player" type="Node2D"]
-script = ExtResource("1_q3836")
-
-[node name="PhysicsBody" type="RigidBody2D" parent="."]
+[node name="Player" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 3
 mass = 0.4
@@ -46,32 +43,33 @@ continuous_cd = 2
 max_contacts_reported = 2
 contact_monitor = true
 linear_damp = 0.5
+script = ExtResource("1_q3836")
 
-[node name="TrailParticles" type="GPUParticles2D" parent="PhysicsBody"]
+[node name="TrailParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 120
 process_material = SubResource("ParticleProcessMaterial_dgjov")
 speed_scale = 3.0
 fixed_fps = 60
 
-[node name="Sprite2D" type="Sprite2D" parent="PhysicsBody"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_pxrxn")
 hframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_boeyv")
 
-[node name="LeftEyeSprite" type="Sprite2D" parent="PhysicsBody"]
+[node name="LeftEyeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_nvob7")
 
-[node name="RightEyeSprite" type="Sprite2D" parent="PhysicsBody"]
+[node name="RightEyeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_nvob7")
 
-[node name="Area2D" type="Area2D" parent="PhysicsBody"]
+[node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsBody/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_q8i0r")
 
-[connection signal="body_entered" from="PhysicsBody/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
