@@ -91,3 +91,7 @@ func _on_area_2d_body_entered(body):
 		print("emit")
 		#Events.emit_signal("brick_hit", self, self.current_damage)
 		Events.brick_hit.emit(body, self, self.current_damage)
+	
+	$PhysicsBody/Sprite2D.scale = Vector2(1.4, 1.4)
+	var tween = get_tree().create_tween()
+	tween.tween_property(get_node("PhysicsBody/Sprite2D"), "scale", Vector2(1, 1), 0.2)
