@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2aoduby1ehqd"]
+
+[ext_resource type="Script" path="res://brick.gd" id="1_pl8vd"]
+[ext_resource type="Texture2D" uid="uid://noh56giyf7k1" path="res://brick.png" id="1_xtvpm"]
+[ext_resource type="PackedScene" uid="uid://dfm8jv4edl0yn" path="res://health.tscn" id="3_ha52q"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8tpqr"]
+bounce = 0.64
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nv4g0"]
+size = Vector2(13.9998, 46)
+
+[sub_resource type="Animation" id="Animation_sqx0n"]
+resource_name = "shake"
+length = 0.12
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Brick:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.07, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(4, -6), Vector2(5, 5), Vector2(-5, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mcfov"]
+_data = {
+"shake": SubResource("Animation_sqx0n")
+}
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 2
+mass = 0.61
+physics_material_override = SubResource("PhysicsMaterial_8tpqr")
+max_contacts_reported = 2
+contact_monitor = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_pl8vd")
+
+[node name="Brick" type="Sprite2D" parent="."]
+texture = ExtResource("1_xtvpm")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.47955e-05, 4.57512e-08)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_nv4g0")
+
+[node name="Health" parent="." instance=ExtResource("3_ha52q")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+libraries = {
+"": SubResource("AnimationLibrary_mcfov")
+}
