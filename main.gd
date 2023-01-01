@@ -4,7 +4,7 @@ const Brick = preload("res://brick.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in 10:
+	for i in 1:
 		for x in i:
 			var brick = Brick.instantiate()
 			var viewport_size = get_viewport_rect().size
