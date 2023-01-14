@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://noh56giyf7k1" path="res://brick.png" id="2_4h82h"]
 [ext_resource type="PackedScene" uid="uid://dfm8jv4edl0yn" path="res://health.tscn" id="3_ha52q"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vpfea"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1er06"]
 bounce = 0.64
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d4ce"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjt5x"]
 size = Vector2(13.9998, 46)
 
-[sub_resource type="Animation" id="Animation_cgla4"]
+[sub_resource type="Animation" id="Animation_woitb"]
 resource_name = "shake"
 length = 0.12
 step = 0.01
@@ -27,15 +27,15 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(4, -6), Vector2(5, 5), Vector2(-5, -2)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6cr0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2tsj"]
 _data = {
-"shake": SubResource("Animation_cgla4")
+"shake": SubResource("Animation_woitb")
 }
 
 [node name="RigidBody2D" type="RigidBody2D"]
 collision_layer = 2
 mass = 0.61
-physics_material_override = SubResource("PhysicsMaterial_vpfea")
+physics_material_override = SubResource("PhysicsMaterial_1er06")
 max_contacts_reported = 2
 contact_monitor = true
 freeze = true
@@ -49,12 +49,12 @@ hframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.47955e-05, 4.57512e-08)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_8d4ce")
+shape = SubResource("RectangleShape2D_rjt5x")
 
 [node name="Health" parent="." instance=ExtResource("3_ha52q")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")
 libraries = {
-"": SubResource("AnimationLibrary_o6cr0")
+"": SubResource("AnimationLibrary_h2tsj")
 }

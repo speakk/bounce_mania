@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://p2ff3u6wkp7c"]
+[gd_scene load_steps=4 format=3 uid="uid://p2ff3u6wkp7c"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_32rph"]
 [ext_resource type="PackedScene" uid="uid://coamrdnloqkmg" path="res://scene_manager.tscn" id="2_47gs2"]
+[ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="2_y8nhc"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_32rph")
 
-[node name="SceneManager" parent="." instance=ExtResource("2_47gs2")]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_y8nhc")
+
+[node name="SceneManager" parent="Control" instance=ExtResource("2_47gs2")]
+unique_name_in_owner = true
