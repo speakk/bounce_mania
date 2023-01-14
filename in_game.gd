@@ -3,6 +3,8 @@ extends Node2D
 const Brick = preload("res://brick.tscn")
 
 var level_timer = 0
+var paused = false
+var finished = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,9 +22,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	level_timer += delta
-	Events.level_timer_changed.emit(level_timer)
+	if not paused:
+		level_timer += delta
+		Events.level_timer_changed.emit(level_timer)
+
+func _finish_level():
+	paused = true
+	finished = true
+	Events.level_finished.emit(level_timer)
+	%FinishedScreen.show()
 
 func _on_end_zone_hit(zone, by):
-	if "is_player" in by and by.is_player:
-		print("WINNER")
+	if "is_player" in by and by.is_player and not finished:
+		_finish_level()
+
+
+func disable_main_camera():
+	$Player/Camera2D.current = false
+
+func enable_main_camera():
+	$Player/Camera2D.current = true

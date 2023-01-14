@@ -7,3 +7,5 @@ signal end_zone_hit(end_zone, by)
 signal level_timer_changed(new_time)
 
 signal new_game_pressed
+
+signal level_finished(time)
