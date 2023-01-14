@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://swj7u720qpi7"]
+
+[ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="1_iie73"]
+[ext_resource type="PackedScene" uid="uid://bpkjpxaecm6uk" path="res://level_timer.tscn" id="2_uq0m6"]
+
+[sub_resource type="Theme" id="Theme_5n488"]
+
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_iie73")
+
+[node name="LevelTimer" parent="." instance=ExtResource("2_uq0m6")]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 8.0
+offset_bottom = 48.0
+theme = SubResource("Theme_5n488")

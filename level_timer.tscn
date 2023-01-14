@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpkjpxaecm6uk"]
+
+[ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="1_fuoeg"]
+[ext_resource type="Script" path="res://level_timer.gd" id="1_pel17"]
+
+[node name="LevelTimer" type="RichTextLabel"]
+offset_right = 256.0
+offset_bottom = 40.0
+theme = ExtResource("1_fuoeg")
+theme_override_font_sizes/normal_font_size = 48
+text = "time"
+script = ExtResource("1_pel17")

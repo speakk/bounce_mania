@@ -12,6 +12,8 @@ var bouncing = false
 var velocity = Vector2()
 var bounce_timer
 
+var is_player = true
+
 var current_damage = damage
 
 func get_input():

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bschtylma2s1c"]
+
+[ext_resource type="Script" path="res://end_zone.gd" id="1_wfe8x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86bab"]
+size = Vector2(288, 224)
+
+[node name="EndZone" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(144, 112)
+shape = SubResource("RectangleShape2D_86bab")
+
+[node name="EndZone" type="ColorRect" parent="."]
+offset_right = 288.0
+offset_bottom = 224.0
+color = Color(0.317647, 1, 0.341176, 0.415686)
+script = ExtResource("1_wfe8x")
+
+[connection signal="body_entered" from="Area2D" to="EndZone" method="_on_area_2d_body_entered"]
