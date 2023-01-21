@@ -5,6 +5,7 @@ const Brick = preload("res://brick.tscn")
 var level_timer = 0
 var paused = false
 var finished = false
+var current_level_path = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +26,16 @@ func _process(delta):
 	if not paused:
 		level_timer += delta
 		Events.level_timer_changed.emit(level_timer)
+
+func load_level(level_path):
+	if $LevelContainer.get_child_count() > 0:
+		$LevelContainer.get_child(0).queue_free()
+	
+	$LevelContainer.add_child(load(level_path).instantiate())
+	current_level_path = level_path
+
+func get_current_level_path():
+	return current_level_path
 
 func _finish_level():
 	paused = true

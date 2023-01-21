@@ -10,4 +10,4 @@ func _level_finished(time):
 
 
 func _on_try_again_button_pressed():
-	Events.new_game_pressed.emit()
+	Events.try_again_pressed.emit()
