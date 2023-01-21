@@ -27,7 +27,7 @@ func _switch_scene(scene_path, level_path):
 	# As in don't just use "enable_main_camera" to detect it
 	if "enable_main_camera" in new_scene:
 		new_scene.load_level(level_path)
-		new_scene.enable_main_camera()
+		#new_scene.enable_main_camera()
 
 func _new_game_pressed():
 	_switch_scene(LEVEL_SELECTOR_PATH, null)

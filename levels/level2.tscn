@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvtdkdqjug0vg"]
+[gd_scene load_steps=7 format=3 uid="uid://cd8pv1if5oaf7"]
 
-[ext_resource type="PackedScene" uid="uid://b2aoduby1ehqd" path="res://brick.tscn" id="1_iut8q"]
-[ext_resource type="PackedScene" uid="uid://bschtylma2s1c" path="res://end_zone.tscn" id="2_ht1ve"]
+[ext_resource type="PackedScene" uid="uid://b2aoduby1ehqd" path="res://brick.tscn" id="1_6yvm7"]
+[ext_resource type="PackedScene" uid="uid://bschtylma2s1c" path="res://end_zone.tscn" id="2_w2l0y"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tqws2"]
 distance = 0.01
@@ -20,7 +20,7 @@ distance = 0.01
 
 [node name="LevelTest" type="Node2D"]
 
-[node name="Brick" parent="." instance=ExtResource("1_iut8q")]
+[node name="Brick" parent="." instance=ExtResource("1_6yvm7")]
 position = Vector2(466, 277)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -69,5 +69,5 @@ polygon = PackedVector2Array(-448, 96, 2081, 64, 2145, 160, 2017, 1120, 1600, 11
 color = Color(0.27451, 0.341176, 0.560784, 1)
 polygon = PackedVector2Array(-448, 96, 2081, 64, 2145, 160, 2017, 1120, 1600, 1120, 1344, 608, 1152, 608, 1152, 1376, 384, 1376, 384, 608, 384, 480, 1472, 480, 1633, 608, 1633, 992, 1921, 992, 1921, 192, 320, 256, 96, 480, 128, 1568, 1312, 1568, 1312, 1697, -416, 1697)
 
-[node name="EndZone" parent="." instance=ExtResource("2_ht1ve")]
+[node name="EndZone" parent="." instance=ExtResource("2_w2l0y")]
 position = Vector2(-768, 128)

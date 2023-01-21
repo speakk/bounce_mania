@@ -1,25 +1,17 @@
 extends Node2D
 
-const Brick = preload("res://brick.tscn")
+const Player = preload("res://player.tscn")
 
 var level_timer = 0
 var paused = false
 var finished = false
 var current_level_path = null
+var player_node = null
+var camera_node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.end_zone_hit.connect(_on_end_zone_hit)
-	
-	for i in 1:
-		for x in i:
-			var brick = Brick.instantiate()
-			var viewport_size = get_viewport_rect().size
-			var brick_size = 49
-			var brick_height = 20
-			brick.position = Vector2(viewport_size.x/2 - brick_size * i / 2 + brick_size * x, viewport_size.y/2 + i * brick_height)
-			add_child(brick)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,6 +25,17 @@ func load_level(level_path):
 	
 	$LevelContainer.add_child(load(level_path).instantiate())
 	current_level_path = level_path
+	
+	var player = Player.instantiate()
+	var start_position = $LevelContainer.get_child(0).get_player_start_position()
+	player.global_position = start_position
+	add_child(player)
+	player_node = player
+	
+	var camera = Camera2D.new()
+	camera.current = true
+	player.add_child(camera)
+	camera_node = camera
 
 func get_current_level_path():
 	return current_level_path
@@ -49,7 +52,7 @@ func _on_end_zone_hit(zone, by):
 
 
 func disable_main_camera():
-	$Player/Camera2D.current = false
+	camera_node.current = false
 
 func enable_main_camera():
-	$Player/Camera2D.current = true
+	camera_node.current = true

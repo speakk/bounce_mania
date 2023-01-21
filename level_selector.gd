@@ -3,7 +3,7 @@ extends Control
 const levels = [
 	{
 		name = "Level 1",
-		path = "res://levels/level1.tscn"
+		path = "res://levels/level_1.tscn"
 	}
 ]
 
