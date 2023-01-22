@@ -1,32 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://do44wfpc5cwji"]
+[gd_scene load_steps=4 format=3 uid="uid://do44wfpc5cwji"]
 
 [ext_resource type="Script" path="res://finished_screen.gd" id="1_ltjmc"]
+[ext_resource type="PackedScene" uid="uid://d1cnkd371hswa" path="res://score_board.tscn" id="2_d1l5c"]
 
-[node name="FinishedScreen" type="Control"]
-layout_mode = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unejn"]
+bg_color = Color(0.188235, 0.329412, 0.6, 0.427451)
+
+[node name="FinishedScreen" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_unejn")
 script = ExtResource("1_ltjmc")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.227451, 0.247059, 0.447059, 0.435294)
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -50,5 +42,9 @@ horizontal_alignment = 1
 [node name="TryAgainButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Try again"
+
+[node name="ScoreBoard" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_d1l5c")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]

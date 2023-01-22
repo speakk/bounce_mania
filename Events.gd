@@ -12,5 +12,5 @@ signal new_game_pressed
 signal try_again_pressed
 signal level_change_pressed(level_id)
 
-signal level_finished(time)
+signal level_finished(level_id, time)
 
