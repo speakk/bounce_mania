@@ -1,22 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsietufglmnl7"]
+[gd_scene load_steps=13 format=3 uid="uid://dsietufglmnl7"]
 
 [ext_resource type="Texture2D" uid="uid://c1gsv1x1xdvhm" path="res://theball.png" id="1_pxrxn"]
 [ext_resource type="Script" path="res://player.gd" id="1_q3836"]
 [ext_resource type="Shader" path="res://player.gdshader" id="2_v6el6"]
 [ext_resource type="Texture2D" uid="uid://bkpn6vqmcural" path="res://eyeball.png" id="3_nvob7"]
+[ext_resource type="PackedScene" uid="uid://dlds447xi83m1" path="res://direction_indicator.tscn" id="5_rns7b"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cklvo"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_22m5r"]
 friction = 0.03
 bounce = 0.8
 
-[sub_resource type="Curve" id="Curve_reota"]
+[sub_resource type="Curve" id="Curve_7588j"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_o7oc6"]
-curve = SubResource("Curve_reota")
+[sub_resource type="CurveTexture" id="CurveTexture_rta26"]
+curve = SubResource("Curve_7588j")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dgjov"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_442by"]
 emission_shape = 1
 emission_sphere_radius = 8.0
 particle_flag_disable_z = true
@@ -25,24 +26,24 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 2.0
 scale_max = 6.0
-scale_curve = SubResource("CurveTexture_o7oc6")
+scale_curve = SubResource("CurveTexture_rta26")
 color = Color(1, 0.941176, 0.52549, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ouv23"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eg4ue"]
 shader = ExtResource("2_v6el6")
 shader_parameter/white_progress = null
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_boeyv"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_23ava"]
 radius = 16.0312
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q8i0r"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ct2r7"]
 radius = 17.1172
 
 [node name="Player" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 3
 mass = 0.4
-physics_material_override = SubResource("PhysicsMaterial_cklvo")
+physics_material_override = SubResource("PhysicsMaterial_22m5r")
 gravity_scale = 0.0
 continuous_cd = 2
 max_contacts_reported = 2
@@ -53,17 +54,17 @@ script = ExtResource("1_q3836")
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 120
-process_material = SubResource("ParticleProcessMaterial_dgjov")
+process_material = SubResource("ParticleProcessMaterial_442by")
 speed_scale = 3.0
 fixed_fps = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_ouv23")
+material = SubResource("ShaderMaterial_eg4ue")
 texture = ExtResource("1_pxrxn")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_boeyv")
+shape = SubResource("CircleShape2D_23ava")
 
 [node name="LeftEyeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_nvob7")
@@ -76,7 +77,9 @@ collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_q8i0r")
+shape = SubResource("CircleShape2D_ct2r7")
+
+[node name="DirectionIndicator" parent="." instance=ExtResource("5_rns7b")]
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

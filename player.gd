@@ -48,10 +48,15 @@ func direct_eyes():
 	direct_eye($LeftEyeSprite, Vector2(-8, y_offset))
 	direct_eye($RightEyeSprite, Vector2(7, y_offset))
 
+func show_direction_indicator():
+	var direction = (get_global_mouse_position() - position).normalized()
+	$DirectionIndicator.set_direction(direction)
+
 func _process(delta):
 	get_input()
 	apply_force(velocity)
 	direct_eyes()
+	show_direction_indicator()
 
 	if Input.is_action_just_pressed("bounce"):
 		var direction = (get_global_mouse_position() - position).normalized()
