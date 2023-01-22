@@ -20,6 +20,7 @@ func _switch_scene(scene_path, level_id):
 	if previous_scene:
 		if "disable_main_camera" in previous_scene:
 			previous_scene.disable_main_camera()
+
 		previous_scene.queue_free()
 	$Scenes.add_child(new_scene)
 	
@@ -27,7 +28,11 @@ func _switch_scene(scene_path, level_id):
 	# As in don't just use "enable_main_camera" to detect it
 	if "enable_main_camera" in new_scene:
 		new_scene.load_level(level_id)
-		#new_scene.enable_main_camera()
+	
+	# Reset "camera" as in viewport location just in case
+	# the scene we just switched to doesn't have a camera
+	var viewport = get_viewport()
+	viewport.canvas_transform = Transform2D.IDENTITY
 
 func _new_game_pressed():
 	_switch_scene(LEVEL_SELECTOR_PATH, null)
