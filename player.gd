@@ -16,6 +16,8 @@ var is_player = true
 
 var current_damage = damage
 
+var has_moved = false
+
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed("right"):
@@ -27,6 +29,15 @@ func get_input():
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
 	velocity = velocity.normalized() * speed
+	
+	if Input.is_action_just_pressed("bounce"):
+		var direction = (get_global_mouse_position() - position).normalized()
+		var vector = direction * bounce_speed
+		bounce(vector)
+	
+	if not has_moved and linear_velocity.length_squared() > 0:
+		Events.player_has_moved.emit()
+		has_moved = true
 	
 func _ready():
 	$Sprite2D.frame = 0
@@ -58,12 +69,6 @@ func _process(delta):
 	direct_eyes()
 	show_direction_indicator()
 
-	if Input.is_action_just_pressed("bounce"):
-		var direction = (get_global_mouse_position() - position).normalized()
-		var vector = direction * bounce_speed
-		bounce(vector)
-	
-	
 func bounce(direction):
 	if not bouncing:
 		#linear_velocity = Vector2(0, 0)

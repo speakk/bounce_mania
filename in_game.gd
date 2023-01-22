@@ -9,15 +9,23 @@ var current_level_path = null
 var player_node = null
 var camera_node = null
 
+var player_has_moved = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.end_zone_hit.connect(_on_end_zone_hit)
+	Events.player_has_moved.connect(_on_player_has_moved)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if not paused:
+	if not paused and player_has_moved:
 		level_timer += delta
 		Events.level_timer_changed.emit(level_timer)
+
+func _on_player_has_moved():
+	player_has_moved = true
+	%HasMovedLabel.visible = false
+	
 
 func load_level(level_path):
 	if $LevelContainer.get_child_count() > 0:
