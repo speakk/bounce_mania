@@ -14,7 +14,7 @@ static func delete_children(node):
 		node.remove_child(n)
 		n.queue_free()
 
-func _switch_scene(scene_path, level_path):
+func _switch_scene(scene_path, level_id):
 	var previous_scene = $Scenes.get_child(0)
 	var new_scene = load(scene_path).instantiate()
 	if previous_scene:
@@ -26,14 +26,14 @@ func _switch_scene(scene_path, level_path):
 	# TODO: Just add special handling in general for in_game?
 	# As in don't just use "enable_main_camera" to detect it
 	if "enable_main_camera" in new_scene:
-		new_scene.load_level(level_path)
+		new_scene.load_level(level_id)
 		#new_scene.enable_main_camera()
 
 func _new_game_pressed():
 	_switch_scene(LEVEL_SELECTOR_PATH, null)
 	
 func _try_again_pressed():
-	_switch_scene(IN_GAME_PATH, $Scenes.get_child(0).get_current_level_path())
+	_switch_scene(IN_GAME_PATH, $Scenes.get_child(0).get_current_level_id())
 
-func _level_change_pressed(level_path):
-	_switch_scene(IN_GAME_PATH, level_path)
+func _level_change_pressed(level_id):
+	_switch_scene(IN_GAME_PATH, level_id)

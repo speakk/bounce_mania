@@ -10,7 +10,7 @@ signal player_has_moved
 
 signal new_game_pressed
 signal try_again_pressed
-signal level_change_pressed(level_path)
+signal level_change_pressed(level_id)
 
 signal level_finished(time)
 

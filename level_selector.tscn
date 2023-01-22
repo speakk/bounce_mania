@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://wx133dkmeg55"]
+[gd_scene load_steps=3 format=3 uid="uid://wx133dkmeg55"]
 
+[ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="1_4882a"]
 [ext_resource type="Script" path="res://level_selector.gd" id="1_ysryf"]
 
 [node name="LevelSelector" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_4882a")
 script = ExtResource("1_ysryf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
