@@ -15,9 +15,9 @@ func _ready():
 	bottom.normal = Vector2.UP
 	
 	_add_body(left, $ColorRect.position)
-	_add_body(right, Vector2(position.x + $ColorRect.size.x, 0))
+	_add_body(right, Vector2($ColorRect.position.x + $ColorRect.size.x, $ColorRect.position.y))
 	_add_body(top, $ColorRect.position)
-	_add_body(bottom, Vector2(0, position.y + $ColorRect.size.y))
+	_add_body(bottom, Vector2($ColorRect.position.x, $ColorRect.position.y + $ColorRect.size.y))
 
 func _add_body(boundary_shape, body_position):
 	var physics = StaticBody2D.new()
