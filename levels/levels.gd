@@ -22,6 +22,14 @@ func _ready():
 func get_by_id(id):
 	return levels_by_id.get(id)
 
+func get_next_level(id):
+	var level = levels_by_id.get(id)
+	var index = levels.find(level)
+	var next = index + 1
+	if levels.size() >= next + 1:
+		var next_level = levels[next]
+		return next_level
+
 var level_times_path = "user://level_times.save"
 
 func save_level_time(level_id, player_name, level_time):

@@ -8,6 +8,7 @@ func _ready():
 	Events.new_game_pressed.connect(_new_game_pressed)
 	Events.try_again_pressed.connect(_try_again_pressed)
 	Events.level_change_pressed.connect(_level_change_pressed)
+	Events.next_level_pressed.connect(_next_level_pressed)
 
 static func delete_children(node):
 	for n in node.get_children():
@@ -42,3 +43,10 @@ func _try_again_pressed():
 
 func _level_change_pressed(level_id):
 	_switch_scene(IN_GAME_PATH, level_id)
+
+func _next_level_pressed():
+	var next_level = Levels.get_next_level($Scenes.get_child(0).get_current_level_id())
+	if next_level != null:
+		_switch_scene(IN_GAME_PATH, next_level.get("id"))
+		
+

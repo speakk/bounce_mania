@@ -15,6 +15,10 @@ var player_has_moved = false
 func _ready():
 	Events.end_zone_hit.connect(_on_end_zone_hit)
 	Events.player_has_moved.connect(_on_player_has_moved)
+	Events.in_game_entered.emit()
+
+func _exit_tree():
+	Events.in_game_exited.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
