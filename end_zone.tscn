@@ -1,19 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bschtylma2s1c"]
+[gd_scene load_steps=2 format=3 uid="uid://bschtylma2s1c"]
 
 [ext_resource type="Script" path="res://end_zone.gd" id="1_wfe8x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_86bab"]
-size = Vector2(288, 224)
-
 [node name="EndZone" type="Node2D"]
 script = ExtResource("1_wfe8x")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(144, 112)
-shape = SubResource("RectangleShape2D_86bab")
 
 [node name="EndZoneRect" type="ColorRect" parent="."]
 offset_right = 288.0
@@ -42,5 +32,3 @@ offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Get here!"
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

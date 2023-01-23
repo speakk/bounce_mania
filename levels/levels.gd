@@ -5,7 +5,12 @@ const levels = [
 		name = "Level 1",
 		id = "level_1",
 		path = "res://levels/level_1.tscn"
-	}
+	},
+	{
+		name = "Level 2",
+		id = "level_2",
+		path = "res://levels/level_2.tscn"
+	},
 ]
 
 var levels_by_id = {}
