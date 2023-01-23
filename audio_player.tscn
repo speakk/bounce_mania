@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqfck6t355lrt"]
 
 [ext_resource type="Script" path="res://audio_player.gd" id="1_je5oi"]
-[ext_resource type="AudioStream" uid="uid://cxu4o1n3mnwad" path="res://assets/sounds/collision.wav" id="2_qyqg3"]
+[ext_resource type="AudioStream" uid="uid://co2nbmsw60ymh" path="res://assets/sounds/collision.ogg" id="2_scnp0"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_je5oi")
 
 [node name="CollisionStream" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_qyqg3")
+stream = ExtResource("2_scnp0")
 volume_db = -4.521
