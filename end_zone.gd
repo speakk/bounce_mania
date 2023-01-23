@@ -11,14 +11,15 @@ func _ready():
 	var shape = CollisionShape2D.new()
 	shape.shape = RectangleShape2D.new()
 	shape.shape.set_size(Vector2($EndZoneRect.size.x, $EndZoneRect.size.y))
-	area.position = $EndZoneRect.position
+	# Shape origin is in the center of the shape, so do this to ensure we move it to corner origin
+	area.position = $EndZoneRect.position + Vector2($EndZoneRect.size.x /2, $EndZoneRect.size.y / 2)
 	area.add_child(shape)
 	
 	area.body_entered.connect(_on_area_2d_body_entered)
 	add_child(area)
 	
 	$Control.size = $EndZoneRect.size
-	$Control.position = $EndZoneRect.position
+	$Control.global_position = $EndZoneRect.global_position
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

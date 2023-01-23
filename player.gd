@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var speed: int = 1200
-@export var bounce_speed: int = 1000
+@export var bounce_speed: int = 600
 @export var bounce_time: float = 0.5
 @export var damage: float = 10
 
@@ -90,24 +90,13 @@ func bounce(direction):
 		
 		
 
-
-#func _on_physics_body_body_entered(body):
-#	if body.is_in_group("bricks"):
-#		print("emit")
-#		#Events.emit_signal("brick_hit", self, self.current_damage)
-#		Events.brick_hit.emit(body, self, self.current_damage)
-
 func handle_colision_particles():
 	var collision_particles = COLLISION_PARTICLES.instantiate()
-	#collision_particles.restart()
 	collision_particles.position = position
 	get_parent().add_child(collision_particles)
 	collision_particles.start()
-	#collision_particles.emitting = true
 	await collision_particles.finished
-	print("Finished")
 	collision_particles.queue_free()
-	#await 
 
 func _on_area_2d_body_entered(body):
 	handle_colision_particles()
