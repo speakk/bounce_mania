@@ -55,6 +55,7 @@ script = ExtResource("1_q3836")
 emitting = false
 amount = 120
 process_material = SubResource("ParticleProcessMaterial_d8ipb")
+lifetime = 7.0
 speed_scale = 3.0
 fixed_fps = 60
 

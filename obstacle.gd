@@ -8,4 +8,5 @@ func _ready():
 			var drawPolygon = Polygon2D.new()
 			drawPolygon.polygon = child.polygon
 			drawPolygon.position = child.position
+			drawPolygon.color = Color("#faeb9a")
 			add_child(drawPolygon)

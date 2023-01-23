@@ -114,6 +114,8 @@ func _on_area_2d_body_entered(body):
 	#$/Sprite2D.material.
 	var tween = get_tree().create_tween()
 	tween.tween_property(get_node("Sprite2D"), "scale", Vector2(1, 1), 0.2)
+	
+	Events.player_collision_happened.emit(linear_velocity.length_squared())
 
 
 #func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):

@@ -31,7 +31,7 @@ position = Vector2(192, 128)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle2" index="0"]
 position = Vector2(32, 32)
-polygon = PackedVector2Array(64, 288, 128, 352, 64, 352)
+polygon = PackedVector2Array(64, 256, 160, 352, 64, 352)
 
 [node name="Obstacle3" parent="." index="4" instance=ExtResource("5_ct052")]
 position = Vector2(192, 128)
