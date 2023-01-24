@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqfck6t355lrt"]
+[gd_scene load_steps=5 format=3 uid="uid://dqfck6t355lrt"]
 
 [ext_resource type="Script" path="res://audio_player.gd" id="1_je5oi"]
+[ext_resource type="AudioStream" uid="uid://cop2ipputs5li" path="res://assets/sounds/main_menu.ogg" id="2_2phva"]
 [ext_resource type="AudioStream" uid="uid://43rvj6nk3hkj" path="res://assets/sounds/in_game_a.ogg" id="2_7s07k"]
 [ext_resource type="AudioStream" uid="uid://co2nbmsw60ymh" path="res://assets/sounds/collision.ogg" id="2_scnp0"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_je5oi")
+
+[node name="MainMaenuStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2phva")
+volume_db = -10.196
 
 [node name="InGameMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_7s07k")

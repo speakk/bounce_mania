@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://wx133dkmeg55"]
+[gd_scene load_steps=6 format=3 uid="uid://wx133dkmeg55"]
 
 [ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="1_4882a"]
 [ext_resource type="Script" path="res://level_selector.gd" id="1_ysryf"]
+
+[sub_resource type="Gradient" id="Gradient_sjk70"]
+colors = PackedColorArray(0.855469, 0.775843, 0.645607, 1, 0.582031, 0.430433, 0.341377, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jm2np"]
+gradient = SubResource("Gradient_sjk70")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_35fkw"]
+texture = SubResource("GradientTexture2D_jm2np")
+region_rect = Rect2(0, 0, 64, 64)
+modulate_color = Color(0.796078, 0.968627, 1, 1)
 
 [node name="LevelSelector" type="PanelContainer"]
 anchors_preset = 15
@@ -13,12 +26,11 @@ mouse_filter = 2
 theme = ExtResource("1_4882a")
 script = ExtResource("1_ysryf")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-mouse_filter = 2
-color = Color(0.227451, 0.247059, 0.447059, 0.435294)
+theme_override_styles/panel = SubResource("StyleBoxTexture_35fkw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 10
@@ -26,17 +38,17 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Select a level"
 horizontal_alignment = 1
 
-[node name="LevelList" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="LevelList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4

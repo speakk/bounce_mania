@@ -1,15 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://swj7u720qpi7"]
+[gd_scene load_steps=5 format=3 uid="uid://swj7u720qpi7"]
 
 [ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="1_iie73"]
 [ext_resource type="PackedScene" uid="uid://bpkjpxaecm6uk" path="res://level_timer.tscn" id="2_uq0m6"]
+[ext_resource type="PackedScene" uid="uid://by2wtsi5d4bq" path="res://bounce_charge_ui.tscn" id="3_adyeq"]
 
 [sub_resource type="Theme" id="Theme_5n488"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_iie73")
 
 [node name="LevelTimer" parent="." instance=ExtResource("2_uq0m6")]
@@ -18,3 +21,6 @@ offset_left = 32.0
 offset_top = 8.0
 offset_bottom = 48.0
 theme = SubResource("Theme_5n488")
+
+[node name="BounceChargeUI" parent="." instance=ExtResource("3_adyeq")]
+layout_mode = 1

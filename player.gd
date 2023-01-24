@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-@export var speed: int = 1200
-@export var bounce_speed: int = 600
+@export var speed: int = 900
+@export var bounce_speed: int = 500
 @export var bounce_time: float = 0.5
 @export var damage: float = 10
 
@@ -10,7 +10,16 @@ extends RigidBody2D
 var bouncing = false
 
 var velocity = Vector2()
-var bounce_timer
+
+var dash_timeout: float = GlobalValues.player_dash_charge_timeout
+		
+var bounce_timer: float = dash_timeout:
+	set(value):
+		Events.bounce_timer_changed.emit(value)
+		bounce_timer = value
+
+var bounce_duration: float = 1.5
+var bounce_on_timer: float = bounce_duration
 
 var is_player = true
 
@@ -41,8 +50,8 @@ func get_input():
 	
 func _ready():
 	$Sprite2D.frame = 0
-	bounce_timer = Timer.new()
-	add_child(bounce_timer)
+	#bounce_timer = Timer.new()
+	#add_child(bounce_timer)
 
 var max_dist = 2
 
@@ -68,27 +77,45 @@ func _process(delta):
 	apply_force(velocity)
 	direct_eyes()
 	show_direction_indicator()
+	
+	if not bouncing and has_moved:
+		if bounce_timer > 0:
+			bounce_timer -= delta
+		else:
+			bounce_timer = 0
+			Events.player_dash_charged.emit()
+	
+	if bouncing:
+		bounce_on_timer -= delta
+		if bounce_on_timer <= 0:
+			set_bounce_off()
+
 
 func bounce(direction):
-	if not bouncing:
-		#linear_velocity = Vector2(0, 0)
-		apply_impulse(direction)
-		$Sprite2D.frame = 1
-		bouncing = true
-		bounce_timer.start(bounce_time)
-		$TrailParticles.emitting = true
-		current_damage = damage * 2
-		set_collision_mask_value(2, false)
-		
-		await bounce_timer.timeout
-		
-		bouncing = false
-		$Sprite2D.frame = 0
-		$TrailParticles.emitting = false
-		current_damage = damage
-		set_collision_mask_value(2, true)
-		
-		
+	if not bouncing and bounce_timer == 0:
+		bounce_timer = dash_timeout
+		set_bounce_on(direction)
+
+func set_bounce_on(direction):
+	apply_impulse(direction)
+	$Sprite2D.frame = 1
+	bouncing = true
+	bounce_on_timer = bounce_duration
+	#bounce_timer.start(bounce_time)
+	$TrailParticles.emitting = true
+	current_damage = damage * 2
+	set_collision_mask_value(2, false)
+	Events.player_bounce_started.emit()
+
+func set_bounce_off():
+	bouncing = false
+	$Sprite2D.frame = 0
+	$TrailParticles.emitting = false
+	current_damage = damage
+	set_collision_mask_value(2, true)
+	bounce_timer = dash_timeout
+	Events.player_bounce_ended.emit()
+	
 
 func handle_colision_particles():
 	var collision_particles = COLLISION_PARTICLES.instantiate()

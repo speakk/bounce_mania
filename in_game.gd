@@ -25,6 +25,9 @@ func _process(delta):
 	if not paused and player_has_moved:
 		level_timer += delta
 		Events.level_timer_changed.emit(level_timer)
+		
+		if Input.is_action_just_pressed("restart_level"):
+			Events.try_again_pressed.emit()
 
 func _on_player_has_moved():
 	player_has_moved = true
