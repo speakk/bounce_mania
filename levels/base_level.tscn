@@ -1,6 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3exqcsiecey8"]
+[gd_scene load_steps=8 format=3 uid="uid://b3exqcsiecey8"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_3xuko"]
 
+[sub_resource type="Gradient" id="Gradient_apaw7"]
+colors = PackedColorArray(0.598602, 0.808594, 0.655366, 1, 0.453989, 0.601562, 0.471783, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tknrk"]
+gradient = SubResource("Gradient_apaw7")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.521368, 0.512821)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bkpkf"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_e4p6v"]
+colors = PackedColorArray(0, 0, 0, 0.0627451, 1, 1, 1, 0.0352941)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8sism"]
+noise_type = 0
+frequency = 0.937
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2t0vg"]
+width = 1920
+height = 1080
+color_ramp = SubResource("Gradient_e4p6v")
+noise = SubResource("FastNoiseLite_8sism")
+
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_3xuko")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -672.0
+offset_top = -608.0
+offset_right = 1985.0
+offset_bottom = 1376.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_tknrk")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+material = SubResource("CanvasItemMaterial_bkpkf")
+layout_mode = 0
+offset_right = 2657.0
+offset_bottom = 1984.0
+texture = SubResource("NoiseTexture2D_2t0vg")

@@ -8,12 +8,15 @@ colors = PackedColorArray(0.855469, 0.775843, 0.645607, 1, 0.582031, 0.430433, 0
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jm2np"]
 gradient = SubResource("Gradient_sjk70")
+width = 256
+height = 256
 fill = 1
-fill_from = Vector2(0.5, 0.5)
+fill_from = Vector2(0.491453, 0.5)
+fill_to = Vector2(0.0128205, 0.0042735)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_35fkw"]
 texture = SubResource("GradientTexture2D_jm2np")
-region_rect = Rect2(0, 0, 64, 64)
+region_rect = Rect2(0, 0, 256, 256)
 modulate_color = Color(0.796078, 0.968627, 1, 1)
 
 [node name="LevelSelector" type="PanelContainer"]

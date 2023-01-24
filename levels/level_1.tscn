@@ -8,27 +8,32 @@
 
 [node name="Level1" instance=ExtResource("1_d0dop")]
 
-[node name="WorldBounds" parent="." index="0" instance=ExtResource("2_hal4f")]
+[node name="TextureRect" parent="." index="0"]
+z_index = 0
+z_as_relative = false
+
+[node name="WorldBounds" parent="." index="1" instance=ExtResource("2_hal4f")]
 position = Vector2(288, 0)
 
 [node name="ColorRect" type="ColorRect" parent="WorldBounds" index="0"]
 offset_right = 768.0
 offset_bottom = 512.0
 color = Color(0.188235, 0.513726, 1, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="EndZone" parent="." index="1" instance=ExtResource("2_0rfpp")]
+[node name="EndZone" parent="." index="2" instance=ExtResource("2_0rfpp")]
 position = Vector2(672, 64)
 
-[node name="PlayerMarker" parent="." index="2" instance=ExtResource("3_cnmb3")]
+[node name="PlayerMarker" parent="." index="3" instance=ExtResource("3_cnmb3")]
 position = Vector2(416, 192)
 
-[node name="Obstacle" parent="." index="3" instance=ExtResource("4_g2syi")]
+[node name="Obstacle" parent="." index="4" instance=ExtResource("4_g2syi")]
 position = Vector2(192, 128)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle" index="0"]
 polygon = PackedVector2Array(224, 0, 224, -32, 320, -64, 480, -64, 480, 160, 448, 160, 384, 0)
 
-[node name="Obstacle2" parent="." index="4" instance=ExtResource("4_g2syi")]
+[node name="Obstacle2" parent="." index="5" instance=ExtResource("4_g2syi")]
 position = Vector2(192, 128)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle2" index="0"]

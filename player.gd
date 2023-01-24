@@ -18,7 +18,7 @@ var bounce_timer: float = dash_timeout:
 		Events.bounce_timer_changed.emit(value)
 		bounce_timer = value
 
-var bounce_duration: float = 1.5
+var bounce_duration: float = 1
 var bounce_on_timer: float = bounce_duration
 
 var is_player = true
