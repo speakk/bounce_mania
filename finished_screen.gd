@@ -15,8 +15,9 @@ func _level_finished(level_id, time):
 		%NextLevelButton.visible = false
 	
 	var star_levels = Levels.get_by_id(level_id).get("stars").values()
+	print("star_levels", star_levels)
 	var level_reached = null
-	for i in range(star_levels.size()-1,0,-1):
+	for i in range(star_levels.size()-1,-1,-1):
 		if time < star_levels[i]:
 			level_reached = i
 			break
