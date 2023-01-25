@@ -4,22 +4,42 @@ const levels = [
 	{
 		name = "Level 1",
 		id = "level_1",
-		path = "res://levels/level_1.tscn"
+		path = "res://levels/level_1.tscn",
+		stars = {
+			bronze = 5,
+			silver = 3,
+			gold = 1
+		}
 	},
 	{
 		name = "Level 2",
 		id = "level_2",
-		path = "res://levels/level_2.tscn"
+		path = "res://levels/level_2.tscn",
+		stars = {
+			bronze = 5,
+			silver = 3,
+			gold = 1
+		}
 	},
 	{
 		name = "Level 3",
 		id = "level_3",
-		path = "res://levels/level_3.tscn"
+		path = "res://levels/level_3.tscn",
+		stars = {
+			bronze = 5,
+			silver = 3,
+			gold = 1
+		}
 	},
 	{
 		name = "Level 4",
 		id = "level_4",
-		path = "res://levels/level_4.tscn"
+		path = "res://levels/level_4.tscn",
+		stars = {
+			bronze = 5,
+			silver = 3,
+			gold = 1
+		}
 	},
 ]
 
@@ -39,6 +59,10 @@ func get_next_level(id):
 	if levels.size() >= next + 1:
 		var next_level = levels[next]
 		return next_level
+
+func get_star_requirements(level_id):
+	var level = levels_by_id.get(level_id)
+	return level.get("stars").values()
 
 var level_times_path = "user://level_times.save"
 
