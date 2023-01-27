@@ -59,6 +59,18 @@ func _finish_level():
 	finished = true
 	Levels.save_level_time(current_level_id, "speak", level_timer)
 	Events.level_finished.emit(current_level_id, level_timer)
+	
+	var current_user_level = Levels.get_user_level_progress(GlobalValues.player_name)
+	var finished_level_index = Levels.get_level_index(current_level_id)
+	var star_level_reached = Levels.get_star_level_reached(current_level_id, level_timer)
+	
+	print("current level:", current_user_level)
+	print("finished level:", finished_level_index)
+	
+	if star_level_reached != null and current_user_level <= finished_level_index:
+		Levels.save_user_level_progress(GlobalValues.player_name, current_user_level + 1)
+	
+	%FinishedScreen.init_state(current_level_id, level_timer, current_user_level, finished_level_index, star_level_reached)
 	%FinishedScreen.show()
 
 func _on_end_zone_hit(zone, by):

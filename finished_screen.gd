@@ -2,10 +2,9 @@ extends PanelContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Events.level_finished.connect(_level_finished)
 	%ScoreBoard.show_scores(Levels.get_level_times("level_1"))
-
-func _level_finished(level_id, time):
+	
+func init_state(level_id, time, current_user_level, finished_level_index, star_level_reached):
 	%TimeLabel.text = "Your time: %s" % Utils.get_time_label(time)
 	%ScoreBoard.show_scores(Levels.get_level_times(level_id))
 	var next_level = Levels.get_next_level(level_id)
@@ -14,17 +13,22 @@ func _level_finished(level_id, time):
 	else:
 		%NextLevelButton.visible = false
 	
-	var star_levels = Levels.get_by_id(level_id).get("stars").values()
-	print("star_levels", star_levels)
-	var level_reached = null
-	for i in range(star_levels.size()-1,-1,-1):
-		if time < star_levels[i]:
-			level_reached = i
-			break
+	var star_requirements = Levels.get_star_requirements(level_id)
 	
-	%StarSectionContainer.set_star_level_requirements(Levels.get_star_requirements(level_id))
-	%StarSectionContainer.set_star_level_reached(level_reached)
+	%StarSectionContainer.set_star_level_requirements(star_requirements)
+	%StarSectionContainer.set_star_level_reached(star_level_reached)
+
+	var player_on_last_level = current_user_level <= finished_level_index
 	
+	if player_on_last_level:
+		%NextLevelTipContainer.visible = true
+		if star_level_reached != null:
+			%NextLevelTipContainer.get_node("Label").text = "Congratulations, you unlocked the next level!"
+		else:
+			%NextLevelTipContainer.get_node("Label").text = "Beat the bronze time limit (%ss) to advance to the next level!" % star_requirements[0]
+	else:
+		%NextLevelTipContainer.visible = false
+		
 func _on_try_again_button_pressed():
 	Events.try_again_pressed.emit()
 
