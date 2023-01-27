@@ -10,6 +10,7 @@
 [node name="Level3" instance=ExtResource("1_bq8w5")]
 
 [node name="Node2D2" type="Node2D" parent="." index="1"]
+z_index = 1
 
 [node name="RigidBody2D" parent="Node2D2" index="0" instance=ExtResource("5_jcdj2")]
 position = Vector2(377, 648)

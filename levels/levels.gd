@@ -23,7 +23,7 @@ const levels = [
 		name = "Level 4",
 		id = "level_4",
 		path = "res://levels/level_4.tscn",
-		stars = [5, 3, 1]
+		stars = [9, 3, 1]
 	},
 ]
 
