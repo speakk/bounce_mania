@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj3fdmeaokhk1"]
+[gd_scene load_steps=9 format=3 uid="uid://bj3fdmeaokhk1"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_pm3uy"]
 [ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="2_msamo"]
 [ext_resource type="FontFile" uid="uid://bj2u2p57factd" path="res://assets/fonts/ThaleahFat.ttf" id="3_ygo1t"]
+[ext_resource type="PackedScene" uid="uid://b5adyk1vg02a5" path="res://user_selector.tscn" id="4_fup7f"]
 
 [sub_resource type="Gradient" id="Gradient_sgfof"]
 colors = PackedColorArray(0.929688, 0.748682, 0.604868, 1, 0.75, 0.55213, 0.489933, 1)
@@ -72,5 +73,10 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 text = "New Game"
+
+[node name="UserSelector" parent="." instance=ExtResource("4_fup7f")]
+layout_mode = 1
+offset_left = -288.0
+offset_bottom = 160.0
 
 [connection signal="pressed" from="Control/PanelContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]

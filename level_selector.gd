@@ -2,7 +2,7 @@ extends PanelContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var current_user_level = Levels.get_user_level_progress(GlobalValues.player_name)
+	var current_user_level = Levels.get_user_level_progress(GlobalValues.get_current_player())
 	
 	for i in Levels.levels.size():
 		var level = Levels.levels[i]

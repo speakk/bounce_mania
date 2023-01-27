@@ -25,3 +25,6 @@ signal in_game_entered
 signal in_game_exited
 
 signal main_menu_entered
+
+
+signal player_list_changed(new_list)

@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5adyk1vg02a5"]
+
+[ext_resource type="Script" path="res://user_selector.gd" id="1_1meus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kl4dp"]
+bg_color = Color(0.470588, 0.670588, 0.690196, 1)
+
+[node name="UserSelector" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1280.0
+offset_bottom = 720.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kl4dp")
+script = ExtResource("1_1meus")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ExistingPlayersLabel" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Existing players:"
+
+[node name="ExistingPlayersList" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+alignment = 1
+
+[node name="AddNewPlayerTextBox" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="AddNewPlayerButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Add player"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddNewPlayerButton" to="." method="_on_add_new_player_button_pressed"]
