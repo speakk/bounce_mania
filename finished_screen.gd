@@ -1,12 +1,8 @@
 extends PanelContainer
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	%ScoreBoard.show_scores(Levels.get_level_times("level_1"))
-	
 func init_state(level_id, time, current_user_level, finished_level_index, star_level_reached):
 	%TimeLabel.text = "Your time: %s" % Utils.get_time_label(time)
-	%ScoreBoard.show_scores(Levels.get_level_times(level_id))
+	%ScoreBoard.show_scores(ProfileManager.get_level_times(ProfileManager.get_current_profile_id(), level_id))
 
 	var star_requirements = Levels.get_star_requirements(level_id)
 	

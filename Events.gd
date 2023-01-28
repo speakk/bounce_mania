@@ -30,4 +30,4 @@ signal main_menu_entered
 
 
 signal player_list_changed(new_list)
-signal current_player_changed(new_player)
+signal current_profile_changed(new_player)

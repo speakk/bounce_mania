@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="1_4882a"]
 [ext_resource type="Script" path="res://level_selector.gd" id="1_ysryf"]
-[ext_resource type="PackedScene" uid="uid://b5adyk1vg02a5" path="res://user_selector.tscn" id="3_u2ubk"]
+[ext_resource type="PackedScene" uid="uid://clnqw63s37wex" path="res://current_user_display.tscn" id="3_jdp1h"]
 
 [sub_resource type="Gradient" id="Gradient_sjk70"]
 colors = PackedColorArray(0.855469, 0.775843, 0.645607, 1, 0.582031, 0.430433, 0.341377, 1)
@@ -69,7 +69,5 @@ horizontal_alignment = 1
 layout_mode = 2
 mouse_filter = 2
 
-[node name="UserSelector" parent="Control" instance=ExtResource("3_u2ubk")]
+[node name="CurrentUserDisplay" parent="Control" instance=ExtResource("3_jdp1h")]
 layout_mode = 1
-offset_left = -312.0
-offset_bottom = 160.0

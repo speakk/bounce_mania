@@ -10,7 +10,8 @@ extends Control
 func show_scores(scores):
 	for child in %Scores.get_children():
 		child.queue_free()
-	
+		
+	print("SCORES", scores)
 	
 	var latest_score
 	var latest_score_when = 0
@@ -23,7 +24,8 @@ func show_scores(scores):
 	
 	for score in scores:
 		var player_label = Label.new()
-		player_label.text = score.player_name
+		var player_name = ProfileManager.get_profile_by_id(score.player_id).player_name
+		player_label.text = player_name
 		var time_label = Label.new()
 		time_label.text = Utils.get_time_label(score.level_time)
 		

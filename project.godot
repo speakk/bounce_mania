@@ -22,7 +22,7 @@ Utils="*res://Utils.gd"
 Levels="*res://levels/levels.gd"
 AudioPlayer="*res://audio_player.tscn"
 GlobalValues="*res://global_values.gd"
-ProfileManager="*res://profile_manager.gd"
+ProfileManager="*res://ProfileManager.gd"
 
 [display]
 

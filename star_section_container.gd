@@ -10,7 +10,7 @@ func set_star_level_requirements(requirements):
 func set_star_level_reached(level):
 	print("level ", level)
 	
-	var icon_index = level if not null else 0
+	var icon_index = level if level else 0
 	var icon_texture = %Stars.get_child(icon_index).get_node("Icon").texture
 	
 	for child in %Stars.get_children():
