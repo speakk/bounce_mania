@@ -28,6 +28,11 @@ func _refresh_players_list(existing_players):
 		hbox.add_child(button)
 		hbox.add_child(remove_button)
 		%ExistingPlayersList.add_child(hbox)
+	
+	if existing_players.size() == 0:
+		var label = Label.new()
+		label.text = "No players"
+		%ExistingPlayersList.add_child(label)
 
 func _select_player(player_name):
 	GlobalValues.set_current_player(player_name)

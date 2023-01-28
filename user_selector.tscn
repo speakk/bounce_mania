@@ -15,33 +15,41 @@ grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kl4dp")
 script = ExtResource("1_1meus")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ExistingPlayersLabel" type="Label" parent="VBoxContainer/VBoxContainer"]
+[node name="ExistingPlayersLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Existing players:"
 
-[node name="ExistingPlayersList" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+[node name="ExistingPlayersList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-alignment = 1
 
-[node name="AddNewPlayerTextBox" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="AddNewPlayerTextBox" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+placeholder_text = "new player name"
+scroll_fit_content_height = true
 
-[node name="AddNewPlayerButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="AddNewPlayerButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Add player"
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddNewPlayerButton" to="." method="_on_add_new_player_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayerButton" to="." method="_on_add_new_player_button_pressed"]

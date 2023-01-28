@@ -1,14 +1,17 @@
 extends Node
 
 const IN_GAME_PATH = "res://in_game.tscn"
+const MAIN_MENU = "res://main_menu.tscn"
 const LEVEL_SELECTOR_PATH = "res://level_selector.tscn"
-
+const PROFILE_MANAGER_PATH = "res://profile_manager.tscn"
 
 func _ready():
 	Events.new_game_pressed.connect(_new_game_pressed)
 	Events.try_again_pressed.connect(_try_again_pressed)
 	Events.level_change_pressed.connect(_level_change_pressed)
 	Events.next_level_pressed.connect(_next_level_pressed)
+	Events.profile_manager_pressed.connect(_profile_manager_pressed)
+	Events.main_menu_pressed.connect(_main_menu_pressed)
 
 static func delete_children(node):
 	for n in node.get_children():
@@ -44,9 +47,14 @@ func _try_again_pressed():
 func _level_change_pressed(level_id):
 	_switch_scene(IN_GAME_PATH, level_id)
 
+func _profile_manager_pressed():
+	_switch_scene(PROFILE_MANAGER_PATH, null)
+
+func _main_menu_pressed():
+	_switch_scene(MAIN_MENU, null)
+
 func _next_level_pressed():
 	var next_level = Levels.get_next_level($Scenes.get_child(0).get_current_level_id())
 	if next_level != null:
 		_switch_scene(IN_GAME_PATH, next_level.get("id"))
-		
 

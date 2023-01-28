@@ -40,6 +40,9 @@ func remove_player(original_name):
 	Events.player_list_changed.emit(existing_players)
 	print("changed by removal, players", existing_players)
 	
+	if save_object["current_player"] == player_name:
+		set_current_player(null)
+	
 	return true
 
 func save_player(original_name):
@@ -75,6 +78,7 @@ func set_current_player(original_name):
 	file = null
 	
 	Events.player_list_changed.emit(save_object.get("players"))
+	Events.current_player_changed.emit(player_name)
 
 func get_current_player():
 	var save_object = get_players_save_object() if get_players_save_object() else {}

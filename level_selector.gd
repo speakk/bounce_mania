@@ -2,8 +2,22 @@ extends PanelContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var current_user_level = Levels.get_user_level_progress(GlobalValues.get_current_player())
+	_refresh_level_list(GlobalValues.get_current_player())
+	Events.current_player_changed.connect(_refresh_level_list)
+
+func _refresh_level_list(player_name):
+	if player_name == null:
+		%NoPlayerLabel.visible = true
+		%LevelListContainer.visible = false
+	else:
+		%NoPlayerLabel.visible = false
+		%LevelListContainer.visible = true
+		
+	var current_user_level = Levels.get_user_level_progress(player_name)
 	
+	for level in %LevelList.get_children():
+		level.queue_free()
+		
 	for i in Levels.levels.size():
 		var level = Levels.levels[i]
 		var button = Button.new()

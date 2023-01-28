@@ -101,6 +101,10 @@ func get_level_times(level_id):
 	
 	return []
 
+func delete_player(player_name):
+	pass
+	#TODO: Re-think saving progress, now it's becoming a problem
+
 func save_user_level_progress(player_name, level_no):
 	var save_object = {}
 	if FileAccess.file_exists(user_progress_path):

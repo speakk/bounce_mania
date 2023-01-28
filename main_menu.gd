@@ -13,3 +13,11 @@ func _process(delta):
 
 func _on_new_game_button_pressed():
 	Events.new_game_pressed.emit()
+
+
+func _on_quit_button_pressed():
+	get_tree().quit()
+
+
+func _on_manage_profiles_button_pressed():
+	Events.profile_manager_pressed.emit()

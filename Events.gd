@@ -17,7 +17,9 @@ signal player_dash_charge_time_changed(value)
 signal new_game_pressed
 signal try_again_pressed
 signal level_change_pressed(level_id)
-signal next_level_pressed()
+signal next_level_pressed
+signal profile_manager_pressed
+signal main_menu_pressed
 
 signal level_finished(level_id, time)
 
@@ -28,3 +30,4 @@ signal main_menu_entered
 
 
 signal player_list_changed(new_list)
+signal current_player_changed(new_player)
