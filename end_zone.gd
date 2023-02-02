@@ -21,6 +21,8 @@ func _ready():
 	$Control.size = $EndZoneRect.size
 	$Control.global_position = $EndZoneRect.global_position
 	
+	$EndZoneRect.color = Colors.accent_b
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -30,11 +30,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Bronze" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Stars"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/Stars/Bronze"]
 layout_mode = 2
 texture = ExtResource("2_uwpix")
+stretch_mode = 5
 
 [node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer/Stars/Bronze"]
 layout_mode = 2
@@ -42,11 +44,13 @@ text = "3s"
 horizontal_alignment = 1
 
 [node name="Silver" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Stars"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/Stars/Silver"]
 layout_mode = 2
 texture = ExtResource("3_dt7rh")
+stretch_mode = 5
 
 [node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer/Stars/Silver"]
 layout_mode = 2
@@ -54,11 +58,13 @@ text = "2s"
 horizontal_alignment = 1
 
 [node name="Gold" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Stars"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/Stars/Gold"]
 layout_mode = 2
 texture = ExtResource("1_vcnlj")
+stretch_mode = 5
 
 [node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer/Stars/Gold"]
 layout_mode = 2

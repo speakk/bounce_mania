@@ -14,6 +14,8 @@ func _ready():
 	var bottom = WorldBoundaryShape2D.new()
 	bottom.normal = Vector2.UP
 	
+	$ColorRect.color = Colors.background_b
+	
 	_add_body(left, $ColorRect.position)
 	_add_body(right, Vector2($ColorRect.position.x + $ColorRect.size.x, $ColorRect.position.y))
 	_add_body(top, $ColorRect.position)

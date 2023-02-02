@@ -5,25 +5,31 @@ const levels = [
 		name = "Level 1",
 		id = "level_1",
 		path = "res://levels/level_1.tscn",
-		stars = [5, 3, 1]
+		stars = [3, 1.6, 1.1]
 	},
 	{
 		name = "Level 2",
 		id = "level_2",
 		path = "res://levels/level_2.tscn",
-		stars = [5, 3, 1]
+		stars = [6, 5, 4]
 	},
 	{
 		name = "Level 3",
 		id = "level_3",
 		path = "res://levels/level_3.tscn",
-		stars = [5, 3, 1]
+		stars = [7, 5, 4]
 	},
 	{
 		name = "Level 4",
 		id = "level_4",
 		path = "res://levels/level_4.tscn",
-		stars = [9, 3, 1]
+		stars = [12, 10, 6]
+	},
+	{
+		name = "Level 5",
+		id = "level_5",
+		path = "res://levels/level_5.tscn",
+		stars = [10, 8, 6]
 	},
 ]
 
