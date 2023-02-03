@@ -50,6 +50,9 @@ func get_input():
 	
 func _ready():
 	$Sprite2D.frame = 0
+	$Circle.color = Colors.accent_a
+	$Circle/Circle.color = $Circle.color.lightened(0.2)
+	$Circle/Circle2.color = $Circle.color.lightened(0.2)
 	#bounce_timer = Timer.new()
 	#add_child(bounce_timer)
 

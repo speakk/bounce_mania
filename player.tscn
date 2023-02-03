@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsietufglmnl7"]
+[gd_scene load_steps=16 format=3 uid="uid://dsietufglmnl7"]
 
 [ext_resource type="Texture2D" uid="uid://c1gsv1x1xdvhm" path="res://theball.png" id="1_pxrxn"]
 [ext_resource type="Script" path="res://player.gd" id="1_q3836"]
 [ext_resource type="Shader" path="res://player.gdshader" id="2_v6el6"]
 [ext_resource type="Texture2D" uid="uid://bkpn6vqmcural" path="res://eyeball.png" id="3_nvob7"]
 [ext_resource type="PackedScene" uid="uid://dlds447xi83m1" path="res://direction_indicator.tscn" id="5_rns7b"]
+[ext_resource type="PackedScene" uid="uid://djlr4c64qtm5x" path="res://circle.tscn" id="6_ulotl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t8y8a"]
 friction = 0.03
@@ -63,6 +64,21 @@ contact_monitor = true
 linear_damp = 0.5
 script = ExtResource("1_q3836")
 
+[node name="Circle" parent="." instance=ExtResource("6_ulotl")]
+light_mask = 2
+size = 17.0
+color = Color(0.505882, 0.737255, 0.443137, 1)
+
+[node name="Circle" parent="Circle" instance=ExtResource("6_ulotl")]
+position = Vector2(-6, 5)
+size = 6.0
+color = Color(0.54902, 0.6, 0.560784, 1)
+
+[node name="Circle2" parent="Circle" instance=ExtResource("6_ulotl")]
+position = Vector2(7, 5)
+size = 6.0
+color = Color(0.54902, 0.6, 0.560784, 1)
+
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 120
@@ -72,6 +88,7 @@ speed_scale = 3.0
 fixed_fps = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_t5hws")
 texture = ExtResource("1_pxrxn")
 hframes = 2
