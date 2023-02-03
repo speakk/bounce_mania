@@ -23,7 +23,12 @@ func _ready():
 	
 	$EndZoneRect.color = Colors.accent_b
 	
-
+	$PointLight2D.position += $EndZoneRect.position + Vector2($EndZoneRect.size.x /2, $EndZoneRect.size.y / 2)
+	$PointLight2D.color = Colors.accent_b
+	print("scale first", $PointLight2D.scale)
+	$PointLight2D.scale = Vector2(0.4, 0.4) + ($EndZoneRect.size / 100) * 0.6
+	print("scale after", $PointLight2D.scale)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
