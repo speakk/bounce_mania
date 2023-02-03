@@ -49,10 +49,11 @@ func get_input():
 		has_moved = true
 	
 func _ready():
-	$Sprite2D.frame = 0
-	$Circle.color = Colors.accent_a
-	$Circle/Circle.color = $Circle.color.lightened(0.2)
-	$Circle/Circle2.color = $Circle.color.lightened(0.2)
+	$Circle.base_color = Colors.accent_a
+	$Circle/Circle.base_color = $Circle.base_color.lightened(0.2)
+	$Circle/Circle2.base_color = $Circle.base_color.lightened(0.2)
+	
+	#$Circle.material.set_shader_parameter("white_progress", 0.0)
 	#bounce_timer = Timer.new()
 	#add_child(bounce_timer)
 
@@ -101,7 +102,6 @@ func bounce(direction):
 
 func set_bounce_on(direction):
 	apply_impulse(direction)
-	$Sprite2D.frame = 1
 	bouncing = true
 	bounce_on_timer = bounce_duration
 	#bounce_timer.start(bounce_time)
@@ -112,7 +112,6 @@ func set_bounce_on(direction):
 
 func set_bounce_off():
 	bouncing = false
-	$Sprite2D.frame = 0
 	$TrailParticles.emitting = false
 	current_damage = damage
 	set_collision_mask_value(2, true)
@@ -131,34 +130,18 @@ func handle_colision_particles():
 func _on_area_2d_body_entered(body):
 	handle_colision_particles()
 	
-	$Sprite2D.material.set_shader_parameter("white_progress", 0.5)
+	$Circle._current_color = $Circle.base_color.lightened(0.6)
 	var shadertween = get_tree().create_tween()
-	shadertween.tween_property($Sprite2D.material, "shader_parameter/white_progress", 0, 0.2)
+	shadertween.tween_property($Circle, "_current_color", $Circle.base_color, 0.2)
 	
 	if body.is_in_group("bricks"):
 		print("emit")
 		#Events.emit_signal("brick_hit", self, self.current_damage)
 		Events.brick_hit.emit(body, self, self.current_damage)
 	
-	$Sprite2D.scale = Vector2(1.4, 1.4)
+	$Circle.scale = Vector2(1.4, 1.4)
 	#$/Sprite2D.material.
 	var tween = get_tree().create_tween()
-	tween.tween_property(get_node("Sprite2D"), "scale", Vector2(1, 1), 0.2)
+	tween.tween_property(get_node("Circle"), "scale", Vector2(1, 1), 0.2)
 	
 	Events.player_collision_happened.emit(linear_velocity.length_squared())
-
-
-#func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-#	var body_shape_owner = body.shape_find_owner(body_shape_index)
-#	var body_shape_node = body.shape_owner_get_owner(body_shape_owner)
-#	var body_global_transform = body_shape_node.global_transform
-#
-#	var local_shape_owner = shape_find_owner(local_shape_index)
-#	var local_shape_node = shape_owner_get_owner(local_shape_owner)
-#
-#	var area_global_transform = local_shape_node.global_transform
-#
-#	var collision_points = local_shape_node.shape.collide_and_get_contacts(area_global_transform,
-#							body_shape_node,
-#							body_global_transform)
-#	print(collision_points)

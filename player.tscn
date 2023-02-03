@@ -67,17 +67,17 @@ script = ExtResource("1_q3836")
 [node name="Circle" parent="." instance=ExtResource("6_ulotl")]
 light_mask = 2
 size = 17.0
-color = Color(0.505882, 0.737255, 0.443137, 1)
+base_color = Color(0.4, 0.2, 0.6, 1)
 
 [node name="Circle" parent="Circle" instance=ExtResource("6_ulotl")]
 position = Vector2(-6, 5)
 size = 6.0
-color = Color(0.54902, 0.6, 0.560784, 1)
+base_color = Color(0.4, 0.2, 0.6, 1)
 
 [node name="Circle2" parent="Circle" instance=ExtResource("6_ulotl")]
 position = Vector2(7, 5)
 size = 6.0
-color = Color(0.54902, 0.6, 0.560784, 1)
+base_color = Color(0.4, 0.2, 0.6, 1)
 
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 emitting = false
@@ -94,6 +94,7 @@ texture = ExtResource("1_pxrxn")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_eiupa")
 
 [node name="LeftEyeSprite" type="Sprite2D" parent="."]

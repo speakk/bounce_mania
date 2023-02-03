@@ -4,3 +4,4 @@
 
 [node name="Circle" type="Node2D"]
 script = ExtResource("1_apbmm")
+base_color = null
