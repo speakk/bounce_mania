@@ -14,12 +14,16 @@ func _ready():
 	var bottom = WorldBoundaryShape2D.new()
 	bottom.normal = Vector2.UP
 	
-	$ColorRect.color = Colors.background_b
-	
 	_add_body(left, $ColorRect.position)
 	_add_body(right, Vector2($ColorRect.position.x + $ColorRect.size.x, $ColorRect.position.y))
 	_add_body(top, $ColorRect.position)
 	_add_body(bottom, Vector2($ColorRect.position.x, $ColorRect.position.y + $ColorRect.size.y))
+	
+	Events.palette_changed.connect(_on_palette_changed)
+	_on_palette_changed(Colors.get_current_palette(), null, null)
+	
+func _on_palette_changed(new_palette, _a, _b):
+	$ColorRect.color = new_palette.background_b
 
 func _add_body(boundary_shape, body_position):
 	var physics = StaticBody2D.new()

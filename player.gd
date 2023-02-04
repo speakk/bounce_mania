@@ -49,13 +49,13 @@ func get_input():
 		has_moved = true
 	
 func _ready():
-	$Circle.base_color = Colors.accent_a
+	Events.palette_changed.connect(_on_palette_changed)
+	_on_palette_changed(Colors.get_current_palette())
+	
+func _on_palette_changed(new_palette):
+	$Circle.base_color = new_palette.accent_a
 	$Circle/Circle.base_color = $Circle.base_color.lightened(0.2)
 	$Circle/Circle2.base_color = $Circle.base_color.lightened(0.2)
-	
-	#$Circle.material.set_shader_parameter("white_progress", 0.0)
-	#bounce_timer = Timer.new()
-	#add_child(bounce_timer)
 
 var max_dist = 2
 
@@ -142,6 +142,6 @@ func _on_area_2d_body_entered(body):
 	$Circle.scale = Vector2(1.4, 1.4)
 	#$/Sprite2D.material.
 	var tween = get_tree().create_tween()
-	tween.tween_property(get_node("Circle"), "scale", Vector2(1, 1), 0.2)
+	tween.tween_property(get_node("Circle"), "scale", Vector2(1, 1), 0.3)
 	
 	Events.player_collision_happened.emit(linear_velocity.length_squared())

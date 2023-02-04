@@ -48,6 +48,8 @@ func load_level(level_id):
 	
 	var camera = Camera2D.new()
 	camera.current = true
+	#camera.position_smoothing_enabled = true
+	#camera.position_smoothing_speed = 3
 	player.add_child(camera)
 	camera_node = camera
 

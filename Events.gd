@@ -31,3 +31,6 @@ signal main_menu_entered
 
 signal player_list_changed(new_list)
 signal current_profile_changed(new_player)
+
+# DEBUG SIGNALS:
+signal palette_changed(new_palette, palette_index, palette_shift_index)
