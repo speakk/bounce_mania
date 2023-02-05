@@ -13,25 +13,30 @@ const levels = [
 		name = "Level 2",
 		id = "level_2",
 		path = "res://levels/level_2.tscn",
-		stars = [6, 5, 4]
+		stars = [6, 5, 4],
+		title = "Quick Corners",
+		description = "Protip: Press r to quick restart the level if you mess up"
 	},
 	{
 		name = "Level 3",
 		id = "level_3",
 		path = "res://levels/level_3.tscn",
-		stars = [7, 5, 4]
+		stars = [7, 5, 4],
+		title = "Bumpy Road"
 	},
 	{
 		name = "Level 4",
 		id = "level_4",
 		path = "res://levels/level_4.tscn",
-		stars = [12, 10, 6]
+		stars = [12, 10, 6],
+		title = "Easy Diagonals"
 	},
 	{
 		name = "Level 5",
 		id = "level_5",
 		path = "res://levels/level_5.tscn",
-		stars = [10, 8, 6]
+		stars = [10, 8, 6],
+		title = "Back and Forth"
 	},
 ]
 

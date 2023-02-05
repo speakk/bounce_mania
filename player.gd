@@ -50,10 +50,11 @@ func get_input():
 	
 func _ready():
 	Events.palette_changed.connect(_on_palette_changed)
-	_on_palette_changed(Colors.get_current_palette())
+	_on_palette_changed(Colors.get_current_palette(), null, null)
 	
-func _on_palette_changed(new_palette):
+func _on_palette_changed(new_palette, _a, _b):
 	$Circle.color = new_palette.accent_a
+	$Circle.color.v = minf(0.5, $Circle.color.v)
 	$Circle/Circle.color = $Circle.color.lightened(0.2)
 	$Circle/Circle2.color = $Circle.color.lightened(0.2)
 

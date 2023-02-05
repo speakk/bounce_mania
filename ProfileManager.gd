@@ -22,7 +22,6 @@ func get_existing_profiles() -> Dictionary:
 	return profiles
 
 func get_level_times(profile_id: String, level_id: String) -> Array:
-	print("level times", level_id, get_existing_profiles()[profile_id].get("level_times"))
 	var times = get_existing_profiles()[profile_id].get("level_times").get(level_id, [])
 	return times
 
