@@ -58,6 +58,8 @@ func load_level(level_id):
 		%LevelDescriptionLabel.text = description
 	else:
 		%LevelDescriptionLabel.text = "Best of luck!"
+	
+	Events.level_loaded.emit(level_id)
 
 func get_current_level_id():
 	return current_level_id

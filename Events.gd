@@ -21,6 +21,7 @@ signal next_level_pressed
 signal profile_manager_pressed
 signal main_menu_pressed
 
+signal level_loaded(level_id)
 signal level_finished(level_id, time)
 
 signal in_game_entered
