@@ -21,7 +21,8 @@ func _refresh_level_list(player_name):
 	for i in Levels.levels.size():
 		var level = Levels.levels[i]
 		var button := Button.new()
-		button.text = level.name
+		var description = "\n%s" % level.get("title") if level.get("title") else ""
+		button.text = "%s%s" % [level.name, description]
 		button.custom_minimum_size.x = 160
 		button.custom_minimum_size.y = 60
 		if i <= current_user_level:
