@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://level_timer.gd" id="1_pel17"]
 
 [node name="LevelTimer" type="RichTextLabel"]
-offset_right = 256.0
+offset_right = 704.0
 offset_bottom = 40.0
 theme = ExtResource("1_fuoeg")
 theme_override_font_sizes/normal_font_size = 48
-text = "time"
+text = "The timer starts when you move"
 script = ExtResource("1_pel17")

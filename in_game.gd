@@ -31,7 +31,7 @@ func _process(delta):
 
 func _on_player_has_moved():
 	player_has_moved = true
-	%HasMovedLabel.visible = false
+	%LevelDescriptionLabel.visible = false
 
 func load_level(level_id):
 	if $LevelContainer.get_child_count() > 0:
@@ -52,6 +52,12 @@ func load_level(level_id):
 	#camera.position_smoothing_speed = 3
 	player.add_child(camera)
 	camera_node = camera
+	
+	var description = Levels.get_by_id(level_id).get("description")
+	if description != null:
+		%LevelDescriptionLabel.text = description
+	else:
+		%LevelDescriptionLabel.text = "Best of luck!"
 
 func get_current_level_id():
 	return current_level_id

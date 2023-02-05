@@ -21,7 +21,8 @@ script = ExtResource("2_hi10r")
 layout_mode = 0
 offset_left = 32.0
 offset_top = 8.0
-offset_bottom = 48.0
+offset_right = 800.0
+offset_bottom = 96.0
 theme = SubResource("Theme_5n488")
 
 [node name="BounceChargeUI" parent="." instance=ExtResource("3_adyeq")]

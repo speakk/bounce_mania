@@ -89,6 +89,9 @@ func get_current_palette():
 		neutral_a = Color(palette[4]),
 	}
 	
+	new_colors.background_a.v = minf(new_colors.background_a.v, 0.4)
+	new_colors.background_b.v = minf(new_colors.background_b.v, 0.4)
+	
 	return new_colors
 	
 func _ready():

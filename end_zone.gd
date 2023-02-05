@@ -34,6 +34,7 @@ func _ready():
 func _on_palette_changed(new_palette, _a, _b):
 	$EndZoneRect.color = new_palette.accent_b
 	$PointLight2D.color = Colors.accent_b
+	$EndZoneRect.color.v = minf($EndZoneRect.color.v, 0.4)
 
 func _on_area_2d_body_entered(body):
 	Events.end_zone_hit.emit(self, body)

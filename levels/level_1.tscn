@@ -21,19 +21,26 @@ color = Color(0.188235, 0.513726, 1, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="EndZone" parent="." index="2" instance=ExtResource("2_0rfpp")]
-position = Vector2(672, 64)
+position = Vector2(512, 64)
+
+[node name="EndZoneRect" parent="EndZone" index="0"]
+offset_left = 32.0
+offset_right = 192.0
+offset_bottom = 64.0
 
 [node name="PlayerMarker" parent="." index="3" instance=ExtResource("3_cnmb3")]
-position = Vector2(416, 192)
+position = Vector2(399, 96)
 
-[node name="Obstacle" parent="." index="4" instance=ExtResource("4_g2syi")]
-position = Vector2(192, 128)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle" index="0"]
-polygon = PackedVector2Array(224, 0, 224, -32, 320, -64, 480, -64, 480, 160, 448, 160, 384, 0)
-
-[node name="Obstacle2" parent="." index="5" instance=ExtResource("4_g2syi")]
+[node name="Obstacle2" parent="." index="4" instance=ExtResource("4_g2syi")]
 position = Vector2(192, 128)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle2" index="0"]
-polygon = PackedVector2Array(224, 224, 768, 224, 768, 288, 224, 288)
+polygon = PackedVector2Array(96, -128, 160, -128, 160, 256, 224, 320, 736, 320, 800, 256, 800, 0, 736, -64, 160, -64, 160, -128, 864, -128, 864, 384, 96, 384)
+
+[node name="Obstacle3" parent="." index="5" instance=ExtResource("4_g2syi")]
+position = Vector2(192, 128)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle3" index="0"]
+polygon = PackedVector2Array(256, -64, 256, 160, 352, 224, 640, 224, 704, 192, 704, 64, 640, 0, 352, 0, 352, -64)
+
+[editable path="EndZone"]

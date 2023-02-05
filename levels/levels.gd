@@ -5,7 +5,9 @@ const levels = [
 		name = "Level 1",
 		id = "level_1",
 		path = "res://levels/level_1.tscn",
-		stars = [3, 1.6, 1.1]
+		stars = [6, 5, 3],
+		title = "The Beginning",
+		description = "wasd to move.\nRight click to dash when the dash meter is full!\nMake it to the end as quickly as you can!"
 	},
 	{
 		name = "Level 2",
