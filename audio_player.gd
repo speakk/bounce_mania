@@ -10,6 +10,7 @@ func _ready():
 	Events.main_menu_entered.connect(_on_main_menu_entered)
 	Events.player_bounce_started.connect(_on_player_bounce_started)
 	Events.bounce_timer_changed.connect(_on_bounce_timer_changed)
+	Events.level_finished.connect(_on_level_finished)
 	#Events.in_game_exited.connect(_on_in_game_exited)
 
 const volume_ceiling = 6
@@ -47,3 +48,12 @@ func _on_bounce_timer_changed(value):
 		var previousPosition = $DashChargeStream.get_playback_position()
 		$DashChargeStream.play()
 		$DashChargeStream.seek(maxf(0, previousPosition - 0.5))
+
+func _on_level_finished(level_id, time):
+	var star_level = Levels.get_star_level_reached(level_id, time)
+	if star_level == 2:
+		$LevelFinishedGoldStarStream.play()
+	elif star_level != null:
+		$LevelFinishedStarsStream.play()
+	else:
+		$LevelFinishedNoStarsStream.play()

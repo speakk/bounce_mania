@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://collision_particles.gd" id="1_kyoyi"]
 
-[sub_resource type="Curve" id="Curve_dsgmb"]
+[sub_resource type="Curve" id="Curve_jt64n"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_kv1xh"]
-curve = SubResource("Curve_dsgmb")
+[sub_resource type="CurveTexture" id="CurveTexture_slqbe"]
+curve = SubResource("Curve_jt64n")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s6b3w"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k37lw"]
 particle_flag_disable_z = true
 direction = Vector3(1, -40, 0)
 gravity = Vector3(0, 98, 0)
@@ -19,15 +19,15 @@ angular_velocity_min = 12.1
 angular_velocity_max = 133.11
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_max = 2.5
-scale_curve = SubResource("CurveTexture_kv1xh")
+scale_min = 4.0
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_slqbe")
 color = Color(0.717647, 0.992157, 1, 1)
 
 [node name="CollisionParticles" type="GPUParticles2D"]
 emitting = false
 amount = 15
-process_material = SubResource("ParticleProcessMaterial_s6b3w")
-lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_k37lw")
 one_shot = true
 explosiveness = 1.0
 collision_base_size = 8.59

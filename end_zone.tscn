@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bschtylma2s1c"]
+[gd_scene load_steps=8 format=3 uid="uid://bschtylma2s1c"]
 
 [ext_resource type="Script" path="res://end_zone.gd" id="1_wfe8x"]
 [ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="2_th31i"]
@@ -14,6 +14,27 @@ height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Curve" id="Curve_6apcc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u0fd7"]
+curve = SubResource("Curve_6apcc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u6wr2"]
+lifetime_randomness = 0.18
+particle_flag_disable_z = true
+direction = Vector3(1, -40, 0)
+spread = 45.19
+gravity = Vector3(0, 98, 0)
+initial_velocity_max = 255.1
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 279.2
+scale_min = 2.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_u0fd7")
 
 [node name="EndZone" type="Node2D"]
 script = ExtResource("1_wfe8x")
@@ -49,3 +70,14 @@ text = "Get here!"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = SubResource("GradientTexture2D_i7rkc")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 2
+position = Vector2(128, 128)
+emitting = false
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_u6wr2")
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.09

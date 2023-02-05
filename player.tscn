@@ -7,18 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://dlds447xi83m1" path="res://direction_indicator.tscn" id="5_rns7b"]
 [ext_resource type="PackedScene" uid="uid://djlr4c64qtm5x" path="res://circle.tscn" id="6_ulotl"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u5j7j"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0qv0x"]
 friction = 0.03
 bounce = 0.8
 
-[sub_resource type="Curve" id="Curve_o1wc3"]
+[sub_resource type="Curve" id="Curve_c2tpl"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_2aiok"]
-curve = SubResource("Curve_o1wc3")
+[sub_resource type="CurveTexture" id="CurveTexture_lp45v"]
+curve = SubResource("Curve_c2tpl")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1x7eq"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cf72w"]
 emission_shape = 1
 emission_sphere_radius = 8.0
 particle_flag_disable_z = true
@@ -27,25 +27,25 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 2.0
 scale_max = 6.0
-scale_curve = SubResource("CurveTexture_2aiok")
+scale_curve = SubResource("CurveTexture_lp45v")
 color = Color(1, 0.941176, 0.52549, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uel20"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfacj"]
 shader = ExtResource("2_v6el6")
 shader_parameter/white_progress = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wkgcc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_h70oj"]
 radius = 16.0312
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oo2lt"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsm0l"]
 radius = 17.1172
 
-[sub_resource type="Gradient" id="Gradient_hq3kb"]
+[sub_resource type="Gradient" id="Gradient_v45ni"]
 interpolation_mode = 2
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_su68g"]
-gradient = SubResource("Gradient_hq3kb")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i5w5f"]
+gradient = SubResource("Gradient_v45ni")
 width = 256
 height = 256
 fill = 1
@@ -56,7 +56,7 @@ fill_to = Vector2(1, 0.5)
 collision_layer = 4
 collision_mask = 3
 mass = 0.4
-physics_material_override = SubResource("PhysicsMaterial_u5j7j")
+physics_material_override = SubResource("PhysicsMaterial_0qv0x")
 gravity_scale = 0.0
 continuous_cd = 2
 max_contacts_reported = 2
@@ -67,35 +67,35 @@ script = ExtResource("1_q3836")
 [node name="Circle" parent="." instance=ExtResource("6_ulotl")]
 light_mask = 2
 size = 17.0
-color = null
+color = Color(0.4, 0.2, 0.6, 1)
 
 [node name="Circle" parent="Circle" instance=ExtResource("6_ulotl")]
 position = Vector2(-6, 5)
 size = 6.0
-color = null
+color = Color(0.4, 0.2, 0.6, 1)
 
 [node name="Circle2" parent="Circle" instance=ExtResource("6_ulotl")]
 position = Vector2(7, 5)
 size = 6.0
-color = null
+color = Color(0.4, 0.2, 0.6, 1)
 
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 120
-process_material = SubResource("ParticleProcessMaterial_1x7eq")
+process_material = SubResource("ParticleProcessMaterial_cf72w")
 lifetime = 7.0
 speed_scale = 3.0
 fixed_fps = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_uel20")
+material = SubResource("ShaderMaterial_kfacj")
 texture = ExtResource("1_pxrxn")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource("CircleShape2D_wkgcc")
+shape = SubResource("CircleShape2D_h70oj")
 
 [node name="LeftEyeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_nvob7")
@@ -108,7 +108,7 @@ collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_oo2lt")
+shape = SubResource("CircleShape2D_xsm0l")
 
 [node name="DirectionIndicator" parent="." instance=ExtResource("5_rns7b")]
 
@@ -116,7 +116,7 @@ shape = SubResource("CircleShape2D_oo2lt")
 scale = Vector2(2.63281, 2.63281)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.8)
-texture = SubResource("GradientTexture2D_su68g")
+texture = SubResource("GradientTexture2D_i5w5f")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -26,8 +26,12 @@ func _ready():
 	$PointLight2D.position += $EndZoneRect.position + Vector2($EndZoneRect.size.x /2, $EndZoneRect.size.y / 2)
 	$PointLight2D.scale = Vector2(0.4, 0.4) + ($EndZoneRect.size / 100) * 0.6
 	
+	$GPUParticles2D.position = $EndZoneRect.position + Vector2($EndZoneRect.size.x /2, $EndZoneRect.size.y / 2)
+	
 	Events.palette_changed.connect(_on_palette_changed)
 	_on_palette_changed(Colors.get_current_palette(), null, null)
+	
+	Events.level_finished.connect(_on_level_finished)
 	
 func _on_palette_changed(new_palette, _a, _b):
 	$EndZoneRect.color = new_palette.accent_b
@@ -36,3 +40,6 @@ func _on_palette_changed(new_palette, _a, _b):
 
 func _on_area_2d_body_entered(body):
 	Events.end_zone_hit.emit(self, body)
+
+func _on_level_finished(_a, _b):
+	$GPUParticles2D.emitting = true

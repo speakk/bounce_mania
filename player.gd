@@ -144,3 +144,18 @@ func _on_area_2d_body_entered(body):
 	tween.tween_property(get_node("Circle"), "scale", Vector2(1, 1), 0.3)
 	
 	Events.player_collision_happened.emit(linear_velocity.length_squared())
+#
+#func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+#	var body_shape_owner = body.shape_find_owner(body_shape_index)
+#	var body_shape_node = body.shape_owner_get_owner(body_shape_owner)
+#	var body_global_transform = body_shape_node.global_transform
+#
+#	var local_shape_owner = shape_find_owner(local_shape_index)
+#	var local_shape_node = shape_owner_get_owner(local_shape_owner)
+#
+#	var area_global_transform = local_shape_node.global_transform
+#
+#	var collision_points = local_shape_node.shape.collide_and_get_contacts(area_global_transform,
+#																			body_shape_node,
+#																			body_global_transform)
+#	print("Points", collision_points)
