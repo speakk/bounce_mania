@@ -24,9 +24,7 @@ func _ready():
 	$EndZoneRect.set_light_mask(5)
 	
 	$PointLight2D.position += $EndZoneRect.position + Vector2($EndZoneRect.size.x /2, $EndZoneRect.size.y / 2)
-	print("scale first", $PointLight2D.scale)
 	$PointLight2D.scale = Vector2(0.4, 0.4) + ($EndZoneRect.size / 100) * 0.6
-	print("scale after", $PointLight2D.scale)
 	
 	Events.palette_changed.connect(_on_palette_changed)
 	_on_palette_changed(Colors.get_current_palette(), null, null)

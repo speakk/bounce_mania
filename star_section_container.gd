@@ -8,8 +8,6 @@ func set_star_level_requirements(requirements):
 		star_child.get_node("TimeLabel").text = "%ss" % requirements[i]
 
 func set_star_level_reached(level):
-	print("level ", level)
-	
 	var icon_index = level if level else 0
 	var icon_texture = %Stars.get_child(icon_index).get_node("Icon").texture
 	
@@ -20,7 +18,6 @@ func set_star_level_reached(level):
 		if level != null:
 			var index = %Stars.get_children().find(child)
 			if index <= level:
-				print("Modulating level", index)
 				child.get_node("Icon").modulate = Color(1, 1, 1, 1)
 
 	if level != null and level >= 0:

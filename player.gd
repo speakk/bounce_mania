@@ -136,8 +136,6 @@ func _on_area_2d_body_entered(body):
 	shadertween.tween_property($Circle, "_current_color", $Circle.color, 0.2)
 	
 	if body.is_in_group("bricks"):
-		print("emit")
-		#Events.emit_signal("brick_hit", self, self.current_damage)
 		Events.brick_hit.emit(body, self, self.current_damage)
 	
 	$Circle.scale = Vector2(1.4, 1.4)

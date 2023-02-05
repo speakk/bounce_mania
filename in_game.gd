@@ -75,9 +75,6 @@ func _finish_level():
 	var finished_level_index = Levels.get_level_index(current_level_id)
 	var star_level_reached = Levels.get_star_level_reached(current_level_id, level_timer)
 	
-	print("current level:", current_user_level)
-	print("finished level:", finished_level_index)
-	
 	if star_level_reached != null and current_user_level <= finished_level_index:
 		ProfileManager.save_user_level_progress(ProfileManager.get_current_profile_id(), current_user_level + 1)
 	

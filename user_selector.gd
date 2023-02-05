@@ -7,7 +7,6 @@ func _ready():
 	Events.player_list_changed.connect(_refresh_players_list)
 
 func _refresh_players_list(existing_players):
-	print("Refreshing", existing_players)
 	for child in %ExistingPlayersList.get_children():
 		child.queue_free()
 	

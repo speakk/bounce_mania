@@ -51,7 +51,6 @@ func get_by_id(id):
 
 func get_level_index(id):
 	var level = levels_by_id.get(id)
-	print("get level index", id, level)
 	return levels.find(level)
 
 func get_star_level_reached(level_id, level_time):

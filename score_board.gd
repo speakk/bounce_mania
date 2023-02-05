@@ -11,8 +11,6 @@ func show_scores(scores):
 	for child in %Scores.get_children():
 		child.queue_free()
 		
-	print("SCORES", scores)
-	
 	var latest_score
 	var latest_score_when = 0
 	for score in scores:

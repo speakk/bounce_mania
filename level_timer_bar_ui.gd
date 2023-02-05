@@ -19,8 +19,6 @@ func set_level_times(level_times: Array):
 	_max_time = highest_time
 	
 	var max_width = $ProgressBar.custom_minimum_size.x
-	print("max width", max_width)
-	print("highest_time", highest_time)
 	
 	for level_time in level_times:
 		var rect := ColorRect.new()
@@ -28,8 +26,6 @@ func set_level_times(level_times: Array):
 		rect.position = $ProgressBar.position
 		rect.custom_minimum_size.x = float(level_time) / float(highest_time) * max_width
 		
-		print("level time", level_time)
-		print("size:", rect.custom_minimum_size.x)
 		rect.custom_minimum_size.y = $ProgressBar.custom_minimum_size.y
 		rect.color = time_colors[level_times.find(level_time)]
 		
