@@ -67,14 +67,17 @@ script = ExtResource("1_q3836")
 [node name="Circle" parent="." instance=ExtResource("6_ulotl")]
 light_mask = 2
 size = 17.0
+color = null
 
 [node name="Circle" parent="Circle" instance=ExtResource("6_ulotl")]
 position = Vector2(-6, 5)
 size = 6.0
+color = null
 
 [node name="Circle2" parent="Circle" instance=ExtResource("6_ulotl")]
 position = Vector2(7, 5)
 size = 6.0
+color = null
 
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 emitting = false

@@ -5,26 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://player_marker.tscn" id="3_hjttl"]
 [ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="4_ghwkq"]
 [ext_resource type="PackedScene" uid="uid://bschtylma2s1c" path="res://end_zone.tscn" id="5_jau0p"]
-[ext_resource type="PackedScene" uid="uid://b2aoduby1ehqd" path="res://brick.tscn" id="5_jcdj2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0but2"]
+radius = 32.0
 
 [node name="Level3" instance=ExtResource("1_bq8w5")]
 
-[node name="Node2D2" type="Node2D" parent="." index="1"]
-z_index = 1
-
-[node name="RigidBody2D" parent="Node2D2" index="0" instance=ExtResource("5_jcdj2")]
-position = Vector2(377, 648)
-
-[node name="RigidBody2D2" parent="Node2D2" index="1" instance=ExtResource("5_jcdj2")]
-position = Vector2(328, 648)
-
-[node name="RigidBody2D3" parent="Node2D2" index="2" instance=ExtResource("5_jcdj2")]
-position = Vector2(377, 632)
-
-[node name="RigidBody2D4" parent="Node2D2" index="3" instance=ExtResource("5_jcdj2")]
-position = Vector2(328, 632)
-
-[node name="WorldBounds" parent="." index="2" instance=ExtResource("2_pirfr")]
+[node name="WorldBounds" parent="." index="1" instance=ExtResource("2_pirfr")]
 position = Vector2(288, 0)
 
 [node name="ColorRect" type="ColorRect" parent="WorldBounds" index="0"]
@@ -32,24 +19,24 @@ offset_right = 384.0
 offset_bottom = 1056.0
 color = Color(0.188235, 0.513726, 1, 1)
 
-[node name="PlayerMarker" parent="." index="3" instance=ExtResource("3_hjttl")]
+[node name="PlayerMarker" parent="." index="2" instance=ExtResource("3_hjttl")]
 position = Vector2(352, 96)
 
-[node name="Obstacle" parent="." index="4" instance=ExtResource("4_ghwkq")]
+[node name="Obstacle" parent="." index="3" instance=ExtResource("4_ghwkq")]
 position = Vector2(192, 128)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle" index="0"]
 position = Vector2(32, 32)
 polygon = PackedVector2Array(192, -160, 192, 512, 320, 512, 320, -160)
 
-[node name="Obstacle2" parent="." index="5" instance=ExtResource("4_ghwkq")]
+[node name="Obstacle2" parent="." index="4" instance=ExtResource("4_ghwkq")]
 position = Vector2(192, 128)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle2" index="0"]
 position = Vector2(32, 32)
-polygon = PackedVector2Array(192, 640, 320, 640, 320, 896, 192, 896)
+polygon = PackedVector2Array(192, 640, 320, 640, 448, 512, 448, 896, 320, 896, 192, 896, 64, 896, 64, 512)
 
-[node name="EndZone" parent="." index="6" instance=ExtResource("5_jau0p")]
+[node name="EndZone" parent="." index="5" instance=ExtResource("5_jau0p")]
 position = Vector2(582, 0)
 
 [node name="EndZoneRect" parent="EndZone" index="0"]
@@ -57,20 +44,22 @@ offset_left = -38.0
 offset_right = 90.0
 offset_bottom = 128.0
 
-[node name="Node2D" type="Node2D" parent="." index="7"]
-position = Vector2(483, 745)
-rotation = 1.57079
+[node name="Obstacle3" parent="." index="6" instance=ExtResource("4_ghwkq")]
+position = Vector2(320, 224)
 
-[node name="RigidBody2D5" parent="Node2D" index="0" instance=ExtResource("5_jcdj2")]
-position = Vector2(17, 16)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle3" index="0"]
+shape = SubResource("CircleShape2D_0but2")
 
-[node name="RigidBody2D6" parent="Node2D" index="1" instance=ExtResource("5_jcdj2")]
-position = Vector2(-32, 16)
+[node name="Obstacle4" parent="." index="7" instance=ExtResource("4_ghwkq")]
+position = Vector2(384, 352)
 
-[node name="RigidBody2D7" parent="Node2D" index="2" instance=ExtResource("5_jcdj2")]
-position = Vector2(17, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle4" index="0"]
+shape = SubResource("CircleShape2D_0but2")
 
-[node name="RigidBody2D8" parent="Node2D" index="3" instance=ExtResource("5_jcdj2")]
-position = Vector2(-32, 0)
+[node name="Obstacle5" parent="." index="8" instance=ExtResource("4_ghwkq")]
+position = Vector2(320, 480)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle5" index="0"]
+shape = SubResource("CircleShape2D_0but2")
 
 [editable path="EndZone"]

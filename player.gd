@@ -53,9 +53,9 @@ func _ready():
 	_on_palette_changed(Colors.get_current_palette())
 	
 func _on_palette_changed(new_palette):
-	$Circle.base_color = new_palette.accent_a
-	$Circle/Circle.base_color = $Circle.base_color.lightened(0.2)
-	$Circle/Circle2.base_color = $Circle.base_color.lightened(0.2)
+	$Circle.color = new_palette.accent_a
+	$Circle/Circle.color = $Circle.color.lightened(0.2)
+	$Circle/Circle2.color = $Circle.color.lightened(0.2)
 
 var max_dist = 2
 
@@ -130,9 +130,9 @@ func handle_colision_particles():
 func _on_area_2d_body_entered(body):
 	handle_colision_particles()
 	
-	$Circle._current_color = $Circle.base_color.lightened(0.6)
+	$Circle._current_color = $Circle.color.lightened(0.6)
 	var shadertween = get_tree().create_tween()
-	shadertween.tween_property($Circle, "_current_color", $Circle.base_color, 0.2)
+	shadertween.tween_property($Circle, "_current_color", $Circle.color, 0.2)
 	
 	if body.is_in_group("bricks"):
 		print("emit")
