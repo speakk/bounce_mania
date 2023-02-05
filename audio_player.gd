@@ -42,7 +42,7 @@ func _on_player_bounce_started():
 
 func _on_bounce_timer_changed(value):
 	var dash_timeout = GlobalValues.player_dash_charge_timeout
-	if value > 0:
+	if value > 0 and value < dash_timeout:
 		$DashChargeStream.pitch_scale = 0.5 + (1 - (value / dash_timeout)) * 0.5
 		var previousPosition = $DashChargeStream.get_playback_position()
 		$DashChargeStream.play()
