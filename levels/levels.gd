@@ -5,7 +5,7 @@ const levels = [
 		name = "Level 1",
 		id = "level_1",
 		path = "res://levels/level_1.tscn",
-		stars = [6, 5, 3],
+		stars = [4.5, 3, 2.2],
 		title = "The Beginning",
 		description = "wasd to move.\nRight click to dash when the dash meter is full!\nMake it to the end as quickly as you can!"
 	},
@@ -13,7 +13,7 @@ const levels = [
 		name = "Level 2",
 		id = "level_2",
 		path = "res://levels/level_2.tscn",
-		stars = [6, 5, 4],
+		stars = [4.5, 4, 3],
 		title = "Quick Corners",
 		description = "Protip: Press r to quick restart the level if you mess up"
 	},
@@ -21,21 +21,21 @@ const levels = [
 		name = "Level 3",
 		id = "level_3",
 		path = "res://levels/level_3.tscn",
-		stars = [7, 5, 4],
+		stars = [5.5, 5, 3],
 		title = "Bumpy Road"
 	},
 	{
 		name = "Level 4",
 		id = "level_4",
 		path = "res://levels/level_4.tscn",
-		stars = [12, 10, 6],
+		stars = [7, 6, 5.5],
 		title = "Easy Diagonals"
 	},
 	{
 		name = "Level 5",
 		id = "level_5",
 		path = "res://levels/level_5.tscn",
-		stars = [10, 8, 6],
+		stars = [7, 6.5, 6],
 		title = "Back and Forth"
 	},
 ]

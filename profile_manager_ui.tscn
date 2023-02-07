@@ -27,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="UserSelector" parent="VBoxContainer" instance=ExtResource("2_sywde")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="BackToMainMenu" type="Button" parent="VBoxContainer"]

@@ -1,5 +1,6 @@
 extends PanelContainer
 
+signal new_player_added(player_id)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,9 +30,10 @@ func _refresh_players_list(existing_players):
 		%ExistingPlayersList.add_child(hbox)
 	
 	if existing_players.size() == 0:
-		var label = Label.new()
-		label.text = "No players"
-		%ExistingPlayersList.add_child(label)
+#		var label = Label.new()
+#		label.text = "No players"
+#		%ExistingPlayersList.add_child(label)
+		%ExistingPlayersContainer.hide()
 
 func _select_player(player_id):
 	ProfileManager.set_current_profile_id(player_id)
@@ -43,6 +45,7 @@ func _process(delta):
 func _on_add_new_player_button_pressed():
 	var player_name = %AddNewPlayerTextBox.text
 	ProfileManager.save_new_profile(player_name)
+	new_player_added.emit(player_name)
 
 func _remove_player(player_id):
 	ProfileManager.remove_profile(player_id)

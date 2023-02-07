@@ -20,7 +20,8 @@ func _on_main_menu_entered():
 	if $InGameMusicPlayer.playing:
 		$InGameMusicPlayer.stop()
 	
-	$MainMaenuStream.play()
+	if not $MainMaenuStream.playing:
+		$MainMaenuStream.play()
 
 func _on_in_game_entered():
 	if $MainMaenuStream.playing:

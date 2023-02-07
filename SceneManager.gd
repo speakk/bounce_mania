@@ -12,6 +12,7 @@ func _ready():
 	Events.next_level_pressed.connect(_next_level_pressed)
 	Events.profile_manager_pressed.connect(_profile_manager_pressed)
 	Events.main_menu_pressed.connect(_main_menu_pressed)
+	Events.first_time_player_added.connect(_first_time_player_added)
 
 static func delete_children(node):
 	for n in node.get_children():
@@ -58,3 +59,5 @@ func _next_level_pressed():
 	if next_level != null:
 		_switch_scene(IN_GAME_PATH, next_level.get("id"))
 
+func _first_time_player_added(_player_id):
+	_switch_scene(MAIN_MENU, null)

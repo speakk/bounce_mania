@@ -2,6 +2,12 @@ extends Node
 
 var save_path = "user://profiles.save"
 
+func _ready():
+	Events.first_time_player_added.connect(_first_time_player_added)
+
+func _first_time_player_added(player_id):
+	set_current_profile_id(player_id)
+
 func get_save_object():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)

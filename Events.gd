@@ -20,6 +20,7 @@ signal level_change_pressed(level_id)
 signal next_level_pressed
 signal profile_manager_pressed
 signal main_menu_pressed
+signal first_time_player_added(player_id)
 
 signal level_loaded(level_id)
 signal level_finished(level_id, time)
