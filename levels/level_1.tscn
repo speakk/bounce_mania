@@ -44,10 +44,4 @@ position = Vector2(192, 128)
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle3" index="0"]
 polygon = PackedVector2Array(256, -64, 256, 160, 352, 224, 640, 224, 704, 192, 704, 64, 640, 0, 352, 0, 352, -64)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="6"]
-position = Vector2(399, 160)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" index="0"]
-polygon = PackedVector2Array(-47, 0, 49, 0, 49, 64, -47, 64)
-
 [editable path="EndZone"]
