@@ -120,16 +120,16 @@ func set_bounce_off():
 	Events.player_bounce_ended.emit()
 	
 
-func handle_colision_particles():
+func handle_colision_particles(collision_position):
 	var collision_particles = COLLISION_PARTICLES.instantiate()
-	collision_particles.position = position
+	collision_particles.position = collision_position
 	get_parent().add_child(collision_particles)
 	collision_particles.start()
 	await collision_particles.finished
 	collision_particles.queue_free()
 
 func _on_area_2d_body_entered(body):
-	handle_colision_particles()
+	#handle_colision_particles()
 	
 	$Circle._current_color = $Circle.color.lightened(0.6)
 	var shadertween = get_tree().create_tween()
@@ -144,18 +144,8 @@ func _on_area_2d_body_entered(body):
 	tween.tween_property(get_node("Circle"), "scale", Vector2(1, 1), 0.3)
 	
 	Events.player_collision_happened.emit(linear_velocity.length_squared())
-#
-#func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-#	var body_shape_owner = body.shape_find_owner(body_shape_index)
-#	var body_shape_node = body.shape_owner_get_owner(body_shape_owner)
-#	var body_global_transform = body_shape_node.global_transform
-#
-#	var local_shape_owner = shape_find_owner(local_shape_index)
-#	var local_shape_node = shape_owner_get_owner(local_shape_owner)
-#
-#	var area_global_transform = local_shape_node.global_transform
-#
-#	var collision_points = local_shape_node.shape.collide_and_get_contacts(area_global_transform,
-#																			body_shape_node,
-#																			body_global_transform)
-#	print("Points", collision_points)
+	
+func _integrate_forces(state):
+	for i in get_contact_count():
+		var point = state.get_contact_local_position(i)
+		handle_colision_particles(point)
