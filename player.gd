@@ -1,6 +1,7 @@
 extends RigidBody2D
 
-@export var speed: int = 900
+#@export var speed: int = 900
+@export var speed: int = 400
 @export var bounce_speed: int = 500
 @export var bounce_time: float = 0.5
 @export var damage: float = 10
@@ -77,9 +78,11 @@ func show_direction_indicator():
 	var direction = (get_global_mouse_position() - position).normalized()
 	$DirectionIndicator.set_direction(direction)
 
+func _physics_process(delta):
+	apply_central_impulse(velocity * delta)
+
 func _process(delta):
 	get_input()
-	apply_force(velocity)
 	direct_eyes()
 	show_direction_indicator()
 	
