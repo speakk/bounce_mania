@@ -120,10 +120,12 @@ func set_bounce_off():
 	Events.player_bounce_ended.emit()
 	
 
-func handle_colision_particles(collision_position):
-	var collision_particles = COLLISION_PARTICLES.instantiate()
+func handle_colision_particles(collision_position, speed_factor):
+	var collision_particles := COLLISION_PARTICLES.instantiate()
 	collision_particles.position = collision_position
 	get_parent().add_child(collision_particles)
+	collision_particles.amount = log(speed_factor) * 2
+	collision_particles.process_material.initial_velocity_max = minf(speed_factor, 140)
 	collision_particles.start()
 	await collision_particles.finished
 	collision_particles.queue_free()
@@ -148,4 +150,4 @@ func _on_area_2d_body_entered(body):
 func _integrate_forces(state):
 	for i in get_contact_count():
 		var point = state.get_contact_local_position(i)
-		handle_colision_particles(point)
+		handle_colision_particles(point, linear_velocity.length_squared() / 500)
