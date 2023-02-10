@@ -41,12 +41,12 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="AddNewPlayerTextBox" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="AddNewPlayerTextBox" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("shortcut_context")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
+shortcut_context = NodePath("../../../..")
 placeholder_text = "new player name"
-scroll_fit_content_height = true
 
 [node name="AddNewPlayerButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)

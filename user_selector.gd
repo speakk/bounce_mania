@@ -6,6 +6,10 @@ signal new_player_added(player_id)
 func _ready():
 	_refresh_players_list(ProfileManager.get_existing_profiles())
 	Events.player_list_changed.connect(_refresh_players_list)
+	%AddNewPlayerTextBox.text_submitted.connect(_new_player_textbox_submitted)
+
+func _new_player_textbox_submitted(value):
+	_on_add_new_player_button_pressed()
 
 func _refresh_players_list(existing_players):
 	for child in %ExistingPlayersList.get_children():
