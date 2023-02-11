@@ -47,9 +47,7 @@ func load_level(level_id):
 	player_node = player
 	
 	var camera = Camera2D.new()
-	camera.current = true
-	#camera.position_smoothing_enabled = true
-	#camera.position_smoothing_speed = 3
+	#camera.current = true
 	player.add_child(camera)
 	camera_node = camera
 	
@@ -86,8 +84,8 @@ func _on_end_zone_hit(zone, by):
 		_finish_level()
 
 
-func disable_main_camera():
-	camera_node.current = false
-
-func enable_main_camera():
-	camera_node.current = true
+#func disable_main_camera():
+#	camera_node.current = false
+#
+#func enable_main_camera():
+#	camera_node.current = true

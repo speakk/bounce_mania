@@ -1,39 +1,7 @@
 extends Node
 
-# 01 ##
-#const accent_a = Color("#E94F37")
-#const accent_b = Color("#FFFC31")
-#const background_b = Color("#5C415D")
-#const background_a = Color("#393E41")
-#const neutral_a = Color("#F6F7EB")
-
-## 02
-#const accent_a = Color("#BFD1E5")
-#const accent_b = Color("#D8BFAA")
-#const background_b = Color("#542344")
-#const background_a = Color("#808080")
-#const neutral_a = Color("#EBF5EE")
-
-# 03
-#const accent_a = Color("#F7ACCF")
-#const accent_b = Color("#6874E8")
-#const background_a = Color("#7A5C61")
-#const background_b = Color("#392759")
-#const neutral_a = Color("#E8F0FF")
-
-# 04
-#const accent_a = Color("#92140C")
-#const accent_b = Color("#FFCF99")
-#const background_a = Color("#1E1E24")
-#const background_b = Color("#111D4A")
-#const neutral_a = Color("#FFF8F0")
-
-## 05
-#const accent_a = Color("#C14953")
-#const accent_b = Color("#E5DCC5")
-#const background_a = Color("#2D2D2A")
-#const background_b = Color("#4C4C47")
-#const neutral_a = Color("#848FA5")
+@onready
+var THEME = preload("res://main_theme.tres")
 
 const palettes = [
 	["d4f2db","cef7a0","ba9790","914d76","69353f"],
@@ -53,6 +21,17 @@ var accent_b = Color("#E5DCC5")
 var background_a = Color("#2D2D2A")
 var background_b = Color("#4C4C47")
 var neutral_a = Color("#848FA5")
+
+func set_ui_colors(g):
+	var colors = get_current_palette()
+	#THEME.set_color("p")
+	THEME.get_stylebox("panel", "Panel").bg_color = colors.background_a
+	#pass
+
+func _ready():
+	var palette = palettes[current_palette_index].duplicate(true)
+	emit_new_palette()
+
 
 func shift_array(array: Array, amount: int):
 	for i in range(amount):
@@ -94,10 +73,6 @@ func get_current_palette():
 	
 	return new_colors
 	
-func _ready():
-	var palette = palettes[current_palette_index].duplicate(true)
-	emit_new_palette()
-
 func _process(_delta):
 	if Input.is_action_just_pressed("shift_palette_index"):
 		shift_palette_index()

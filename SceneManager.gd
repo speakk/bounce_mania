@@ -20,18 +20,18 @@ static func delete_children(node):
 		n.queue_free()
 
 func _switch_scene(scene_path, level_id):
-	var previous_scene = $Scenes.get_child(0)
+	var previous_scene = $Scenes.get_child(0) if $Scenes.get_child_count() > 0 else null
 	var new_scene = load(scene_path).instantiate()
 	if previous_scene:
-		if "disable_main_camera" in previous_scene:
-			previous_scene.disable_main_camera()
+		#if "disable_main_camera" in previous_scene:
+		#	previous_scene.disable_main_camera()
 
 		previous_scene.queue_free()
 	$Scenes.add_child(new_scene)
 	
 	# TODO: Just add special handling in general for in_game?
 	# As in don't just use "enable_main_camera" to detect it
-	if "enable_main_camera" in new_scene:
+	if "load_level" in new_scene:
 		new_scene.load_level(level_id)
 	
 	# Reset "camera" as in viewport location just in case

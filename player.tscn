@@ -7,18 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://dlds447xi83m1" path="res://direction_indicator.tscn" id="5_rns7b"]
 [ext_resource type="PackedScene" uid="uid://djlr4c64qtm5x" path="res://circle.tscn" id="6_ulotl"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e87mm"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7vllk"]
 friction = 0.03
 bounce = 0.8
 
-[sub_resource type="Curve" id="Curve_2aogb"]
+[sub_resource type="Curve" id="Curve_re2a7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_8bq4y"]
-curve = SubResource("Curve_2aogb")
+[sub_resource type="CurveTexture" id="CurveTexture_7due3"]
+curve = SubResource("Curve_re2a7")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nge4d"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j4he8"]
 emission_shape = 1
 emission_sphere_radius = 8.0
 particle_flag_disable_z = true
@@ -27,25 +27,25 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 2.0
 scale_max = 6.0
-scale_curve = SubResource("CurveTexture_8bq4y")
+scale_curve = SubResource("CurveTexture_7due3")
 color = Color(1, 0.941176, 0.52549, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctgbm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dcf4"]
 shader = ExtResource("2_v6el6")
 shader_parameter/white_progress = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_722kp"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_17rwd"]
 radius = 16.0312
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_uheve"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_382kn"]
 radius = 17.1172
 
-[sub_resource type="Gradient" id="Gradient_7i605"]
+[sub_resource type="Gradient" id="Gradient_yn8l0"]
 interpolation_mode = 2
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_405a3"]
-gradient = SubResource("Gradient_7i605")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tw2jf"]
+gradient = SubResource("Gradient_yn8l0")
 width = 256
 height = 256
 fill = 1
@@ -56,7 +56,7 @@ fill_to = Vector2(1, 0.5)
 collision_layer = 4
 collision_mask = 3
 mass = 0.4
-physics_material_override = SubResource("PhysicsMaterial_e87mm")
+physics_material_override = SubResource("PhysicsMaterial_7vllk")
 gravity_scale = 0.0
 continuous_cd = 2
 max_contacts_reported = 2
@@ -82,20 +82,20 @@ color = Color(0.4, 0.2, 0.6, 1)
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 120
-process_material = SubResource("ParticleProcessMaterial_nge4d")
+process_material = SubResource("ParticleProcessMaterial_j4he8")
 lifetime = 7.0
 speed_scale = 3.0
 fixed_fps = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_ctgbm")
+material = SubResource("ShaderMaterial_3dcf4")
 texture = ExtResource("1_pxrxn")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource("CircleShape2D_722kp")
+shape = SubResource("CircleShape2D_17rwd")
 
 [node name="LeftEyeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_nvob7")
@@ -108,7 +108,7 @@ collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_uheve")
+shape = SubResource("CircleShape2D_382kn")
 
 [node name="DirectionIndicator" parent="." instance=ExtResource("5_rns7b")]
 
@@ -116,6 +116,6 @@ shape = SubResource("CircleShape2D_uheve")
 scale = Vector2(2.63281, 2.63281)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.8)
-texture = SubResource("GradientTexture2D_405a3")
+texture = SubResource("GradientTexture2D_tw2jf")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

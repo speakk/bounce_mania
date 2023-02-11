@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b64f3uxca5mhe"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b64f3uxca5mhe"]
 
 [ext_resource type="FontFile" uid="uid://c1qkl4qvaldwc" path="res://assets/fonts/m5x7.ttf" id="1_qjjts"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vm62v"]
 
 [resource]
 default_font = ExtResource("1_qjjts")
@@ -10,3 +12,4 @@ Label/constants/shadow_offset_x = 2
 Label/constants/shadow_offset_y = 2
 Label/constants/shadow_outline_size = 1
 Label/styles/normal = null
+Panel/styles/panel = SubResource("StyleBoxFlat_vm62v")
