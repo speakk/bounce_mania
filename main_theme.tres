@@ -1,15 +1,66 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b64f3uxca5mhe"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b64f3uxca5mhe"]
 
+[ext_resource type="FontFile" uid="uid://bj2u2p57factd" path="res://assets/fonts/ThaleahFat.ttf" id="1_q35gt"]
 [ext_resource type="FontFile" uid="uid://c1qkl4qvaldwc" path="res://assets/fonts/m5x7.ttf" id="1_qjjts"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfg55"]
+content_margin_top = 10.0
+content_margin_bottom = 15.0
+border_width_left = 2
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 10
+border_color = Color(0.32549, 0.168627, 0.25098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wecv1"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 15.0
+border_width_left = 2
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 10
+border_color = Color(0.32549, 0.168627, 0.25098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vm62v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfskw"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.317647)
+shadow_size = 3
+shadow_offset = Vector2(2, 4)
 
 [resource]
 default_font = ExtResource("1_qjjts")
 default_font_size = 32
+Button/colors/font_outline_color = Color(0, 0, 0, 0.486275)
+Button/constants/outline_size = 4
+Button/fonts/font = ExtResource("1_q35gt")
+Button/styles/hover = SubResource("StyleBoxFlat_mfg55")
+Button/styles/normal = SubResource("StyleBoxFlat_wecv1")
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)
 Label/constants/shadow_offset_x = 2
 Label/constants/shadow_offset_y = 2
 Label/constants/shadow_outline_size = 1
 Label/styles/normal = null
 Panel/styles/panel = SubResource("StyleBoxFlat_vm62v")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_dfskw")
+VBoxContainer/constants/separation = 12

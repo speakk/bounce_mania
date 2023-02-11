@@ -22,11 +22,27 @@ var background_a = Color("#2D2D2A")
 var background_b = Color("#4C4C47")
 var neutral_a = Color("#848FA5")
 
-func set_ui_colors(g):
+func set_ui_colors():
 	var colors = get_current_palette()
-	#THEME.set_color("p")
+	
 	THEME.get_stylebox("panel", "Panel").bg_color = colors.background_a
-	#pass
+	THEME.get_stylebox("panel", "PanelContainer").bg_color = colors.background_a
+	
+	# BUTTONS START
+	var button_stylebox = THEME.get_stylebox("normal", "Button")
+	button_stylebox.bg_color = colors.background_b
+	button_stylebox.border_color = colors.background_b.darkened(0.4)
+	
+	var hover_stylebox = button_stylebox.duplicate(true)
+	hover_stylebox.bg_color = colors.background_b.lightened(0.4)
+	hover_stylebox.bg_color.s += 0.3
+	THEME.set_stylebox("hover", "Button", hover_stylebox)
+	
+	var pressed_stylebox = button_stylebox.duplicate(true)
+	pressed_stylebox.bg_color = colors.background_b.darkened(0.4)
+	#pressed_stylebox.bg_color.s += 0.3
+	THEME.set_stylebox("pressed", "Button", pressed_stylebox)
+	# BUTTONS END
 
 func _ready():
 	var palette = palettes[current_palette_index].duplicate(true)
@@ -43,6 +59,7 @@ var current_palette_shift = 0
 
 func emit_new_palette():
 	var new_colors = get_current_palette()
+	set_ui_colors()
 	Events.palette_changed.emit(new_colors, current_palette_index, current_palette_shift)
 
 func shift_palette_index():
