@@ -100,7 +100,7 @@ func _finish_level():
 		ProfileManager.save_user_level_progress(ProfileManager.get_current_profile_id(), current_user_level + 1)
 	
 	var finished_screen = FINISHED_SCREEN.instantiate()
-	%FinishedScreen.init_state(current_level_id, level_timer, current_user_level, finished_level_index, star_level_reached)
+	finished_screen.init_state(current_level_id, level_timer, current_user_level, finished_level_index, star_level_reached)
 	%ScreenContainer.add_child(finished_screen)
 
 func _on_end_zone_hit(zone, by):
