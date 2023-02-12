@@ -42,28 +42,47 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="LevelListContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/LevelListContainer"]
-layout_mode = 2
-text = "Select a level"
-horizontal_alignment = 1
-
-[node name="LevelList" type="VBoxContainer" parent="PanelContainer/MarginContainer/LevelListContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 2
-
 [node name="NoPlayerLabel" type="Label" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "No player selected!"
 horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LevelListContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/LevelListContainer"]
+layout_mode = 2
+text = "Select a level"
+horizontal_alignment = 1
+
+[node name="LevelListScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/LevelListContainer"]
+custom_minimum_size = Vector2(0, 480)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="LevelList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/LevelListContainer/LevelListScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackToMainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to main menu"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 2
@@ -71,3 +90,5 @@ mouse_filter = 2
 
 [node name="CurrentUserDisplay" parent="Control" instance=ExtResource("3_jdp1h")]
 layout_mode = 1
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BackToMainMenuButton" to="." method="_on_back_to_main_menu_button_pressed"]

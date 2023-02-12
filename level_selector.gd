@@ -1,5 +1,7 @@
 extends PanelContainer
 
+var LEVEL_SELECT_ITEM = preload("res://level_select_item.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_refresh_level_list(ProfileManager.get_current_profile_id())
@@ -19,18 +21,14 @@ func _refresh_level_list(player_name):
 		level.queue_free()
 	
 	for i in Levels.levels.size():
-		var level = Levels.levels[i]
-		var button := Button.new()
-		var description = "\n%s" % level.get("title") if level.get("title") else ""
-		button.text = "%s%s" % [level.name, description]
-		button.custom_minimum_size.x = 160
-		button.custom_minimum_size.y = 60
-		if i <= current_user_level:
-			button.pressed.connect(_change_level.bind(level.id))
-		else:
-			button.modulate = Color(1,1,1,0.2)
-		
-		%LevelList.add_child(button)
+		var level_select_item = LEVEL_SELECT_ITEM.instantiate()
+		level_select_item.set_details(Levels.levels[i], i <= current_user_level)
+		%LevelList.add_child(level_select_item)
+		level_select_item.selected.connect(_change_level)
 
 func _change_level(level_id):
 	Events.level_change_pressed.emit(level_id)
+
+
+func _on_back_to_main_menu_button_pressed():
+	Events.main_menu_pressed.emit()

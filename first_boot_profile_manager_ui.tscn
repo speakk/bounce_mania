@@ -36,7 +36,4 @@ text = "Welcome to Glof! To begin, choose a name for yourself"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AddNewPlayerTextBox" parent="VBoxContainer/UserSelector/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-custom_minimum_size = Vector2(240, 0)
-
 [editable path="VBoxContainer/UserSelector"]

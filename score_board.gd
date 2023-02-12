@@ -1,5 +1,7 @@
 extends Control
 
+var NEW_SCORE_LABEL = preload("res://new_score_label.tscn")
+
 #	current_times.append({
 #		level_id = level_id,
 #		player_name = player_name,
@@ -32,8 +34,12 @@ func show_scores(scores):
 		hbox.add_child(time_label)
 		
 		if score == latest_score:
-			var latest_label = Label.new()
-			latest_label.text = "New!"
+			var latest_label := NEW_SCORE_LABEL.instantiate()
+			latest_label.text = "NEW!"
+			#latest_label.rotation_degrees = 10
+			#latest_label.ov
+			time_label.add_theme_color_override("font_color", Colors.get_current_palette().accent_b)
+			player_label.add_theme_color_override("font_color", Colors.get_current_palette().accent_b)
 			hbox.add_child(latest_label)
 		
 		%Scores.add_child(hbox)

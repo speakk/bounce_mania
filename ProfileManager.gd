@@ -43,6 +43,13 @@ func get_all_level_times(level_id: String) -> Array:
 	
 	return all_times
 
+func get_best_time(profile_id, level_id):
+	var times = get_level_times(profile_id, level_id)
+	if times != null:
+		return times[0].level_time
+	
+	return null
+
 func save_value_to_file(key, value):
 	var save_object = get_save_object()
 	save_object[key] = value
