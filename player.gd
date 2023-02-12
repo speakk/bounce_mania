@@ -32,6 +32,15 @@ func _ready():
 	Events.palette_changed.connect(_on_palette_changed)
 	Events.level_loaded.connect(_on_level_loaded)
 	_on_palette_changed(Colors.get_current_palette(), null, null)
+	Events.in_game_paused.connect(_on_paused)
+	Events.in_game_resumed.connect(_on_resumed)
+
+func _on_paused():
+	#paused = true
+	pass
+	
+func _on_resumed():
+	pass
 
 func _on_level_loaded(_a):
 	bounce_timer = dash_timeout

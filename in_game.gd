@@ -11,14 +11,31 @@ var camera_node = null
 
 var player_has_moved = false
 
+var PAUSE_SCREEN = preload("res://paused_screen.tscn")
+var FINISHED_SCREEN = preload("res://finished_screen.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.end_zone_hit.connect(_on_end_zone_hit)
 	Events.player_has_moved.connect(_on_player_has_moved)
 	Events.in_game_entered.emit()
+	
+	Events.in_game_paused.connect(_on_pause)
+	Events.in_game_resumed.connect(_on_resume)
 
 func _exit_tree():
 	Events.in_game_exited.emit()
+
+func _on_pause():
+	paused = true
+	get_tree().paused = true
+	var paused_screen = PAUSE_SCREEN.instantiate()
+	%ScreenContainer.add_child(paused_screen)
+
+func _on_resume():
+	print("Resumed?")
+	paused = false
+	get_tree().paused = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,6 +45,12 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("restart_level"):
 		Events.try_again_pressed.emit()
+	
+	if Input.is_action_just_pressed("in_game_escape"):
+		if not paused:
+			Events.in_game_paused.emit()
+		else:
+			Events.in_game_resumed.emit()
 
 func _on_player_has_moved():
 	player_has_moved = true
@@ -76,8 +99,9 @@ func _finish_level():
 	if star_level_reached != null and current_user_level <= finished_level_index:
 		ProfileManager.save_user_level_progress(ProfileManager.get_current_profile_id(), current_user_level + 1)
 	
+	var finished_screen = FINISHED_SCREEN.instantiate()
 	%FinishedScreen.init_state(current_level_id, level_timer, current_user_level, finished_level_index, star_level_reached)
-	%FinishedScreen.show()
+	%ScreenContainer.add_child(finished_screen)
 
 func _on_end_zone_hit(zone, by):
 	if "is_player" in by and by.is_player and not finished:

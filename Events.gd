@@ -24,6 +24,8 @@ signal first_time_player_added(player_id)
 
 signal level_loaded(level_id)
 signal level_finished(level_id, time)
+signal in_game_paused
+signal in_game_resumed
 
 signal in_game_entered
 signal in_game_exited
