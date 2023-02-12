@@ -27,6 +27,7 @@ func set_ui_colors():
 	
 	THEME.get_stylebox("panel", "Panel").bg_color = colors.background_a
 	THEME.get_stylebox("panel", "PanelContainer").bg_color = colors.background_a
+	THEME.get_stylebox("scroll", "VScrollBar").bg_color = colors.background_b
 	
 	# BUTTONS START
 	var button_stylebox = THEME.get_stylebox("normal", "Button")

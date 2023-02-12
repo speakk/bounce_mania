@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b64f3uxca5mhe"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b64f3uxca5mhe"]
 
 [ext_resource type="FontFile" uid="uid://bj2u2p57factd" path="res://assets/fonts/ThaleahFat.ttf" id="1_q35gt"]
 [ext_resource type="FontFile" uid="uid://c1qkl4qvaldwc" path="res://assets/fonts/m5x7.ttf" id="1_qjjts"]
@@ -48,6 +48,14 @@ shadow_color = Color(0, 0, 0, 0.317647)
 shadow_size = 3
 shadow_offset = Vector2(2, 4)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppveo"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [resource]
 default_font = ExtResource("1_qjjts")
 default_font_size = 32
@@ -64,3 +72,4 @@ Label/styles/normal = null
 Panel/styles/panel = SubResource("StyleBoxFlat_vm62v")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_dfskw")
 VBoxContainer/constants/separation = 12
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ppveo")

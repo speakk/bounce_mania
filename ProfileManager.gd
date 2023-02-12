@@ -45,7 +45,7 @@ func get_all_level_times(level_id: String) -> Array:
 
 func get_best_time(profile_id, level_id):
 	var times = get_level_times(profile_id, level_id)
-	if times != null:
+	if times != null and times.size() > 0:
 		return times[0].level_time
 	
 	return null
@@ -84,6 +84,7 @@ func save_new_profile(player_name):
 	var existing_profiles = get_existing_profiles()
 	
 	if existing_profiles.has(player_name):
+		print("Already had, false")
 		return false
 	
 	existing_profiles[player_name] = {
@@ -94,8 +95,11 @@ func save_new_profile(player_name):
 	}
 	
 	save_value_to_file("profiles", existing_profiles)
+	
+	set_current_profile_id(player_name)
 
-	Events.player_list_changed.emit(existing_profiles)
+	#Events.player_list_changed.emit(existing_profiles)
+	#print("saved new...", existing_profiles.size())
 	return true
 
 func set_current_profile_id(player_name):

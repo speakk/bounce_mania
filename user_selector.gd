@@ -12,6 +12,7 @@ func _new_player_textbox_submitted(value):
 	_on_add_new_player_button_pressed()
 
 func _refresh_players_list(existing_players):
+	print("Refreshing huh?", existing_players.size())
 	for child in %ExistingPlayersList.get_children():
 		child.queue_free()
 	
@@ -31,6 +32,7 @@ func _refresh_players_list(existing_players):
 		
 		hbox.add_child(button)
 		hbox.add_child(remove_button)
+		print("Righto added the child right", player.id)
 		%ExistingPlayersList.add_child(hbox)
 	
 	if existing_players.size() == 0:
@@ -38,6 +40,8 @@ func _refresh_players_list(existing_players):
 #		label.text = "No players"
 #		%ExistingPlayersList.add_child(label)
 		%ExistingPlayersContainer.hide()
+	else:
+		%ExistingPlayersContainer.show()
 
 func _select_player(player_id):
 	ProfileManager.set_current_profile_id(player_id)
@@ -47,6 +51,7 @@ func _process(delta):
 	pass
 
 func _on_add_new_player_button_pressed():
+	print("uhm?")
 	var player_name = %AddNewPlayerTextBox.text
 	ProfileManager.save_new_profile(player_name)
 	new_player_added.emit(player_name)
