@@ -18,3 +18,5 @@ func set_details(level, is_available):
 	
 	if best_time != null:
 		star_display.set_star_level_reached(Levels.get_star_level_reached(level.id, best_time))
+	else:
+		star_display.set_star_level_reached(null)
