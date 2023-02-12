@@ -28,6 +28,14 @@ var current_damage = damage
 
 var has_moved = false
 
+func _ready():
+	Events.palette_changed.connect(_on_palette_changed)
+	Events.level_loaded.connect(_on_level_loaded)
+	_on_palette_changed(Colors.get_current_palette(), null, null)
+
+func _on_level_loaded(_a):
+	bounce_timer = dash_timeout
+
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed("right"):
@@ -48,10 +56,6 @@ func get_input():
 	if not has_moved and linear_velocity.length_squared() > 0:
 		Events.player_has_moved.emit()
 		has_moved = true
-	
-func _ready():
-	Events.palette_changed.connect(_on_palette_changed)
-	_on_palette_changed(Colors.get_current_palette(), null, null)
 	
 func _on_palette_changed(new_palette, _a, _b):
 	$Circle.color = new_palette.accent_a
