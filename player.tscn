@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsietufglmnl7"]
+[gd_scene load_steps=21 format=3 uid="uid://dsietufglmnl7"]
 
 [ext_resource type="Texture2D" uid="uid://c1gsv1x1xdvhm" path="res://theball.png" id="1_pxrxn"]
 [ext_resource type="Script" path="res://player.gd" id="1_q3836"]
@@ -6,10 +6,23 @@
 [ext_resource type="Texture2D" uid="uid://bkpn6vqmcural" path="res://eyeball.png" id="3_nvob7"]
 [ext_resource type="PackedScene" uid="uid://dlds447xi83m1" path="res://direction_indicator.tscn" id="5_rns7b"]
 [ext_resource type="PackedScene" uid="uid://djlr4c64qtm5x" path="res://circle.tscn" id="6_ulotl"]
+[ext_resource type="PackedScene" uid="uid://bww3vs43l5lm3" path="res://fuse.tscn" id="7_1fjlq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7vllk"]
 friction = 0.03
 bounce = 0.8
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yfkuu"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_e71ne"]
+colors = PackedColorArray(0.253906, 0.253906, 0.253906, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hsik0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5u2t8"]
+color_ramp = SubResource("Gradient_e71ne")
+noise = SubResource("FastNoiseLite_hsik0")
 
 [sub_resource type="Curve" id="Curve_re2a7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -65,6 +78,7 @@ linear_damp = 0.5
 script = ExtResource("1_q3836")
 
 [node name="Circle" parent="." instance=ExtResource("6_ulotl")]
+clip_children = 2
 light_mask = 2
 size = 17.0
 color = Color(0.4, 0.2, 0.6, 1)
@@ -78,6 +92,12 @@ color = Color(0.4, 0.2, 0.6, 1)
 position = Vector2(7, 5)
 size = 6.0
 color = Color(0.4, 0.2, 0.6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Circle"]
+material = SubResource("CanvasItemMaterial_yfkuu")
+position = Vector2(0.5, 0.5)
+scale = Vector2(0.0722656, 0.0722656)
+texture = SubResource("NoiseTexture2D_5u2t8")
 
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 emitting = false
@@ -108,6 +128,7 @@ collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("CircleShape2D_382kn")
 
 [node name="DirectionIndicator" parent="." instance=ExtResource("5_rns7b")]
@@ -117,5 +138,16 @@ scale = Vector2(2.63281, 2.63281)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.8)
 texture = SubResource("GradientTexture2D_tw2jf")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-9, -14, -11, -16)
+width = 5.0
+default_color = Color(0.309804, 0.227451, 0.176471, 1)
+
+[node name="Fuse" parent="." instance=ExtResource("7_1fjlq")]
+position = Vector2(-19, 14)
+
+[node name="Fuse2" parent="." instance=ExtResource("7_1fjlq")]
+position = Vector2(22, 14)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://bww3vs43l5lm3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2436"]
+size = Vector2(10, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qowfj"]
+size = Vector2(10, 30)
+
+[node name="Fuse" type="CharacterBody2D"]
+position = Vector2(-34, -10)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_c2436")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(0, -12)
+node_a = NodePath("..")
+node_b = NodePath("../RopeShape")
+bias = 0.607
+
+[node name="RopeShape" type="RigidBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+mass = 0.01
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeShape"]
+shape = SubResource("RectangleShape2D_qowfj")
+
+[node name="Line2D" type="Line2D" parent="RopeShape"]
+position = Vector2(-26, -6)
+points = PackedVector2Array(26, -9, 26, 21)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, 11)
+node_a = NodePath("../RopeShape")
+node_b = NodePath("../RopeShape2")
+
+[node name="RopeShape2" type="RigidBody2D" parent="."]
+position = Vector2(0, 23)
+collision_layer = 8
+collision_mask = 8
+mass = 0.01
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeShape2"]
+shape = SubResource("RectangleShape2D_qowfj")
+
+[node name="Line2D" type="Line2D" parent="RopeShape2"]
+position = Vector2(-26, -6)
+points = PackedVector2Array(26, -9, 26, 21)
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2(0, 34)
+node_a = NodePath("../RopeShape2")
+node_b = NodePath("../RopeShape3")
+
+[node name="RopeShape3" type="RigidBody2D" parent="."]
+position = Vector2(0, 45)
+collision_layer = 8
+collision_mask = 8
+mass = 0.01
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeShape3"]
+shape = SubResource("RectangleShape2D_qowfj")
+
+[node name="Line2D" type="Line2D" parent="RopeShape3"]
+position = Vector2(-26, -6)
+points = PackedVector2Array(26, -9, 26, 21)

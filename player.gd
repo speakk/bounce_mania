@@ -7,6 +7,7 @@ extends RigidBody2D
 @export var damage: float = 10
 
 @onready var COLLISION_PARTICLES = preload("res://collision_particles.tscn")
+@onready var FUSE = preload("res://fuse.tscn")
 
 var bouncing = false
 
@@ -28,12 +29,18 @@ var current_damage = damage
 
 var has_moved = false
 
+var fuse
+
 func _ready():
 	Events.palette_changed.connect(_on_palette_changed)
 	Events.level_loaded.connect(_on_level_loaded)
 	_on_palette_changed(Colors.get_current_palette(), null, null)
 	Events.in_game_paused.connect(_on_paused)
 	Events.in_game_resumed.connect(_on_resumed)
+	#fuse = FUSE.instantiate()
+	#add_child(fuse)
+	#get_parent().add_child(fuse)
+	#$RemoteTransform2D.remote_path = "../../Fuse"
 
 func _on_paused():
 	#paused = true
@@ -67,7 +74,7 @@ func get_input():
 		has_moved = true
 	
 func _on_palette_changed(new_palette, _a, _b):
-	$Circle.color = new_palette.accent_a
+	$Circle.color = new_palette.neutral_a
 	$Circle.color.v = minf(0.5, $Circle.color.v)
 	$Circle/Circle.color = $Circle.color.lightened(0.2)
 	$Circle/Circle2.color = $Circle.color.lightened(0.2)
@@ -98,6 +105,9 @@ func _process(delta):
 	get_input()
 	direct_eyes()
 	show_direction_indicator()
+	
+	#fuse.global_position = global_position
+	#fuse.move_and_collide()
 	
 	if not bouncing and has_moved:
 		if bounce_timer > 0:
