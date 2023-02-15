@@ -157,8 +157,6 @@ func handle_colision_particles(collision_position, speed_factor):
 	collision_particles.queue_free()
 
 func _on_area_2d_body_entered(body):
-	#handle_colision_particles()
-	
 	$Circle._current_color = $Circle.color.lightened(0.6)
 	var shadertween = get_tree().create_tween()
 	shadertween.tween_property($Circle, "_current_color", $Circle.color, 0.2)
@@ -176,4 +174,7 @@ func _on_area_2d_body_entered(body):
 func _integrate_forces(state):
 	for i in get_contact_count():
 		var point = state.get_contact_local_position(i)
-		handle_colision_particles(point, linear_velocity.length_squared() / 500)
+		var contact_object = state.get_contact_collider_object(i)
+		var is_wall = contact_object.get_collision_layer_value(1)
+		if is_wall:
+			handle_colision_particles(point, linear_velocity.length_squared() / 500)

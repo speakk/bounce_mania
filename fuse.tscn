@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bww3vs43l5lm3"]
+[gd_scene load_steps=4 format=3 uid="uid://bww3vs43l5lm3"]
 
 [ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://player_marker.tscn" id="1_holau"]
 [ext_resource type="Script" path="res://fuse.gd" id="1_svcp2"]
-[ext_resource type="PackedScene" uid="uid://ctowxvhub8n3c" path="res://fuse_segment.tscn" id="2_55o0j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2436"]
 size = Vector2(3, 2.75)
@@ -14,8 +13,6 @@ script = ExtResource("1_svcp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c2436")
-
-[node name="FuseSegment" parent="." instance=ExtResource("2_55o0j")]
 
 [node name="PlayerMarker" parent="." instance=ExtResource("1_holau")]
 visible = false
