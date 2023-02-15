@@ -13,7 +13,7 @@ func _ready():
 	Events.level_finished.connect(_on_level_finished)
 	#Events.in_game_exited.connect(_on_in_game_exited)
 
-const volume_ceiling = 6
+const volume_ceiling = -4
 const pitch_variation = 0.06
 
 func _on_main_menu_entered():
@@ -35,12 +35,12 @@ func _on_in_game_entered():
 	#	$InGameMusicPlayer.stop()
 
 func _on_player_collision(collison_speed):
-	$CollisionStream.volume_db = min(-10 + log(collison_speed*0.001) * 2.5, volume_ceiling)
-	$CollisionStream.pitch_scale = 1 + randf()*pitch_variation - pitch_variation/2
+	$CollisionStream.volume_db = min(-70 + log(collison_speed*0.001) * 9.5, volume_ceiling)
+	$CollisionStream.pitch_scale = 1 + randf()*pitch_variation - pitch_variation/2 - 0.1
 	$CollisionStream.play()
 
 func _on_player_bounce_started():
-	$DashStream.play()	
+	$DashStream.play()
 
 func _on_bounce_timer_changed(value):
 	var dash_timeout = GlobalValues.player_dash_charge_timeout

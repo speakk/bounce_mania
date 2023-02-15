@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://audio_player.gd" id="1_je5oi"]
 [ext_resource type="AudioStream" uid="uid://cop2ipputs5li" path="res://assets/sounds/main_menu.ogg" id="2_2phva"]
 [ext_resource type="AudioStream" uid="uid://43rvj6nk3hkj" path="res://assets/sounds/in_game_a.ogg" id="2_7s07k"]
-[ext_resource type="AudioStream" uid="uid://co2nbmsw60ymh" path="res://assets/sounds/collision.ogg" id="2_scnp0"]
+[ext_resource type="AudioStream" uid="uid://woyj4wliykdk" path="res://assets/sounds/metal_impact.ogg" id="4_ojpk3"]
 [ext_resource type="AudioStream" uid="uid://bbf7yh8wac2op" path="res://assets/sounds/dash.ogg" id="5_ftxth"]
 [ext_resource type="AudioStream" uid="uid://o0qj30d3jtx" path="res://assets/sounds/dash_meter_rise.ogg" id="6_e87aa"]
 [ext_resource type="AudioStream" uid="uid://cu6oot41ne5ij" path="res://assets/sounds/level_finished_no_stars.ogg" id="7_cac6e"]
@@ -25,7 +25,7 @@ pitch_scale = 1.1
 bus = &"Music"
 
 [node name="CollisionStream" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_scnp0")
+stream = ExtResource("4_ojpk3")
 volume_db = -4.521
 bus = &"SoundFX"
 
