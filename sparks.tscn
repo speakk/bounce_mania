@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://3cnl4dm4byh3"]
+
+[sub_resource type="Gradient" id="Gradient_11f7j"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.431373, 0.364706, 0.439216)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1pxfx"]
+gradient = SubResource("Gradient_11f7j")
+width = 10
+
+[sub_resource type="Curve" id="Curve_puult"]
+_data = [Vector2(0.736111, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_01f56"]
+curve = SubResource("Curve_puult")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qtb8e"]
+particle_flag_disable_z = true
+direction = Vector3(1, -30, 0)
+gravity = Vector3(0, 98, 0)
+initial_velocity_max = 30.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_01f56")
+color = Color(1, 0.964706, 0.592157, 1)
+color_ramp = SubResource("GradientTexture1D_1pxfx")
+
+[sub_resource type="Gradient" id="Gradient_cgcno"]
+offsets = PackedFloat32Array(0, 0.111913, 0.866426)
+colors = PackedColorArray(1, 1, 1, 1, 0.429688, 0.429688, 0.429688, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i8ibq"]
+gradient = SubResource("Gradient_cgcno")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Sparks" type="GPUParticles2D"]
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_qtb8e")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.921569, 0.415686, 1)
+texture = SubResource("GradientTexture2D_i8ibq")
+texture_scale = 0.57

@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 var FUSE_SEGMENT = preload("res://fuse_segment.tscn")
+var SPARKS = preload("res://sparks.tscn")
 
 func _ready():
 	var amount_of_segments = 6
-	var segment_length = 6
+	var segment_length = 5
 	
 	var segments = []
 
@@ -21,7 +22,7 @@ func _ready():
 		var pin_joint = PinJoint2D.new()
 		pin_joint.position.y = (segment_length) * (i)
 		pin_joint.disable_collision = true
-		pin_joint.softness = 10
+		pin_joint.softness = 0
 		if i == 0:
 			pin_joint.node_a = NodePath("..")
 			pin_joint.node_b = NodePath("../segment_%s" % i)
@@ -35,4 +36,8 @@ func _ready():
 		print("pin joint: %s %s %s" % [pin_joint.position, pin_joint.node_a, pin_joint.node_b])		
 		
 		add_child(pin_joint)
+	
+	var sparks = SPARKS.instantiate()
+	segments.back().add_child(sparks)
+	sparks.position.y += segment_length
 	
