@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctowxvhub8n3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qowfj"]
+size = Vector2(3, 8)
+
+[node name="FuseSegment" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 8
+mass = 0.01
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.33333)
+shape = SubResource("RectangleShape2D_qowfj")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-26, 2.33333)
+scale = Vector2(1, 0.444444)
+points = PackedVector2Array(26, -9, 26, 8.25)
+width = 3.0
