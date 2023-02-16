@@ -100,7 +100,7 @@ in_game_escape={
 
 [physics]
 
-common/physics_ticks_per_second=180
+2d/run_on_separate_thread=true
 
 [rendering]
 

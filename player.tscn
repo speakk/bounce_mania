@@ -10,7 +10,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7vllk"]
 friction = 0.03
-bounce = 0.8
+bounce = 0.5
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yfkuu"]
 blend_mode = 3
