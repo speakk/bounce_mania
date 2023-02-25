@@ -42,10 +42,17 @@ particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 2.0
-scale_max = 6.0
+scale_min = 3.0
+scale_max = 8.0
 scale_curve = SubResource("CurveTexture_7due3")
 color = Color(1, 0.941176, 0.52549, 1)
+turbulence_noise_strength = 17.1
+turbulence_noise_scale = 3.75
+turbulence_noise_speed = Vector3(0.5, 3, 0.5)
+turbulence_noise_speed_random = 6.84
+turbulence_influence_max = 0.77
+turbulence_initial_displacement_min = -3.7
+turbulence_initial_displacement_max = 8.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3dcf4"]
 shader = ExtResource("2_v6el6")
@@ -104,11 +111,12 @@ texture = SubResource("NoiseTexture2D_5u2t8")
 
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 120
+amount = 220
 process_material = SubResource("ParticleProcessMaterial_j4he8")
-lifetime = 7.0
-speed_scale = 3.0
-fixed_fps = 60
+lifetime = 30.0
+speed_scale = 12.0
+fixed_fps = 180
+trail_lifetime = 4.15
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
