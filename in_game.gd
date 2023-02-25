@@ -23,6 +23,29 @@ func _ready():
 	Events.in_game_paused.connect(_on_pause)
 	Events.in_game_resumed.connect(_on_resume)
 
+	Events.token_collected.connect(_token_collected)
+
+	Events.all_tokens_collected.connect(_all_tokens_collected)
+
+func _token_collected(token):
+	var all_tokens = get_tree().get_nodes_in_group("tokens")
+	var has_tokens_left = false
+	for existing_token in all_tokens:
+		if existing_token != token:
+			has_tokens_left = true
+			break
+	
+	if !has_tokens_left:
+		Events.all_tokens_collected.emit()
+
+func _all_tokens_collected():
+	var doors = get_tree().get_nodes_in_group("doors")
+	print("eroo?")
+	for door in doors:
+		print("Door")
+		if door.door_id == "end_door":
+			door.toggle()
+
 func _exit_tree():
 	Events.in_game_exited.emit()
 
@@ -39,6 +62,9 @@ func _on_resume():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("toggle_doors"):
+		_all_tokens_collected()
+	
 	if not paused and player_has_moved:
 		level_timer += delta
 		Events.level_timer_changed.emit(level_timer)
@@ -51,7 +77,7 @@ func _process(delta):
 			Events.in_game_paused.emit()
 		else:
 			Events.in_game_resumed.emit()
-
+	
 func _on_player_has_moved():
 	player_has_moved = true
 	%LevelDescriptionLabel.visible = false

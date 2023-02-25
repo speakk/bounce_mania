@@ -22,11 +22,13 @@ offset_bottom = 1776.0
 color = Color(0.188235, 0.513726, 1, 1)
 
 [node name="Obstacle4" parent="." index="2" instance=ExtResource("4_aaxv0")]
-position = Vector2(544, 1824)
+position = Vector2(272, 1592)
 rotation = 3.14159
+rotate_in_place = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle4" index="0"]
-polygon = PackedVector2Array(271.999, 240.001, 295.999, 240.001, 319.999, 216.001, 319.999, 176.001, 295.999, 152.001, 271.999, 152.001, 247.999, 176.001, 247.999, 216.001)
+position = Vector2(-16.0001, 23.9999)
+polygon = PackedVector2Array(88, -7.99976, -55.9999, -8, -55.9998, -40, 88.0001, -39.9998)
 
 [node name="Obstacle3" parent="." index="3" instance=ExtResource("4_aaxv0")]
 position = Vector2(544, 1824)

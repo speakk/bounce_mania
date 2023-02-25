@@ -6,6 +6,8 @@ signal end_zone_hit(end_zone, by)
 
 signal level_timer_changed(new_time)
 signal bounce_timer_changed(new_time)
+signal all_tokens_collected()
+signal token_collected(token)
 
 signal player_has_moved
 signal player_collision_happened(collision_speed)

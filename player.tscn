@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://djlr4c64qtm5x" path="res://circle.tscn" id="6_ulotl"]
 [ext_resource type="PackedScene" uid="uid://bww3vs43l5lm3" path="res://fuse.tscn" id="7_1fjlq"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7vllk"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vsbfn"]
 friction = 0.03
+rough = true
 bounce = 0.5
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yfkuu"]
@@ -68,12 +69,11 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" groups=["players"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 19
 mass = 0.4
-physics_material_override = SubResource("PhysicsMaterial_7vllk")
-gravity_scale = 0.0
+physics_material_override = SubResource("PhysicsMaterial_vsbfn")
 continuous_cd = 2
 max_contacts_reported = 2
 contact_monitor = true

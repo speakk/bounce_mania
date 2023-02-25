@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://d328ns4ap8er1"]
+
+[ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_uc3ev"]
+[ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://world_bounds.tscn" id="2_5aiwn"]
+[ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://player_marker.tscn" id="3_7pk4w"]
+[ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="4_naiuf"]
+[ext_resource type="PackedScene" uid="uid://bschtylma2s1c" path="res://end_zone.tscn" id="5_ejrdu"]
+
+[sub_resource type="Curve2D" id="Curve2D_fgbxr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 192, -32, -15.1191, -153.71, 15.1191, 153.71, 512, 160, -166.31, 0, 166.31, 0, 960, 96, -115.913, -118.433, 115.913, 118.433, 1248, 320, -153.71, -2.51984, 153.71, 2.51984, 1440, 256, -60.4762, -108.353, 60.4762, 108.353, 1568, 576, 22.6786, -355.298, -22.6786, 355.298, 1728, 640, 0, 0, 0, 0, 1953, 448, 0, 0, 0, 0, 1953, -192, 0, 0, 0, 0, -192, -192, 0, 0, 0, 0, -192, -64, 0, 0, 0, 0, 192, -32)
+}
+point_count = 12
+
+[sub_resource type="Curve2D" id="Curve2D_dniux"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -448, 128, -449.675, -56.8249, 449.675, 56.8249, 0, 352, -239.385, -73.0754, 239.385, 73.0754, 768, 160, -80.6349, -146.151, 80.6349, 146.151, 960, 480, -120.952, -30.2381, 120.952, 30.2381, 1280, 608, 5.03968, -100.794, -5.03968, 100.794, 1440, 736, 163.79, 5.03968, -163.79, -5.03968, 1216, 896, 620.766, 30.9194, -620.766, -30.9194, 352, 576, 0, 0, 0, 0, -448, 832, 0, 0, 0, 0, -448, 128)
+}
+point_count = 10
+
+[sub_resource type="Curve2D" id="Curve2D_io64x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1697, 736, 173.624, -107.029, -173.624, 107.029, 1472, 928, 475.683, 176.003, -475.683, -176.003, 608, 832, 0, 0, 0, 0, -192, 1056, 0, 0, 0, 0, 1697, 1056, 0, 0, 0, 0, 1697, 736)
+}
+point_count = 6
+
+[node name="Level6" instance=ExtResource("1_uc3ev")]
+
+[node name="WorldBounds" parent="." index="1" instance=ExtResource("2_5aiwn")]
+position = Vector2(-448, -384)
+
+[node name="ColorRect" type="ColorRect" parent="WorldBounds" index="0"]
+offset_right = 2145.0
+offset_bottom = 1440.0
+color = Color(0.392157, 0.431373, 0.513726, 1)
+
+[node name="PlayerMarker" parent="." index="2" instance=ExtResource("3_7pk4w")]
+position = Vector2(-256, -192)
+
+[node name="Obstacle" parent="." index="3" instance=ExtResource("4_naiuf")]
+position = Vector2(-256, -192)
+
+[node name="Path2D" type="Path2D" parent="Obstacle" index="0"]
+curve = SubResource("Curve2D_fgbxr")
+
+[node name="Obstacle2" parent="." index="4" instance=ExtResource("4_naiuf")]
+
+[node name="Path2D" type="Path2D" parent="Obstacle2" index="0"]
+curve = SubResource("Curve2D_dniux")
+
+[node name="Obstacle3" parent="." index="5" instance=ExtResource("4_naiuf")]
+
+[node name="Path2D" type="Path2D" parent="Obstacle3" index="0"]
+curve = SubResource("Curve2D_io64x")
+
+[node name="EndZone" parent="." index="6" instance=ExtResource("5_ejrdu")]
+position = Vector2(-448, 832)
+
+[node name="EndZoneRect" parent="EndZone" index="0"]
+offset_top = 64.0
+offset_right = 224.0
+
+[editable path="EndZone"]

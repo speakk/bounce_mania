@@ -52,6 +52,14 @@ func _on_resumed():
 func _on_level_loaded(_a):
 	bounce_timer = dash_timeout
 
+#func _process(_delta):
+#	if Input.is_action_pressed("bounce"):
+#		physics_material_override.bounce = 0
+#		physics_material_override.friction = 0
+#	else:
+#		physics_material_override.bounce = 0.5
+#		physics_material_override.friction = 0.03
+
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed("right"):
@@ -68,6 +76,7 @@ func get_input():
 		var direction = (get_global_mouse_position() - position).normalized()
 		var vector = direction * bounce_speed
 		bounce(vector)
+		
 	
 	if not has_moved and linear_velocity.length_squared() > 0:
 		Events.player_has_moved.emit()
@@ -98,10 +107,10 @@ func show_direction_indicator():
 	var direction = (get_global_mouse_position() - position).normalized()
 	$DirectionIndicator.set_direction(direction)
 
-func _physics_process(delta):
-	apply_central_impulse(velocity * delta)
+#func _physics_process(delta):
+	
 
-func _process(delta):
+func _physics_process(delta):
 	get_input()
 	direct_eyes()
 	show_direction_indicator()
@@ -120,6 +129,8 @@ func _process(delta):
 		bounce_on_timer -= delta
 		if bounce_on_timer <= 0:
 			set_bounce_off()
+	
+	apply_central_impulse(velocity * delta)
 
 
 func bounce(direction):
@@ -128,6 +139,9 @@ func bounce(direction):
 		set_bounce_on(direction)
 
 func set_bounce_on(direction):
+	#physics_material_override.bounce = 0
+	#physics_material_override.friction = 0
+	linear_velocity = Vector2(0, 0)
 	apply_impulse(direction)
 	bouncing = true
 	bounce_on_timer = bounce_duration
@@ -138,6 +152,8 @@ func set_bounce_on(direction):
 	Events.player_bounce_started.emit()
 
 func set_bounce_off():
+	#physics_material_override.bounce = 0.5
+	#physics_material_override.friction = 0.03
 	bouncing = false
 	$TrailParticles.emitting = false
 	current_damage = damage
@@ -178,3 +194,5 @@ func _integrate_forces(state):
 		var is_wall = contact_object.get_collision_layer_value(1)
 		if is_wall:
 			handle_colision_particles(point, linear_velocity.length_squared() / 500)
+			#var wall_grind_boost = 5
+			#linear_velocity += linear_velocity.normalized() * wall_grind_boost

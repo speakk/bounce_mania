@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwfjwubu5bhkr"]
+
+[ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="1_vgvbf"]
+[ext_resource type="Script" path="res://door.gd" id="2_6c2dv"]
+
+[node name="Door" instance=ExtResource("1_vgvbf")]
+script = ExtResource("2_6c2dv")
+opening_speed = 1.0
+is_open = false
+door_id = "end_door"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+polygon = PackedVector2Array(0, 0, 0, -256, 64, -256, 64, 0)

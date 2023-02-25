@@ -1,5 +1,14 @@
 extends StaticBody2D
 
+@export var rotate_in_place := false
+@export var rotation_speed := 0.0
+@export var movement_vector := Vector2(0, 0)
+@export var movement_speed := 0.0
+
+var original_position
+
+var time = 0
+
 const CIRCLE = preload("res://circle.tscn")
 
 func create_light_occluder(polygon, new_position, new_rotation, new_scale):
@@ -20,11 +29,13 @@ func create_draw_polygon(polygon, new_position, new_rotation, new_scale):
 	drawPolygon.position = new_position
 	drawPolygon.rotation = new_rotation
 	drawPolygon.scale = new_scale
+	drawPolygon.light_mask = 2
 	add_child(drawPolygon)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var children = get_children()
+	original_position = position
 	for child in children:
 		if child is CollisionPolygon2D:
 			var drawPolygon = create_draw_polygon(child.polygon, child.position, child.rotation, child.scale)
@@ -44,12 +55,17 @@ func _ready():
 			add_child(lightOccluder)
 		
 		elif child is Path2D:
+			child.curve.bake_interval = 100
 			var polygon = child.curve.get_baked_points()
-			child.curve.bake_interval = 50
 			var drawPolygon = create_draw_polygon(polygon, child.position, child.rotation, child.scale)
 			
 			var collisionPolygon = CollisionPolygon2D.new()
 			collisionPolygon.polygon = polygon.duplicate()
+			
+			physics_material_override = PhysicsMaterial.new()
+			#physics_material_override.absorbent = true
+			#physics_material_override.friction = 0
+			#physics_material_override.bounce = 1
 			
 			add_child(drawPolygon)
 			add_child(collisionPolygon)
@@ -59,7 +75,16 @@ func _ready():
 	
 	Events.palette_changed.connect(_on_palette_changed)
 	_on_palette_changed(Colors.get_current_palette(), null, null)
+
+func _process(delta):
+	time += delta
 	
+	if rotate_in_place:
+		rotation += delta * rotation_speed
+	
+	if movement_vector.length_squared() > 0:
+		position = original_position + movement_vector * sin(time * movement_speed)
+
 func _on_palette_changed(new_palette, _a, _b):
 	var children = get_children()
 	for child in children:

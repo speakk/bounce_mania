@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://df0dkvvfodw3l"]
+[gd_scene load_steps=3 format=3 uid="uid://df0dkvvfodw3l"]
 
 [ext_resource type="Script" path="res://obstacle.gd" id="1_gewf1"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wnww4"]
+friction = 0.2
+bounce = 0.1
+
 [node name="Obstacle" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_wnww4")
 script = ExtResource("1_gewf1")

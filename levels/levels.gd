@@ -38,6 +38,27 @@ const levels = [
 		stars = [7, 6.5, 6],
 		title = "Back and Forth"
 	},
+	{
+		name = "Level 6",
+		id = "level_6",
+		path = "res://levels/level_6.tscn",
+		stars = [7, 6.5, 6],
+		title = "The Cave"
+	},
+	{
+		name = "Level 7",
+		id = "level_7",
+		path = "res://levels/level_7.tscn",
+		stars = [7, 6.5, 6],
+		title = "Moves"
+	},
+	{
+		name = "Level 8",
+		id = "level_8",
+		path = "res://levels/level_8.tscn",
+		stars = [15, 10, 12],
+		title = "Grave"
+	},
 ]
 
 var levels_by_id = {}
