@@ -42,7 +42,6 @@ var last_collision_time = 0.0
 var grind_treshold = 38 # ms
 
 func _on_player_collision(collison_speed):
-	print("Sped", collison_speed)
 	if collison_speed > 600:
 		var volume = min(-70 + log(collison_speed*0.001) * 9.5, volume_ceiling)
 		$CollisionStream.volume_db = volume

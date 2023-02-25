@@ -13,7 +13,6 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	print("ein")
 	if body.is_in_group("players"):
 		Events.token_collected.emit(self)
 		var particles = PARTICLES.instantiate()
