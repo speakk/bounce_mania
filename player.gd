@@ -185,14 +185,16 @@ func _on_area_2d_body_entered(body):
 	var tween = get_tree().create_tween()
 	tween.tween_property(get_node("Circle"), "scale", Vector2(1, 1), 0.3)
 	
-	Events.player_collision_happened.emit(linear_velocity.length_squared())
 	
 func _integrate_forces(state):
 	for i in get_contact_count():
 		var point = state.get_contact_local_position(i)
 		var contact_object = state.get_contact_collider_object(i)
 		var is_wall = contact_object.get_collision_layer_value(1)
+		
 		if is_wall:
 			handle_colision_particles(point, linear_velocity.length_squared() / 500)
+			Events.player_collision_happened.emit(linear_velocity.length_squared())
+			
 			#var wall_grind_boost = 5
 			#linear_velocity += linear_velocity.normalized() * wall_grind_boost

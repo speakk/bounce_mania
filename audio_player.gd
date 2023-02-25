@@ -38,10 +38,19 @@ func _on_in_game_entered():
 	#if $InGameMusicPlayer.playing:
 	#	$InGameMusicPlayer.stop()
 
+var last_collision_time = 0.0
+var grind_treshold = 38 # ms
+
 func _on_player_collision(collison_speed):
 	$CollisionStream.volume_db = min(-70 + log(collison_speed*0.001) * 9.5, volume_ceiling)
 	$CollisionStream.pitch_scale = 1 + randf()*pitch_variation - pitch_variation/2 - 0.1
-	$CollisionStream.play()
+	
+	if Time.get_ticks_msec() - last_collision_time < grind_treshold:
+		$GrindStream.play()
+	else:
+		$CollisionStream.play()
+
+	last_collision_time = Time.get_ticks_msec()
 
 func _on_player_bounce_started():
 	$DashStream.play()
