@@ -30,7 +30,8 @@ const levels = [
 		id = "level_4",
 		path = "res://levels/level_4.tscn",
 		stars = [7, 6, 5.5],
-		title = "Easy Diagonals"
+		title = "The Climb",
+		description = "Hug walls to recharge your dash faster"
 	},
 	{
 		name = "Level 5",

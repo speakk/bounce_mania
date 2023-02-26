@@ -5,6 +5,8 @@ extends RigidBody2D
 @export var bounce_speed: int = 500
 @export var bounce_time: float = 0.5
 @export var damage: float = 10
+@export var bounce_duration: float = 0.5
+var bounce_on_timer: float = bounce_duration
 
 @onready var COLLISION_PARTICLES = preload("res://collision_particles.tscn")
 @onready var FUSE = preload("res://fuse.tscn")
@@ -19,9 +21,6 @@ var bounce_timer: float = dash_timeout:
 	set(value):
 		Events.bounce_timer_changed.emit(value)
 		bounce_timer = value
-
-var bounce_duration: float = 1
-var bounce_on_timer: float = bounce_duration
 
 var is_player = true
 
@@ -207,6 +206,9 @@ func _integrate_forces(state):
 			handle_colision_particles(point, linear_velocity.length_squared() / 500)
 			var hit_speed = linear_velocity.length_squared()
 			Events.player_collision_happened.emit(hit_speed)
+			if not bouncing and has_moved:
+				if bounce_timer > 0:
+					bounce_timer -= 0.1
 			#shake_camera(linear_velocity)
 			#handle_squish(point, linear_velocity)
 			

@@ -20,7 +20,7 @@ offset_bottom = 736.0
 color = Color(0.188235, 0.513726, 1, 1)
 
 [node name="PlayerMarker" parent="." index="2" instance=ExtResource("3_hjttl")]
-position = Vector2(1120, 192)
+position = Vector2(96, 209)
 
 [node name="Obstacle2" parent="." index="3" instance=ExtResource("4_ghwkq")]
 position = Vector2(192, 128)
@@ -44,10 +44,14 @@ position = Vector2(512, 416)
 position = Vector2(928, 416)
 
 [node name="Door" parent="." index="7" instance=ExtResource("7_xnqw5")]
-position = Vector2(1216, 256)
+position = Vector2(1216, 224)
 
 [node name="CollisionPolygon2D" parent="Door" index="0"]
-polygon = PackedVector2Array(0, -32, 0, -256, 64, -256, 64, -32)
+visible = true
+polygon = PackedVector2Array(0, 0, 0, -224, 64, -224, 64, 0)
+
+[node name="TextureSprite" parent="Door" index="1"]
+visible = false
 
 [editable path="EndZone"]
 [editable path="Door"]

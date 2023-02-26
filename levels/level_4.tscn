@@ -25,10 +25,11 @@ color = Color(0.188235, 0.513726, 1, 1)
 position = Vector2(272, 1592)
 rotation = 3.14159
 rotate_in_place = true
+rotation_speed = 0.5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle4" index="0"]
 position = Vector2(-16.0001, 23.9999)
-polygon = PackedVector2Array(88, -7.99976, -55.9999, -8, -55.9998, -40, 88.0001, -39.9998)
+polygon = PackedVector2Array(152, -7.99963, -112, -8.00024, -112, -40.0002, 152, -39.9996)
 
 [node name="Obstacle3" parent="." index="3" instance=ExtResource("4_aaxv0")]
 position = Vector2(544, 1824)

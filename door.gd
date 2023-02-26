@@ -15,6 +15,7 @@ func _ready():
 	
 	#$TextureSprite.move_child()
 	var texture_sprite = $TextureSprite
+	texture_sprite.visible = true
 	remove_child($TextureSprite)
 	get_node("Polygon2D").add_child(texture_sprite)
 	get_node("Polygon2D").clip_children = CLIP_CHILDREN_AND_DRAW
