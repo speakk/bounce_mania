@@ -75,11 +75,11 @@ func get_input():
 		var direction = (get_global_mouse_position() - position).normalized()
 		var vector = direction * bounce_speed
 		bounce(vector)
-		
 	
-	if not has_moved and linear_velocity.length_squared() > 0:
+	if Input.is_action_just_pressed("start_level") or Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
 		Events.player_has_moved.emit()
 		has_moved = true
+		freeze = false
 	
 func _on_palette_changed(new_palette, _a, _b):
 	$Circle.color = new_palette.neutral_a

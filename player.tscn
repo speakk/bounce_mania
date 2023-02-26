@@ -84,6 +84,8 @@ physics_material_override = SubResource("PhysicsMaterial_vsbfn")
 continuous_cd = 2
 max_contacts_reported = 2
 contact_monitor = true
+freeze = true
+freeze_mode = 1
 linear_damp = 0.5
 script = ExtResource("1_q3836")
 

@@ -61,9 +61,6 @@ func _on_resume():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("toggle_doors"):
-		_all_tokens_collected()
-	
 	if not paused and player_has_moved:
 		level_timer += delta
 		Events.level_timer_changed.emit(level_timer)

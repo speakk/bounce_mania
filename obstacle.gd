@@ -7,8 +7,6 @@ extends StaticBody2D
 
 var original_position
 
-var time = 0
-
 const CIRCLE = preload("res://circle.tscn")
 
 func create_light_occluder(polygon, new_position, new_rotation, new_scale):
@@ -35,6 +33,7 @@ func create_draw_polygon(polygon, new_position, new_rotation, new_scale):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Events.level_timer_changed.connect(_level_timer_changed)
 	var children = get_children()
 	original_position = position
 	for child in children:
@@ -77,14 +76,12 @@ func _ready():
 	Events.palette_changed.connect(_on_palette_changed)
 	_on_palette_changed(Colors.get_current_palette(), null, null)
 
-func _process(delta):
-	time += delta
-	
+func _level_timer_changed(level_time):
 	if rotate_in_place:
-		rotation += delta * rotation_speed
+		rotation = level_time * rotation_speed
 	
 	if movement_vector.length_squared() > 0:
-		position = original_position + movement_vector * sin(time * movement_speed)
+		position = original_position + movement_vector * sin(level_time * movement_speed)
 
 func _on_palette_changed(new_palette, _a, _b):
 	var children = get_children()

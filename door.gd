@@ -20,9 +20,6 @@ func _ready():
 	get_node("Polygon2D").add_child(texture_sprite)
 	get_node("Polygon2D").clip_children = CLIP_CHILDREN_AND_DRAW
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	super._process(delta)
 
 func toggle():
 	if is_open:

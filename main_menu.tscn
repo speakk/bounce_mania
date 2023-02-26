@@ -21,7 +21,7 @@ region_rect = Rect2(0, 0, 256, 256)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xgjfw"]
 font = ExtResource("3_ygo1t")
-font_size = 192
+font_size = 160
 font_color = Color(0.878431, 1, 0.831373, 1)
 outline_size = 16
 outline_color = Color(1, 0.286275, 0.466667, 1)
@@ -65,22 +65,27 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_ygo1t")
-text = "GLOF"
+text = "quickfast"
 label_settings = SubResource("LabelSettings_xgjfw")
 horizontal_alignment = 1
 
 [node name="NewGameButton" type="Button" parent="Control/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(160, 60)
+custom_minimum_size = Vector2(260, 60)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 48
 text = "PLAY"
 
 [node name="ManageProfilesButton" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "PROFILES"
 
 [node name="QuitButton" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "QUIT"
 
 [node name="CurrentUserDisplay" parent="Control" instance=ExtResource("4_jt0m5")]
