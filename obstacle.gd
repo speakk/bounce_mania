@@ -56,7 +56,7 @@ func _ready():
 			add_child(lightOccluder)
 		
 		elif child is Path2D:
-			child.curve.bake_interval = 100
+			child.curve.bake_interval = 200
 			var polygon = child.curve.get_baked_points()
 			var drawPolygon = create_draw_polygon(polygon, child.position, child.rotation, child.scale)
 			

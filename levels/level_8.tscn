@@ -43,7 +43,7 @@ offset_left = 32.0
 offset_right = 224.0
 
 [node name="PlayerMarker" parent="." index="3" instance=ExtResource("4_3vmr8")]
-position = Vector2(352, 544)
+position = Vector2(64, 96)
 
 [node name="Obstacle" parent="." index="4" instance=ExtResource("5_g13ku")]
 

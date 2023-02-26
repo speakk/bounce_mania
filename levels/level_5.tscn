@@ -9,14 +9,16 @@
 [node name="Level5" instance=ExtResource("1_egbt7")]
 
 [node name="TextureRect" parent="." index="0"]
-offset_left = -968.0
-offset_bottom = 2472.0
+offset_left = -1432.0
+offset_top = -912.0
+offset_right = 1521.0
+offset_bottom = 2168.0
 
 [node name="WorldBounds" parent="." index="1" instance=ExtResource("2_lucbh")]
 position = Vector2(288, 0)
 
 [node name="ColorRect" type="ColorRect" parent="WorldBounds" index="0"]
-offset_left = -1174.0
+offset_left = -1176.0
 offset_top = -520.0
 offset_right = 376.0
 offset_bottom = 672.0
@@ -29,7 +31,7 @@ position = Vector2(192, 128)
 position = Vector2(-1000, -168)
 rotation = -1.57079
 scale = Vector2(0.704052, 0.506011)
-polygon = PackedVector2Array(192, -160, 192, 1488, 208, 1504, 304, 1504, 320, 1488, 320, -160)
+polygon = PackedVector2Array(192, -160, 192, 1488, 208, 1504, 304, 1504, 320, 1488, 318.158, -158.102)
 
 [node name="Obstacle3" parent="." index="3" instance=ExtResource("3_cobdd")]
 position = Vector2(192, 744)
