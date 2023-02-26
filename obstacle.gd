@@ -25,6 +25,7 @@ func create_light_occluder(polygon, new_position, new_rotation, new_scale):
 
 func create_draw_polygon(polygon, new_position, new_rotation, new_scale):
 	var drawPolygon = Polygon2D.new()
+	drawPolygon.name = "Polygon2D"
 	drawPolygon.polygon = polygon.duplicate()
 	drawPolygon.position = new_position
 	drawPolygon.rotation = new_rotation

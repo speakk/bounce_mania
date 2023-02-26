@@ -100,8 +100,8 @@ func direct_eye(eye, offset):
 
 func direct_eyes():
 	var y_offset = 5
-	direct_eye($LeftEyeSprite, Vector2(-8, y_offset))
-	direct_eye($RightEyeSprite, Vector2(7, y_offset))
+	direct_eye($Circle/LeftEyeSprite, Vector2(-8, y_offset))
+	direct_eye($Circle/RightEyeSprite, Vector2(7, y_offset))
 
 func show_direction_indicator():
 	var direction = (get_global_mouse_position() - position).normalized()
@@ -181,11 +181,22 @@ func _on_area_2d_body_entered(body):
 		Events.brick_hit.emit(body, self, self.current_damage)
 	
 	$Circle.scale = Vector2(1.4, 1.4)
-	#$/Sprite2D.material.
 	var tween = get_tree().create_tween()
 	tween.tween_property(get_node("Circle"), "scale", Vector2(1, 1), 0.3)
-	
-	
+
+#func handle_squish(point, linear_velocity):
+#	#print("OK HIT", linear_velocity)
+#	var new_scale = linear_velocity.abs().normalized()
+#	print("new_scale", new_scale)
+#	$Circle.scale = new_scale
+#	#$Circle.scale = Vector2(0.5, 1)
+#	#$Circle.scale = 
+#
+#func shake_camera(hit_velocity):
+#	var length = hit_velocity.length() / 600
+#	print("length", length)
+#	#$ShakeCamera2D.add_trauma(length)
+
 func _integrate_forces(state):
 	for i in get_contact_count():
 		var point = state.get_contact_local_position(i)
@@ -194,7 +205,10 @@ func _integrate_forces(state):
 		
 		if is_wall:
 			handle_colision_particles(point, linear_velocity.length_squared() / 500)
-			Events.player_collision_happened.emit(linear_velocity.length_squared())
+			var hit_speed = linear_velocity.length_squared()
+			Events.player_collision_happened.emit(hit_speed)
+			#shake_camera(linear_velocity)
+			#handle_squish(point, linear_velocity)
 			
 			#var wall_grind_boost = 5
 			#linear_velocity += linear_velocity.normalized() * wall_grind_boost

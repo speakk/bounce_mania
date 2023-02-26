@@ -12,6 +12,12 @@ func _ready():
 	
 	if is_open:
 		self.scale = Vector2(1, 0)
+	
+	#$TextureSprite.move_child()
+	var texture_sprite = $TextureSprite
+	remove_child($TextureSprite)
+	get_node("Polygon2D").add_child(texture_sprite)
+	get_node("Polygon2D").clip_children = CLIP_CHILDREN_AND_DRAW
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

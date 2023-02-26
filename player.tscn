@@ -109,6 +109,12 @@ position = Vector2(-1.78814e-07, 0.499999)
 scale = Vector2(1.125, 1.09375)
 texture = SubResource("NoiseTexture2D_5u2t8")
 
+[node name="LeftEyeSprite" type="Sprite2D" parent="Circle"]
+texture = ExtResource("3_nvob7")
+
+[node name="RightEyeSprite" type="Sprite2D" parent="Circle"]
+texture = ExtResource("3_nvob7")
+
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 220
@@ -127,12 +133,6 @@ hframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_17rwd")
-
-[node name="LeftEyeSprite" type="Sprite2D" parent="."]
-texture = ExtResource("3_nvob7")
-
-[node name="RightEyeSprite" type="Sprite2D" parent="."]
-texture = ExtResource("3_nvob7")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -157,5 +157,7 @@ default_color = Color(0.309804, 0.227451, 0.176471, 1)
 
 [node name="Fuse" parent="." instance=ExtResource("7_1fjlq")]
 position = Vector2(-11, -16)
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

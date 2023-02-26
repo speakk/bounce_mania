@@ -22,7 +22,8 @@ const levels = [
 		id = "level_3",
 		path = "res://levels/level_3.tscn",
 		stars = [5.5, 5, 3],
-		title = "Bumpy Road"
+		title = "Token Pits",
+		description = "Collect the round tokens to open the door"
 	},
 	{
 		name = "Level 4",

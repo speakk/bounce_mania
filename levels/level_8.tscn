@@ -43,7 +43,7 @@ offset_left = 32.0
 offset_right = 224.0
 
 [node name="PlayerMarker" parent="." index="3" instance=ExtResource("4_3vmr8")]
-position = Vector2(96, 96)
+position = Vector2(352, 544)
 
 [node name="Obstacle" parent="." index="4" instance=ExtResource("5_g13ku")]
 
@@ -78,8 +78,8 @@ position = Vector2(192, 736)
 position = Vector2(0, -3)
 polygon = PackedVector2Array(0, 3, 0, -221, 64, -221, 64, 3)
 
-[node name="Token" parent="Door/CollisionPolygon2D" index="0" instance=ExtResource("7_6a3nv")]
-position = Vector2(1857, -605)
+[node name="Token" parent="." index="10" instance=ExtResource("7_6a3nv")]
+position = Vector2(2049, 128)
 
 [editable path="EndZone"]
 [editable path="Door"]

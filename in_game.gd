@@ -7,7 +7,6 @@ var paused = false
 var finished = false
 var current_level_id = null
 var player_node = null
-var camera_node = null
 
 var player_has_moved = false
 
@@ -95,11 +94,6 @@ func load_level(level_id):
 	add_child(player)
 	player_node = player
 	
-	var camera = Camera2D.new()
-	#camera.current = true
-	player.add_child(camera)
-	camera_node = camera
-	
 	var description = Levels.get_by_id(level_id).get("description")
 	if description != null:
 		%LevelDescriptionLabel.text = description
@@ -132,10 +126,3 @@ func _finish_level():
 func _on_end_zone_hit(zone, by):
 	if "is_player" in by and by.is_player and not finished:
 		_finish_level()
-
-
-#func disable_main_camera():
-#	camera_node.current = false
-#
-#func enable_main_camera():
-#	camera_node.current = true
