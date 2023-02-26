@@ -9,6 +9,7 @@ extends RigidBody2D
 var bounce_on_timer: float = bounce_duration
 
 @onready var COLLISION_PARTICLES = preload("res://collision_particles.tscn")
+@onready var EXPLOSION_PARTICLES = preload("res://player_explosion.tscn")
 @onready var FUSE = preload("res://fuse.tscn")
 
 var bouncing = false
@@ -34,19 +35,17 @@ func _ready():
 	Events.palette_changed.connect(_on_palette_changed)
 	Events.level_loaded.connect(_on_level_loaded)
 	_on_palette_changed(Colors.get_current_palette(), null, null)
-	Events.in_game_paused.connect(_on_paused)
-	Events.in_game_resumed.connect(_on_resumed)
+	Events.level_max_time_reached.connect(_level_max_time_reached)
 	#fuse = FUSE.instantiate()
 	#add_child(fuse)
 	#get_parent().add_child(fuse)
 	#$RemoteTransform2D.remote_path = "../../Fuse"
 
-func _on_paused():
-	#paused = true
-	pass
-	
-func _on_resumed():
-	pass
+func _level_max_time_reached():
+	var explosion = EXPLOSION_PARTICLES.instantiate()
+	get_parent().add_child(explosion)
+	explosion.position = position
+	explosion.emitting = true
 
 func _on_level_loaded(_a):
 	bounce_timer = dash_timeout
@@ -200,6 +199,8 @@ func _integrate_forces(state):
 	for i in get_contact_count():
 		var point = state.get_contact_local_position(i)
 		var contact_object = state.get_contact_collider_object(i)
+		if contact_object == null:
+			continue
 		var is_wall = contact_object.get_collision_layer_value(1)
 		
 		if is_wall:

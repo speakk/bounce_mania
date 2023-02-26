@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqklvr3bswlap"]
+
+[sub_resource type="Gradient" id="Gradient_45lg7"]
+offsets = PackedFloat32Array(0.0836364, 1)
+colors = PackedColorArray(0.910156, 0.761514, 0.720422, 1, 1, 0.619608, 0.270588, 0.980392)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pabh1"]
+gradient = SubResource("Gradient_45lg7")
+
+[sub_resource type="Curve" id="Curve_4cwck"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.236364), -2.57187, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kcpvk"]
+curve = SubResource("Curve_4cwck")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_myocq"]
+particle_flag_disable_z = true
+direction = Vector3(1, -30, 0)
+spread = 175.72
+gravity = Vector3(0, 98, 0)
+initial_velocity_max = 129.08
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 3.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_kcpvk")
+color_ramp = SubResource("GradientTexture1D_pabh1")
+hue_variation_max = 0.11
+
+[node name="PlayerExplosion" type="GPUParticles2D"]
+emitting = false
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_myocq")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0

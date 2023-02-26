@@ -7,6 +7,8 @@ var paused = false
 var finished = false
 var current_level_id = null
 var player_node = null
+var current_level_max_time = 10000
+var max_time_reached = false
 
 var player_has_moved = false
 
@@ -64,6 +66,9 @@ func _process(delta):
 	if not paused and player_has_moved:
 		level_timer += delta
 		Events.level_timer_changed.emit(level_timer)
+		if level_timer > current_level_max_time and max_time_reached != true:
+			Events.level_max_time_reached.emit()
+			max_time_reached = true
 		
 	if Input.is_action_just_pressed("restart_level"):
 		Events.try_again_pressed.emit()
@@ -91,11 +96,14 @@ func load_level(level_id):
 	add_child(player)
 	player_node = player
 	
-	var description = Levels.get_by_id(level_id).get("description")
+	var level = Levels.get_by_id(level_id)
+	var description = level.get("description")
 	if description != null:
 		%LevelDescriptionLabel.text = description
 	else:
 		%LevelDescriptionLabel.text = "Best of luck!"
+	
+	current_level_max_time = level.get("stars")[0]
 	
 	Events.level_loaded.emit(level_id)
 
