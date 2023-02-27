@@ -9,6 +9,7 @@ collision_mask = 13
 mass = 0.06
 inertia = 1.4
 gravity_scale = 0.57
+continuous_cd = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.33333)

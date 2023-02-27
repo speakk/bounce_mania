@@ -10,7 +10,7 @@ var segments = []
 var pin_joints = []
 
 func _level_timer_changed(level_time):
-	var current_segment = round(amount_of_segments - level_time / max_time * amount_of_segments)
+	var current_segment = round(amount_of_segments - (level_time / max_time * amount_of_segments) + 1)
 	
 	if current_segment < segments.size() + 1 and current_segment > 0:
 		var last_segment = segments.back()
@@ -22,7 +22,8 @@ func _level_timer_changed(level_time):
 		var new_last = segments.back()
 		if new_last:
 			new_last.add_child(sparks)
-			sparks.position = new_last.position
+			sparks.global_position = new_last.global_position - Vector2.from_angle(-new_last.rotation) * segment_length
+			sparks.rotation = new_last.rotation
 
 func _level_loaded(level_id):
 	max_time = Levels.get_by_id(level_id).get("stars")[0]
