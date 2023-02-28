@@ -30,6 +30,16 @@ func create_draw_polygon(polygon, new_position, new_rotation, new_scale):
 	drawPolygon.scale = new_scale
 	drawPolygon.light_mask = 2
 	add_child(drawPolygon)
+	
+	var borderLine = Line2D.new()
+	borderLine.width = 1
+	borderLine.antialiased = false
+	borderLine.points = polygon.duplicate()
+	borderLine.position = new_position
+	borderLine.rotation = new_rotation
+	borderLine.scale = new_scale
+	borderLine.light_mask = 2
+	#add_child(borderLine)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -89,3 +99,6 @@ func _on_palette_changed(new_palette, _a, _b):
 		if child is Polygon2D or child is Circle:
 			child.color = new_palette.background_b * 1.5
 			child.color.h = wrapf(child.color.h - 0.1, 0, 1)
+		
+		if child is Line2D:
+			child.default_color = Color(1,1,1,0.3)

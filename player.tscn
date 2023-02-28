@@ -117,7 +117,38 @@ texture = ExtResource("3_nvob7")
 [node name="RightEyeSprite" type="Sprite2D" parent="Circle"]
 texture = ExtResource("3_nvob7")
 
+[node name="DeadEyes" type="Node2D" parent="Circle"]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="Circle/DeadEyes"]
+position = Vector2(1, 0)
+points = PackedVector2Array(-10, 2, -3, 9)
+width = 2.0
+default_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[node name="Line2D2" type="Line2D" parent="Circle/DeadEyes"]
+position = Vector2(-2, 13)
+rotation = 1.77471
+points = PackedVector2Array(-10, 2, -3, 9)
+width = 2.0
+default_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[node name="Line2D3" type="Line2D" parent="Circle/DeadEyes"]
+position = Vector2(10, -3)
+rotation = -0.553317
+points = PackedVector2Array(-10, 2, -3, 9)
+width = 2.0
+default_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[node name="Line2D4" type="Line2D" parent="Circle/DeadEyes"]
+position = Vector2(14, 9)
+rotation = 1.22139
+points = PackedVector2Array(-10, 2, -3, 9)
+width = 2.0
+default_color = Color(0.482353, 0.482353, 0.482353, 1)
+
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
+modulate = Color(2, 2, 2, 1)
 emitting = false
 amount = 220
 process_material = SubResource("ParticleProcessMaterial_j4he8")

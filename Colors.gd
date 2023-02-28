@@ -55,8 +55,8 @@ func shift_array(array: Array, amount: int):
 		var element = array.pop_front()
 		array.push_back(element)
 
-var current_palette_index = 0
-var current_palette_shift = 0
+var current_palette_index = 7
+var current_palette_shift = 4
 
 func emit_new_palette():
 	var new_colors = get_current_palette()

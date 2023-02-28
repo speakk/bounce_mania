@@ -9,3 +9,5 @@ bounce = 0.1
 [node name="Obstacle" type="StaticBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_wnww4")
 script = ExtResource("1_gewf1")
+
+[node name="Line2D" type="Line2D" parent="."]

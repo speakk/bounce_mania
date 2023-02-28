@@ -46,7 +46,7 @@ func _ready():
 		var pin_joint = PinJoint2D.new()
 		pin_joint.position.y = (segment_length) * (i)
 		pin_joint.disable_collision = true
-		pin_joint.softness = 0
+		pin_joint.softness = 0.5
 		if i == 0:
 			pin_joint.node_a = NodePath("..")
 			pin_joint.node_b = NodePath("../segment_%s" % i)

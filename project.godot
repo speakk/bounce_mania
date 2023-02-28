@@ -25,6 +25,10 @@ GlobalValues="*res://global_values.gd"
 ProfileManager="*res://ProfileManager.gd"
 Colors="*res://Colors.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/viewport_width=1280

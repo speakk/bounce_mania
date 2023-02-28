@@ -43,9 +43,17 @@ func _ready():
 
 func _level_max_time_reached():
 	var explosion = EXPLOSION_PARTICLES.instantiate()
-	get_parent().add_child(explosion)
-	explosion.position = position
+	add_child(explosion)
+	#explosion.position = position
 	explosion.emitting = true
+	#explosion.process_material.
+	
+	$Circle/Circle.visible = false
+	$Circle/Circle2.visible = false
+	$Circle/LeftEyeSprite.visible = false
+	$Circle/RightEyeSprite.visible = false
+	
+	$Circle/DeadEyes.visible = true
 
 func _on_level_loaded(_a):
 	bounce_timer = dash_timeout
@@ -161,6 +169,8 @@ func set_bounce_off():
 	
 
 func handle_colision_particles(collision_position, speed_factor):
+	if speed_factor < 10:
+		return
 	var collision_particles := COLLISION_PARTICLES.instantiate()
 	collision_particles.position = collision_position
 	get_parent().add_child(collision_particles)

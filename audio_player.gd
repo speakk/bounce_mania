@@ -12,10 +12,14 @@ func _ready():
 	Events.bounce_timer_changed.connect(_on_bounce_timer_changed)
 	Events.level_finished.connect(_on_level_finished)
 	Events.token_collected.connect(_on_token_collected)
+	Events.level_max_time_reached.connect(_on_level_max_time_reached)
 	#Events.in_game_exited.connect(_on_in_game_exited)
 
 const volume_ceiling = -4
 const pitch_variation = 0.06
+
+func _on_level_max_time_reached():
+	$ExplosionStream.play()
 
 func _on_token_collected(_a):
 	$TokenCollectStream.play()
