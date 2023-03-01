@@ -65,6 +65,8 @@ func _on_resume():
 func _process(delta):
 	
 	#%Background.texture.noise.offset.z += delta * 10
+	%Background.material.set_shader_parameter("offset", get_viewport().get_camera_2d().get_screen_center_position() / get_viewport().get_visible_rect().size)
+	%Background.material.set_shader_parameter("time", Time.get_ticks_msec())
 	
 	if not paused and player_has_moved:
 		level_timer += delta
@@ -87,16 +89,16 @@ func _on_player_has_moved():
 	%LevelDescriptionLabel.visible = false
 
 func load_level(level_id):
-	if $LevelContainer.get_child_count() > 0:
-		$LevelContainer.get_child(0).queue_free()
+	if %LevelContainer.get_child_count() > 0:
+		%LevelContainer.get_child(0).queue_free()
 	
-	$LevelContainer.add_child(load(Levels.get_by_id(level_id).path).instantiate())
+	%LevelContainer.add_child(load(Levels.get_by_id(level_id).path).instantiate())
 	current_level_id = level_id
 	
 	var player = Player.instantiate()
-	var start_position = $LevelContainer.get_child(0).get_player_start_position()
+	var start_position = %LevelContainer.get_child(0).get_player_start_position()
 	player.global_position = start_position
-	add_child(player)
+	%LevelContainer.add_child(player)
 	player_node = player
 	
 	var level = Levels.get_by_id(level_id)
