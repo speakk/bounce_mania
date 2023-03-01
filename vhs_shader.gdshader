@@ -39,6 +39,7 @@ uniform float noise_speed = 5.0; // There is a movement in the noise pattern tha
 uniform float static_noise_intensity : hint_range(0.0, 1.0) = 0.06;
 
 uniform float aberration : hint_range(-1.0, 1.0) = 0.03; // Chromatic aberration, a distortion on each color channel.
+uniform sampler2D aberration_vignette;
 uniform float brightness = 1.4; // When adding scanline gaps and grille the image can get very dark. Brightness tries to compensate for that.
 uniform bool discolor = true; // Add a discolor effect simulating a VHS
 
@@ -135,10 +136,11 @@ void fragment()
 	}
 	else
 	{
+		float aberration_strength = texture(aberration_vignette, UV).r;
 		// If roll is false only apply the aberration without any distorion. The aberration values are very small so the .1 is only 
 		// to make the slider in the Inspector less sensitive.
-		text.r = texture(SCREEN_TEXTURE, text_uv + vec2(aberration, 0.0) * .1).r;
-		text.g = texture(SCREEN_TEXTURE, text_uv - vec2(aberration, 0.0) * .1).g;
+		text.r = texture(SCREEN_TEXTURE, text_uv + vec2(aberration, 0.0) * .1 * aberration_strength).r;
+		text.g = texture(SCREEN_TEXTURE, text_uv - vec2(aberration, 0.0) * .1 * aberration_strength).g;
 		text.b = texture(SCREEN_TEXTURE, text_uv).b;
 		text.a = 1.0;
 	}

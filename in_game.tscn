@@ -1,11 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://ouuxwb5ym4qk"]
+[gd_scene load_steps=10 format=3 uid="uid://ouuxwb5ym4qk"]
 
 [ext_resource type="Script" path="res://in_game.gd" id="1_cjgxw"]
 [ext_resource type="PackedScene" uid="uid://swj7u720qpi7" path="res://main_ui.tscn" id="1_yhcwg"]
 [ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="4_7clbw"]
 [ext_resource type="Shader" path="res://vhs_shader.gdshader" id="4_7om8c"]
 
+[sub_resource type="Gradient" id="Gradient_khwn7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b4iw3"]
+gradient = SubResource("Gradient_khwn7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nyo44"]
+resource_local_to_scene = true
 shader = ExtResource("4_7om8c")
 shader_parameter/overlay = true
 shader_parameter/scanlines_opacity = 0.005
@@ -13,26 +22,27 @@ shader_parameter/scanlines_width = 0.081
 shader_parameter/grille_opacity = 0.005
 shader_parameter/resolution = Vector2(1024, 768)
 shader_parameter/pixelate = false
-shader_parameter/roll = true
+shader_parameter/roll = false
 shader_parameter/roll_speed = 3.0
-shader_parameter/roll_size = 6.195
-shader_parameter/roll_variation = 1.8
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.1
 shader_parameter/distort_intensity = 0.001
-shader_parameter/noise_opacity = 0.01
-shader_parameter/noise_speed = 5.0
+shader_parameter/noise_opacity = 0.0
+shader_parameter/noise_speed = 0.0
 shader_parameter/static_noise_intensity = 0.022
-shader_parameter/aberration = 0.00400005
+shader_parameter/aberration = 0.01
 shader_parameter/brightness = 0.9
 shader_parameter/discolor = true
-shader_parameter/warp_amount = 0.057
+shader_parameter/warp_amount = 0.026
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.132
+shader_parameter/aberration_vignette = SubResource("GradientTexture2D_b4iw3")
 
-[sub_resource type="Gradient" id="Gradient_32a84"]
+[sub_resource type="Gradient" id="Gradient_2c5hd"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1e3sh"]
-gradient = SubResource("Gradient_32a84")
+gradient = SubResource("Gradient_2c5hd")
 
 [node name="InGame" type="Node2D"]
 script = ExtResource("1_cjgxw")
