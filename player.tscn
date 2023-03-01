@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dsietufglmnl7"]
+[gd_scene load_steps=23 format=3 uid="uid://dsietufglmnl7"]
 
 [ext_resource type="Texture2D" uid="uid://c1gsv1x1xdvhm" path="res://theball.png" id="1_pxrxn"]
 [ext_resource type="Script" path="res://player.gd" id="1_q3836"]
@@ -42,8 +42,7 @@ particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 3.0
-scale_max = 8.0
+scale_min = 0.1
 scale_curve = SubResource("CurveTexture_7due3")
 color = Color(1, 0.941176, 0.52549, 1)
 turbulence_noise_strength = 17.1
@@ -53,6 +52,17 @@ turbulence_noise_speed_random = 6.84
 turbulence_influence_max = 0.77
 turbulence_initial_displacement_min = -3.7
 turbulence_initial_displacement_max = 8.5
+
+[sub_resource type="Gradient" id="Gradient_jonbj"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.210169, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.278431, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eyedu"]
+gradient = SubResource("Gradient_jonbj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3dcf4"]
 shader = ExtResource("2_v6el6")
@@ -152,6 +162,7 @@ modulate = Color(2, 2, 2, 1)
 emitting = false
 amount = 220
 process_material = SubResource("ParticleProcessMaterial_j4he8")
+texture = SubResource("GradientTexture2D_eyedu")
 lifetime = 30.0
 speed_scale = 12.0
 fixed_fps = 180

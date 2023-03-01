@@ -4,11 +4,12 @@ uniform sampler2D texture2: repeat_enable;
 uniform vec4 mod_color: source_color;
 uniform vec4 mod_color2: source_color;
 //uniform vec2 offset = vec2(0.0, 0.0);
-uniform float speed = 0.02;
+uniform float speed = 0.015;
+uniform float speed2 = 0.005;
 uniform float bias = 0.5;
 
 void fragment() {
-	float offset = texture(TEXTURE, UV - TIME * 0.1).r * 0.1;
+	float offset = texture(TEXTURE, UV - TIME * speed2).r * 0.1;
 //	float color = texture(TEXTURE, offset + UV + time).r;
 //	float color2 = texture(texture2, offset + UV - time).r;
 	float color = texture(TEXTURE, offset + UV + TIME * vec2(speed, speed)).r;

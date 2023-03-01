@@ -21,9 +21,10 @@ noise = SubResource("FastNoiseLite_suway")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4k0go"]
 shader = ExtResource("2_hs7t2")
-shader_parameter/mod_color = Color(0.388235, 0.447059, 0.552941, 1)
-shader_parameter/mod_color2 = Color(0.160784, 0.164706, 0.4, 1)
-shader_parameter/speed = 0.05
+shader_parameter/mod_color = Color(0.156863, 0.172549, 0.352941, 1)
+shader_parameter/mod_color2 = Color(0.32549, 0.27451, 0.478431, 1)
+shader_parameter/speed = 0.02
+shader_parameter/speed2 = 0.01
 shader_parameter/bias = 0.5
 shader_parameter/texture2 = SubResource("NoiseTexture2D_lm3cn")
 
