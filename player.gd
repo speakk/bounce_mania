@@ -6,6 +6,13 @@ extends RigidBody2D
 @export var bounce_time: float = 0.5
 @export var damage: float = 10
 @export var bounce_duration: float = 0.5
+@export var is_dead: bool = false:
+	set(value):
+		if not is_dead:
+			Events.player_died.emit()
+			transform_player_into_dead()
+		is_dead = value
+
 var bounce_on_timer: float = bounce_duration
 
 @onready var COLLISION_PARTICLES = preload("res://collision_particles.tscn")
@@ -41,7 +48,7 @@ func _ready():
 	#get_parent().add_child(fuse)
 	#$RemoteTransform2D.remote_path = "../../Fuse"
 
-func _level_max_time_reached():
+func transform_player_into_dead():
 	var explosion = EXPLOSION_PARTICLES.instantiate()
 	add_child(explosion)
 	#explosion.position = position
@@ -54,6 +61,10 @@ func _level_max_time_reached():
 	$Circle/RightEyeSprite.visible = false
 	
 	$Circle/DeadEyes.visible = true
+	
+func _level_max_time_reached():
+	if not is_dead:
+		is_dead = true
 
 func _on_level_loaded(_a):
 	bounce_timer = dash_timeout
@@ -205,6 +216,9 @@ func _on_area_2d_body_entered(body):
 #	print("length", length)
 #	#$ShakeCamera2D.add_trauma(length)
 
+func _player_hit_trap():
+	is_dead = true
+
 func _integrate_forces(state):
 	for i in get_contact_count():
 		var point = state.get_contact_local_position(i)
@@ -225,3 +239,6 @@ func _integrate_forces(state):
 			
 			#var wall_grind_boost = 5
 			#linear_velocity += linear_velocity.normalized() * wall_grind_boost
+		
+		if contact_object.is_in_group("traps"):
+			_player_hit_trap()

@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://bklahsa5e1rtp"]
+
+[ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_roanr"]
+[ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://world_bounds.tscn" id="2_obsfc"]
+[ext_resource type="PackedScene" uid="uid://bschtylma2s1c" path="res://end_zone.tscn" id="3_e7crl"]
+[ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://player_marker.tscn" id="4_lkufc"]
+[ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="5_a7c48"]
+
+[node name="Level9" instance=ExtResource("1_roanr")]
+
+[node name="TextureRect" parent="." index="0"]
+offset_right = 4801.0
+
+[node name="TextureRect" parent="TextureRect" index="0"]
+offset_right = 5473.0
+
+[node name="WorldBounds" parent="." index="1" instance=ExtResource("2_obsfc")]
+position = Vector2(288, 0)
+
+[node name="ColorRect" type="ColorRect" parent="WorldBounds" index="0"]
+offset_left = -512.0
+offset_top = -224.0
+offset_right = 4033.0
+offset_bottom = 928.0
+color = Color(0.188235, 0.513726, 1, 1)
+
+[node name="EndZone" parent="." index="2" instance=ExtResource("3_e7crl")]
+position = Vector2(4033, -113)
+
+[node name="EndZoneRect" parent="EndZone" index="0"]
+offset_left = 32.0
+offset_right = 192.0
+offset_bottom = 64.0
+
+[node name="PlayerMarker" parent="." index="3" instance=ExtResource("4_lkufc")]
+position = Vector2(-96, -96)
+
+[node name="Obstacle" parent="." index="4" instance=ExtResource("5_a7c48")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle" index="2"]
+position = Vector2(-112, 0)
+polygon = PackedVector2Array(-112, 128, 112, 128, 112, 192, -112, 192)
+
+[node name="Obstacle3" parent="." index="5" instance=ExtResource("5_a7c48")]
+position = Vector2(960, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle3" index="2"]
+position = Vector2(-112, 0)
+polygon = PackedVector2Array(-112, 128, 112, 128, 112, 192, -112, 192)
+
+[node name="Obstacle4" parent="." index="6" instance=ExtResource("5_a7c48")]
+position = Vector2(1504, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle4" index="2"]
+position = Vector2(-112, 0)
+polygon = PackedVector2Array(-112, 128, 16, 64, 144, 128, 144, 192, -112, 192)
+
+[node name="Obstacle5" parent="." index="7" instance=ExtResource("5_a7c48")]
+position = Vector2(2081, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle5" index="2"]
+position = Vector2(-112, 0)
+polygon = PackedVector2Array(-112, 128, 16, 64, 144, 128, 144, 192, -112, 192)
+
+[node name="Obstacle6" parent="." index="8" instance=ExtResource("5_a7c48")]
+position = Vector2(2881, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle6" index="2"]
+position = Vector2(-112, 0)
+polygon = PackedVector2Array(-112, 128, 16, 64, 144, 128, 144, 192, -112, 192)
+
+[editable path="EndZone"]

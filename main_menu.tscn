@@ -21,7 +21,7 @@ region_rect = Rect2(0, 0, 256, 256)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xgjfw"]
 font = ExtResource("3_ygo1t")
-font_size = 160
+font_size = 130
 font_color = Color(0.878431, 1, 0.831373, 1)
 outline_size = 16
 outline_color = Color(1, 0.286275, 0.466667, 1)
@@ -65,7 +65,7 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_ygo1t")
-text = "quickfast"
+text = "bounce mania"
 label_settings = SubResource("LabelSettings_xgjfw")
 horizontal_alignment = 1
 

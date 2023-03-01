@@ -9,14 +9,14 @@ var NEW_SCORE_LABEL = preload("res://new_score_label.tscn")
 #		when_recorded = Time.get_unix_time_from_system()
 #	})
 
-func show_scores(scores):
+func show_scores(scores, is_dead):
 	for child in %Scores.get_children():
 		child.queue_free()
 		
 	var latest_score
 	var latest_score_when = 0
 	for score in scores:
-		if score.when_recorded > latest_score_when:
+		if score.when_recorded > latest_score_when and not is_dead:
 			latest_score = score
 			latest_score_when = score.when_recorded
 			

@@ -4,12 +4,13 @@ extends StaticBody2D
 @export var rotation_speed := 0.0
 @export var movement_vector := Vector2(0, 0)
 @export var movement_speed := 0.0
+@export var is_deadly := false
 
 var original_position
 
 const CIRCLE = preload("res://circle.tscn")
 
-func create_light_occluder(polygon, new_position, new_rotation, new_scale):
+func create_light_occluder(polygon, new_position, new_rotation, new_scale) -> LightOccluder2D:
 	var lightOccluder = LightOccluder2D.new()
 	var occluder = OccluderPolygon2D.new()
 	occluder.polygon = polygon.duplicate()
@@ -44,6 +45,7 @@ func create_draw_polygon(polygon, new_position, new_rotation, new_scale):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.level_timer_changed.connect(_level_timer_changed)
+
 	var children = get_children()
 	original_position = position
 	for child in children:
@@ -51,8 +53,9 @@ func _ready():
 			var drawPolygon = create_draw_polygon(child.polygon, child.position, child.rotation, child.scale)
 			add_child(drawPolygon)
 			
-			var lightOccluder = create_light_occluder(child.polygon, child.position, child.rotation, child.scale)
-			add_child(lightOccluder)
+			var lightOccluder := create_light_occluder(child.polygon, child.position, child.rotation, child.scale)
+			if not is_deadly:
+				add_child(lightOccluder)
 			
 		elif child is CollisionShape2D and child.shape is CircleShape2D:
 			var circle = CIRCLE.instantiate()
@@ -81,10 +84,14 @@ func _ready():
 			add_child(collisionPolygon)
 			
 			#add_child()
-			
 	
 	Events.palette_changed.connect(_on_palette_changed)
 	_on_palette_changed(Colors.get_current_palette(), null, null)
+		
+	if is_deadly:
+		add_to_group("traps")
+		$DeadlyLight.show()
+		
 
 func _level_timer_changed(level_time):
 	if rotate_in_place:
@@ -99,6 +106,10 @@ func _on_palette_changed(new_palette, _a, _b):
 		if child is Polygon2D or child is Circle:
 			child.color = new_palette.background_b * 1.5
 			child.color.h = wrapf(child.color.h - 0.1, 0, 1)
+			
+			if is_deadly:
+				child.color = Color.FIREBRICK
 		
 		if child is Line2D:
 			child.default_color = Color(1,1,1,0.3)
+		

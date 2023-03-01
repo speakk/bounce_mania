@@ -61,6 +61,13 @@ const levels = [
 		stars = [17, 10, 9.5],
 		title = "Grave"
 	},
+	{
+		name = "Level 9",
+		id = "level_9",
+		path = "res://levels/level_9.tscn",
+		stars = [17, 10, 9.5],
+		title = "Islands"
+	},
 ]
 
 var levels_by_id = {}

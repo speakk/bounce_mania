@@ -63,6 +63,9 @@ func _on_resume():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	#%Background.texture.noise.offset.z += delta * 10
+	
 	if not paused and player_has_moved:
 		level_timer += delta
 		Events.level_timer_changed.emit(level_timer)
@@ -110,24 +113,26 @@ func load_level(level_id):
 func get_current_level_id():
 	return current_level_id
 
-func _finish_level():
+func _finish_level(player):
 	paused = true
 	finished = true
-	#Levels.save_level_time(current_level_id, "speak", level_timer)
-	ProfileManager.save_level_time(current_level_id, ProfileManager.get_current_profile_id(), level_timer)
+	
+	if not player.is_dead:
+		ProfileManager.save_level_time(current_level_id, ProfileManager.get_current_profile_id(), level_timer)
+		
 	Events.level_finished.emit(current_level_id, level_timer)
 	
 	var current_user_level = ProfileManager.get_user_level_progress(ProfileManager.get_current_profile_id())
 	var finished_level_index = Levels.get_level_index(current_level_id)
 	var star_level_reached = Levels.get_star_level_reached(current_level_id, level_timer)
 	
-	if star_level_reached != null and current_user_level <= finished_level_index:
+	if star_level_reached != null and current_user_level <= finished_level_index and not player.is_dead:
 		ProfileManager.save_user_level_progress(ProfileManager.get_current_profile_id(), current_user_level + 1)
 	
 	var finished_screen = FINISHED_SCREEN.instantiate()
-	finished_screen.init_state(current_level_id, level_timer, current_user_level, finished_level_index, star_level_reached)
+	finished_screen.init_state(current_level_id, level_timer, current_user_level, finished_level_index, star_level_reached, player.is_dead)
 	%ScreenContainer.add_child(finished_screen)
 
 func _on_end_zone_hit(zone, by):
 	if "is_player" in by and by.is_player and not finished:
-		_finish_level()
+		_finish_level(by)

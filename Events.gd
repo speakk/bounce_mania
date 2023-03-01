@@ -16,6 +16,7 @@ signal player_bounce_started
 signal player_bounce_ended
 signal player_dash_charged
 signal player_dash_charge_time_changed(value)
+signal player_died
 
 signal new_game_pressed
 signal try_again_pressed

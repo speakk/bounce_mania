@@ -61,4 +61,12 @@ polygon = PackedVector2Array(192, -160, 192, 1488, 208, 1504, 304, 1504, 320, 14
 [node name="PlayerMarker" parent="." index="7" instance=ExtResource("3_6mlnv")]
 position = Vector2(352, 96)
 
+[node name="Obstacle5" parent="." index="8" instance=ExtResource("4_aaxv0")]
+position = Vector2(128, 392)
+is_deadly = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle5" index="2"]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(0, -72, 64, -40, 32, -24, 64, -8, 32, 8, 64, 24, 32, 40, 64, 56, 0, 96)
+
 [editable path="EndZone"]
