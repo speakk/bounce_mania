@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqfck6t355lrt"]
+[gd_scene load_steps=14 format=3 uid="uid://dqfck6t355lrt"]
 
 [ext_resource type="Script" path="res://audio_player.gd" id="1_je5oi"]
 [ext_resource type="AudioStream" uid="uid://cop2ipputs5li" path="res://assets/sounds/main_menu.ogg" id="2_2phva"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bex0xn4s1yav1" path="res://assets/sounds/token_collect.ogg" id="10_8w1xs"]
 [ext_resource type="AudioStream" uid="uid://ce0fmxsxcycby" path="res://assets/sounds/grind.ogg" id="11_iglmd"]
 [ext_resource type="AudioStream" uid="uid://8i00t5falscl" path="res://assets/sounds/explosion.ogg" id="12_iofhd"]
+[ext_resource type="AudioStream" uid="uid://c76fff6apyinr" path="res://assets/sounds/click.ogg" id="13_qqqsh"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_je5oi")
@@ -73,3 +74,9 @@ stream = ExtResource("12_iofhd")
 volume_db = -4.521
 max_polyphony = 2
 bus = &"SoundFX"
+
+[node name="ButtonClickStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_qqqsh")
+volume_db = -4.521
+max_polyphony = 2
+bus = &"UI"

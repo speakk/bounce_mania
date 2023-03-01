@@ -13,6 +13,9 @@ func _ready():
 	Events.level_finished.connect(_on_level_finished)
 	Events.token_collected.connect(_on_token_collected)
 	Events.player_died.connect(_on_player_died)
+	# when _ready is called, there might already be nodes in the tree, so connect all existing buttons
+	connect_buttons(get_tree().root)
+	get_tree().node_added.connect(_on_SceneTree_node_added)
 	#Events.in_game_exited.connect(_on_in_game_exited)
 
 const volume_ceiling = -4
@@ -78,3 +81,20 @@ func _on_level_finished(level_id, time):
 		$LevelFinishedStarsStream.play()
 	else:
 		$LevelFinishedNoStarsStream.play()
+
+func _on_SceneTree_node_added(node):
+	if node is Button:
+		connect_to_button(node)
+
+func _on_Button_pressed():
+	$ButtonClickStream.play()
+
+# recursively connect all buttons
+func connect_buttons(root):
+	for child in root.get_children():
+		if child is BaseButton:
+			connect_to_button(child)
+		connect_buttons(child)
+
+func connect_to_button(button):
+	button.pressed.connect(_on_Button_pressed)
