@@ -41,6 +41,7 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_tknrk")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
+visible = false
 material = SubResource("CanvasItemMaterial_bkpkf")
 layout_mode = 0
 offset_right = 2657.0

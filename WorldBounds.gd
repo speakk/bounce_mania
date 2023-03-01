@@ -21,9 +21,13 @@ func _ready():
 	_add_body(top, $ColorRect.position)
 	_add_body(bottom, Vector2($ColorRect.position.x, $ColorRect.position.y + $ColorRect.size.y))
 	
-#	$Background.position = $ColorRect.position + Vector2($ColorRect.size.x / 2, $ColorRect.size.y / 2)
-#	$Background.texture.width = $ColorRect.size.x
-#	$Background.texture.height = $ColorRect.size.y
+	$ColorRect.z_index = -3
+	
+	%Background.position = $ColorRect.position + Vector2($ColorRect.size.x / 2, $ColorRect.size.y / 2)
+	#%Background.position = $ColorRect.position
+	%Background.scale = $ColorRect.scale
+	%Background.texture.width = $ColorRect.size.x
+	%Background.texture.height = $ColorRect.size.y
 #
 #	print("SIZE", $Background.texture.width, " vs ", $Background.texture.height)
 #
@@ -32,8 +36,15 @@ func _ready():
 	Events.palette_changed.connect(_on_palette_changed)
 	_on_palette_changed(Colors.get_current_palette(), null, null)
 
+func _process(delta):
+	#%Background.material.set_shader_parameter("offset", get_viewport().get_camera_2d().get_screen_center_position() / get_viewport().get_visible_rect().size)
+	pass
+
 func _on_palette_changed(new_palette, _a, _b):
-	$ColorRect.color = new_palette.background_b
+	#%Background.material.set_shader_parameter("mod_color", new_palette.accent_b)
+	#%Background.material.set_shader_parameter("mod_color2", new_palette.accent_b)
+
+	#$ColorRect.color = new_palette.background_b
 	$ColorRect.color = Color.TRANSPARENT
 	#$Background.modulate = new_palette.background_a
 

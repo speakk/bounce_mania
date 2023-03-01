@@ -63,11 +63,6 @@ func _on_resume():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	#%Background.texture.noise.offset.z += delta * 10
-	%Background.material.set_shader_parameter("offset", get_viewport().get_camera_2d().get_screen_center_position() / get_viewport().get_visible_rect().size)
-	%Background.material.set_shader_parameter("time", Time.get_ticks_msec())
-	
 	if not paused and player_has_moved:
 		level_timer += delta
 		Events.level_timer_changed.emit(level_timer)

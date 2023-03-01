@@ -1,55 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://ouuxwb5ym4qk"]
+[gd_scene load_steps=4 format=3 uid="uid://ouuxwb5ym4qk"]
 
 [ext_resource type="Script" path="res://in_game.gd" id="1_cjgxw"]
 [ext_resource type="PackedScene" uid="uid://swj7u720qpi7" path="res://main_ui.tscn" id="1_yhcwg"]
 [ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="4_7clbw"]
-[ext_resource type="Shader" path="res://world_bounds.gdshader" id="4_kov5m"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vlsni"]
-noise_type = 0
-seed = 2
-frequency = 0.002
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lm3cn"]
-seamless = true
-noise = SubResource("FastNoiseLite_vlsni")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmhai"]
-shader = ExtResource("4_kov5m")
-shader_parameter/mod_color = null
-shader_parameter/offset = null
-shader_parameter/time = null
-shader_parameter/texture2 = SubResource("NoiseTexture2D_lm3cn")
-
-[sub_resource type="Gradient" id="Gradient_qqw2k"]
-interpolation_mode = 2
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7hgij"]
-noise_type = 3
-seed = 1
-fractal_octaves = 1
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3rwtb"]
-width = 1024
-height = 768
-seamless = true
-color_ramp = SubResource("Gradient_qqw2k")
-noise = SubResource("FastNoiseLite_7hgij")
 
 [node name="InGame" type="Node2D"]
 script = ExtResource("1_cjgxw")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="Background" type="Sprite2D" parent="CanvasLayer2"]
-unique_name_in_owner = true
-texture_repeat = 2
-material = SubResource("ShaderMaterial_pmhai")
-position = Vector2(640, 360)
-scale = Vector2(1.25, 0.9375)
-texture = SubResource("NoiseTexture2D_3rwtb")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -102,15 +61,12 @@ size_flags_vertical = 4
 mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -998.0
 offset_top = -645.0
 offset_right = 2554.0
 offset_bottom = 1765.0
 color = Color(0.235294, 0.192157, 0.317647, 1)
 
-[node name="CanvasLayer3" type="CanvasLayer" parent="."]
-layer = 2
-follow_viewport_enabled = true
-
-[node name="LevelContainer" type="Node2D" parent="CanvasLayer3"]
+[node name="LevelContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
