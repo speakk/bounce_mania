@@ -9,9 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bww3vs43l5lm3" path="res://fuse.tscn" id="7_1fjlq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vsbfn"]
-friction = 0.03
+friction = 0.01
 rough = true
-bounce = 0.5
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yfkuu"]
 blend_mode = 3

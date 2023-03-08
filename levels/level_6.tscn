@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d328ns4ap8er1"]
+[gd_scene load_steps=12 format=3 uid="uid://d328ns4ap8er1"]
 
 [ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_uc3ev"]
 [ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://world_bounds.tscn" id="2_5aiwn"]
@@ -6,11 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="4_naiuf"]
 [ext_resource type="PackedScene" uid="uid://bschtylma2s1c" path="res://end_zone.tscn" id="5_ejrdu"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0ujg2"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
+
 [sub_resource type="Curve2D" id="Curve2D_fgbxr"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 192, -32, -15.1191, -153.71, 15.1191, 153.71, 512, 160, -166.31, 0, 166.31, 0, 960, 96, -115.913, -118.433, 115.913, 118.433, 1248, 320, -153.71, -2.51984, 153.71, 2.51984, 1440, 256, -60.4762, -108.353, 60.4762, 108.353, 1568, 576, 22.6786, -355.298, -22.6786, 355.298, 1728, 640, 0, 0, 0, 0, 1953, 448, 0, 0, 0, 0, 1953, -192, 0, 0, 0, 0, -192, -192, 0, 0, 0, 0, -192, -64, 0, 0, 0, 0, 192, -32)
 }
 point_count = 12
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mny6x"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
 
 [sub_resource type="Curve2D" id="Curve2D_dniux"]
 _data = {
@@ -18,9 +28,14 @@ _data = {
 }
 point_count = 10
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_81bdh"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
+
 [sub_resource type="Curve2D" id="Curve2D_io64x"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1697, 736, 173.624, -107.029, -173.624, 107.029, 1472, 928, 475.683, 176.003, -475.683, -176.003, 608, 832, 0, 0, 0, 0, -192, 1056, 0, 0, 0, 0, 1697, 1056, 0, 0, 0, 0, 1697, 736)
+"points": PackedVector2Array(0, 0, 0, 0, 1697, 704, 168.854, -58.2019, -168.854, 58.2019, 1472, 928, 475.683, 176.003, -475.683, -176.003, 608, 832, 0, 0, 0, 0, -192, 1056, 0, 0, 0, 0, 1697, 1056, 0, 0, 0, 0, 1697, 704)
 }
 point_count = 6
 
@@ -35,20 +50,25 @@ offset_bottom = 1440.0
 color = Color(0.392157, 0.431373, 0.513726, 1)
 
 [node name="PlayerMarker" parent="." index="2" instance=ExtResource("3_7pk4w")]
-position = Vector2(-256, -192)
+position = Vector2(-256, -160)
 
 [node name="Obstacle" parent="." index="3" instance=ExtResource("4_naiuf")]
 position = Vector2(-256, -192)
+physics_material_override = SubResource("PhysicsMaterial_0ujg2")
 
 [node name="Path2D" type="Path2D" parent="Obstacle" index="0"]
 curve = SubResource("Curve2D_fgbxr")
 
 [node name="Obstacle2" parent="." index="4" instance=ExtResource("4_naiuf")]
+physics_material_override = SubResource("PhysicsMaterial_mny6x")
+sticky = true
 
 [node name="Path2D" type="Path2D" parent="Obstacle2" index="0"]
 curve = SubResource("Curve2D_dniux")
 
 [node name="Obstacle3" parent="." index="5" instance=ExtResource("4_naiuf")]
+physics_material_override = SubResource("PhysicsMaterial_81bdh")
+sticky = true
 
 [node name="Path2D" type="Path2D" parent="Obstacle3" index="0"]
 curve = SubResource("Curve2D_io64x")

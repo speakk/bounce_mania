@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://ce1q65n78noim"]
+
+[ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_1dwqc"]
+[ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://world_bounds.tscn" id="2_c2kk2"]
+[ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://player_marker.tscn" id="3_yii5r"]
+[ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="4_iyuok"]
+[ext_resource type="PackedScene" uid="uid://bschtylma2s1c" path="res://end_zone.tscn" id="5_ly7d1"]
+[ext_resource type="PackedScene" uid="uid://dtgcfpgnlgpp2" path="res://token.tscn" id="6_uewv0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ne6sb"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_517tx"]
+size = Vector2(1098, 234)
+
+[node name="Level11" instance=ExtResource("1_1dwqc")]
+
+[node name="WorldBounds" parent="." index="1" instance=ExtResource("2_c2kk2")]
+position = Vector2(288, 0)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="WorldBounds" index="0"]
+offset_left = 32.0
+offset_top = 128.0
+offset_right = 2753.0
+offset_bottom = 2113.0
+color = Color(0.756863, 0.890196, 1, 1)
+
+[node name="PlayerMarker" parent="." index="2" instance=ExtResource("3_yii5r")]
+position = Vector2(335, 224)
+
+[node name="EndZone" parent="." index="3" instance=ExtResource("5_ly7d1")]
+position = Vector2(3009, 303)
+
+[node name="EndZoneRect" parent="EndZone" index="0"]
+offset_left = -64.0
+offset_top = -175.0
+offset_right = 32.0
+offset_bottom = 209.0
+
+[node name="Token" parent="." index="4" instance=ExtResource("6_uewv0")]
+position = Vector2(512, 320)
+metadata/_edit_lock_ = true
+
+[node name="Obstacle" parent="." index="5" instance=ExtResource("4_iyuok")]
+position = Vector2(512, 480)
+physics_material_override = SubResource("PhysicsMaterial_ne6sb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle" index="2"]
+position = Vector2(352, 64)
+shape = SubResource("RectangleShape2D_517tx")
+
+[editable path="EndZone"]

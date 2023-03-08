@@ -77,6 +77,6 @@ bus = &"SoundFX"
 
 [node name="ButtonClickStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_qqqsh")
-volume_db = -4.521
+volume_db = -13.714
 max_polyphony = 2
 bus = &"UI"

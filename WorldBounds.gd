@@ -1,7 +1,5 @@
 extends Node2D
 
-var backgrounds = []
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var left = WorldBoundaryShape2D.new()
@@ -23,6 +21,7 @@ func _ready():
 	
 	$ColorRect.z_index = -3
 	
+	$Background.show()
 	%Background.position = $ColorRect.position + Vector2($ColorRect.size.x / 2, $ColorRect.size.y / 2)
 	#%Background.position = $ColorRect.position
 	%Background.scale = $ColorRect.scale
@@ -52,6 +51,8 @@ func _add_body(boundary_shape, body_position):
 	var physics = StaticBody2D.new()
 	var shape = CollisionShape2D.new()
 	physics.global_position = body_position
+	physics.physics_material_override = PhysicsMaterial.new()
+	physics.physics_material_override.bounce = 0.5
 	shape.shape = boundary_shape
 	physics.add_child(shape)
 	add_child(physics)

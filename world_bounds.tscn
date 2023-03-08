@@ -48,6 +48,7 @@ script = ExtResource("1_stqbh")
 
 [node name="Background" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 texture_repeat = 2
 material = SubResource("ShaderMaterial_4k0go")
 scale = Vector2(1.25, 0.9375)

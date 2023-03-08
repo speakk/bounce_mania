@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://obstacle.gd" id="1_gewf1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wnww4"]
+resource_local_to_scene = true
 friction = 0.2
 bounce = 0.1
 

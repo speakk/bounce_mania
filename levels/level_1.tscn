@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://da132d3y3ctle"]
+[gd_scene load_steps=8 format=3 uid="uid://da132d3y3ctle"]
 
 [ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_d0dop"]
 [ext_resource type="PackedScene" uid="uid://bschtylma2s1c" path="res://end_zone.tscn" id="2_0rfpp"]
 [ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://world_bounds.tscn" id="2_hal4f"]
 [ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://player_marker.tscn" id="3_cnmb3"]
 [ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="4_g2syi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4uxe1"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_luqx6"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
 
 [node name="Level1" instance=ExtResource("1_d0dop")]
 
@@ -34,12 +44,14 @@ position = Vector2(399, 96)
 [node name="Obstacle2" parent="." index="4" instance=ExtResource("4_g2syi")]
 position = Vector2(192, 128)
 collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_4uxe1")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle2" index="0"]
 polygon = PackedVector2Array(96, -128, 160, -64, 160, 256, 224, 320, 736, 320, 800, 256, 800, 0, 736, -64, 160, -64, 96, -128, 864, -128, 864, 384, 96, 384)
 
 [node name="Obstacle3" parent="." index="5" instance=ExtResource("4_g2syi")]
 position = Vector2(192, 128)
+physics_material_override = SubResource("PhysicsMaterial_luqx6")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle3" index="0"]
 polygon = PackedVector2Array(256, -64, 256, 160, 352, 224, 640, 224, 704, 192, 704, 64, 640, 0, 352, 0, 352, -64)

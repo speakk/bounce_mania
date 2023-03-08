@@ -69,14 +69,6 @@ func _level_max_time_reached():
 func _on_level_loaded(_a):
 	bounce_timer = dash_timeout
 
-#func _process(_delta):
-#	if Input.is_action_pressed("bounce"):
-#		physics_material_override.bounce = 0
-#		physics_material_override.friction = 0
-#	else:
-#		physics_material_override.bounce = 0.5
-#		physics_material_override.friction = 0.03
-
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed("right"):
@@ -128,6 +120,14 @@ func show_direction_indicator():
 	
 
 func _physics_process(delta):
+#	if Input.is_action_pressed("disable_bounce"):
+#		physics_material_override.bounce = 0
+#		physics_material_override.friction = 0
+#	else:
+#		physics_material_override.bounce = 0.5
+#		physics_material_override.friction = 0.01
+
+	
 	get_input()
 	direct_eyes()
 	show_direction_indicator()
@@ -192,14 +192,14 @@ func handle_colision_particles(collision_position, speed_factor):
 	collision_particles.queue_free()
 
 func _on_area_2d_body_entered(body):
-	$Circle._current_color = $Circle.color.lightened(0.6)
+	$Circle._current_color = Color.WHITE;
 	var shadertween = get_tree().create_tween()
 	shadertween.tween_property($Circle, "_current_color", $Circle.color, 0.2)
 	
 	if body.is_in_group("bricks"):
 		Events.brick_hit.emit(body, self, self.current_damage)
 	
-	$Circle.scale = Vector2(1.4, 1.4)
+	$Circle.scale = Vector2(1.5, 1.5)
 	var tween = get_tree().create_tween()
 	tween.tween_property(get_node("Circle"), "scale", Vector2(1, 1), 0.3)
 

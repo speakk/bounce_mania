@@ -45,7 +45,8 @@ const levels = [
 		id = "level_6",
 		path = "res://levels/level_6.tscn",
 		stars = [9, 6.5, 5.1],
-		title = "The Cave"
+		title = "The Cave",
+		description = "The darker walls don't bounce!"
 	},
 	{
 		name = "Level 7",
@@ -65,8 +66,22 @@ const levels = [
 		name = "Level 9",
 		id = "level_9",
 		path = "res://levels/level_9.tscn",
-		stars = [17, 10, 9.5],
-		title = "Islands"
+		stars = [11.5, 9, 8.15],
+		title = "Up and Down"
+	},
+	{
+		name = "Level 10",
+		id = "level_10",
+		path = "res://levels/level_10.tscn",
+		stars = [12, 9.5, 8.6],
+		title = "Up and Away"
+	},
+	{
+		name = "Level 11",
+		id = "level_11",
+		path = "res://levels/level_11.tscn",
+		stars = [10, 8.5, 6.8],
+		title = "Circles"
 	},
 ]
 
