@@ -6,17 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://player_marker.tscn" id="4_sijlw"]
 [ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="5_ct052"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l18a1"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_47kqx"]
 resource_local_to_scene = true
 friction = 0.2
 bounce = 0.1
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cj31r"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0y25i"]
 resource_local_to_scene = true
 friction = 0.2
 bounce = 0.1
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ve8av"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p83qo"]
 resource_local_to_scene = true
 friction = 0.2
 bounce = 0.1
@@ -36,7 +36,7 @@ position = Vector2(416, 192)
 
 [node name="Obstacle2" parent="." index="3" instance=ExtResource("5_ct052")]
 position = Vector2(192, 128)
-physics_material_override = SubResource("PhysicsMaterial_l18a1")
+physics_material_override = SubResource("PhysicsMaterial_47kqx")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle2" index="0"]
 position = Vector2(32, 32)
@@ -44,7 +44,7 @@ polygon = PackedVector2Array(64, 256, 160, 352, 64, 352)
 
 [node name="Obstacle" parent="." index="4" instance=ExtResource("5_ct052")]
 position = Vector2(192, 128)
-physics_material_override = SubResource("PhysicsMaterial_cj31r")
+physics_material_override = SubResource("PhysicsMaterial_0y25i")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle" index="0"]
 position = Vector2(32, 32)
@@ -52,7 +52,7 @@ polygon = PackedVector2Array(288, -160, 288, 96, 192, 192, 224, 256, 384, 256, 4
 
 [node name="Obstacle3" parent="." index="5" instance=ExtResource("5_ct052")]
 position = Vector2(192, 128)
-physics_material_override = SubResource("PhysicsMaterial_ve8av")
+physics_material_override = SubResource("PhysicsMaterial_p83qo")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle3" index="0"]
 position = Vector2(32, 32)
