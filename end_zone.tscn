@@ -40,6 +40,7 @@ scale_curve = SubResource("CurveTexture_u0fd7")
 script = ExtResource("1_wfe8x")
 
 [node name="EndZoneRect" type="ColorRect" parent="."]
+light_mask = 5
 offset_right = 288.0
 offset_bottom = 224.0
 color = Color(0.317647, 1, 0.341176, 0.415686)
