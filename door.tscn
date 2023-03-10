@@ -11,15 +11,18 @@ bounce = 0.1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sumoc"]
 
 [sub_resource type="Gradient" id="Gradient_njgyf"]
-colors = PackedColorArray(0.141176, 0.141176, 0.141176, 0.635294, 0.337255, 0.341176, 0.262745, 0)
+colors = PackedColorArray(0.24399, 0.458325, 0.535156, 1, 1, 0.92549, 0.94902, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ba6uc"]
-noise_type = 5
-frequency = 0.032
+noise_type = 0
+frequency = 0.007
 fractal_type = 3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rogg1"]
-in_3d_space = true
+width = 128
+height = 128
+seamless = true
+seamless_blend_skirt = 0.552
 color_ramp = SubResource("Gradient_njgyf")
 noise = SubResource("FastNoiseLite_ba6uc")
 
@@ -34,7 +37,6 @@ door_id = "end_door"
 polygon = PackedVector2Array(0, 0, 0, -256, 64, -256, 64, 0)
 
 [node name="TextureSprite" type="Sprite2D" parent="." index="1"]
-visible = false
 material = SubResource("CanvasItemMaterial_sumoc")
 position = Vector2(32, -128)
 scale = Vector2(0.5, 0.5)

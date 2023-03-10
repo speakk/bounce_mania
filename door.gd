@@ -15,10 +15,12 @@ func _ready():
 	
 	#$TextureSprite.move_child()
 	var texture_sprite = $TextureSprite
-	texture_sprite.visible = true
-	remove_child($TextureSprite)
+	#texture_sprite.visible = true
+	#remove_child($TextureSprite)
 	get_node("Polygon2D").add_child(texture_sprite)
-	get_node("Polygon2D").clip_children = CLIP_CHILDREN_AND_DRAW
+	get_node("Polygon2D").texture = texture_sprite.texture
+	get_node("Polygon2D").texture_repeat = TEXTURE_REPEAT_ENABLED
+	#get_node("Polygon2D").clip_children = CLIP_CHILDREN_AND_DRAW
 
 
 func toggle():

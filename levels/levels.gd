@@ -80,7 +80,7 @@ const levels = [
 		name = "Level 11",
 		id = "level_11",
 		path = "res://levels/level_11.tscn",
-		stars = [15, 12.5, 10],
+		stars = [15, 12.5, 11.5],
 		title = "It Gets Tough"
 	},
 ]

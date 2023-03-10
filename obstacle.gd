@@ -128,7 +128,7 @@ func _ready():
 		
 	if is_deadly:
 		add_to_group("traps")
-		$DeadlyLight.show()
+		#$DeadlyLight.show()
 		
 
 func _level_timer_changed(level_time):
