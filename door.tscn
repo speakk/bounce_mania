@@ -1,7 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwfjwubu5bhkr"]
+[gd_scene load_steps=8 format=3 uid="uid://dwfjwubu5bhkr"]
 
 [ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="1_vgvbf"]
 [ext_resource type="Script" path="res://door.gd" id="2_6c2dv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_12b2b"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sumoc"]
 
@@ -19,16 +24,17 @@ color_ramp = SubResource("Gradient_njgyf")
 noise = SubResource("FastNoiseLite_ba6uc")
 
 [node name="Door" instance=ExtResource("1_vgvbf")]
+physics_material_override = SubResource("PhysicsMaterial_12b2b")
 script = ExtResource("2_6c2dv")
 opening_speed = 1.0
 is_open = false
 door_id = "end_door"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
-visible = false
 polygon = PackedVector2Array(0, 0, 0, -256, 64, -256, 64, 0)
 
 [node name="TextureSprite" type="Sprite2D" parent="." index="1"]
+visible = false
 material = SubResource("CanvasItemMaterial_sumoc")
 position = Vector2(32, -128)
 scale = Vector2(0.5, 0.5)

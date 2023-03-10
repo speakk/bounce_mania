@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+class_name Obstacle
+
 @export var rotate_in_place := false
 @export var rotation_speed := 0.0
 @export var movement_vector := Vector2(0, 0)
@@ -10,6 +12,7 @@ extends StaticBody2D
 var original_position
 
 const CIRCLE = preload("res://circle.tscn")
+const POLYGON_SHADER = preload("res://obstacle.gdshader")
 
 func create_light_occluder(polygon, new_position, new_rotation, new_scale) -> LightOccluder2D:
 	var lightOccluder = LightOccluder2D.new()
@@ -31,6 +34,9 @@ func create_draw_polygon(polygon, new_position, new_rotation, new_scale):
 	drawPolygon.rotation = new_rotation
 	drawPolygon.scale = new_scale
 	drawPolygon.light_mask = 2
+	#drawPolygon.material = ShaderMaterial.new()
+	#drawPolygon.material.shader = POLYGON_SHADER
+	#drawPolygon.material.set_shader_parameter("blur_amount", 5)
 	add_child(drawPolygon)
 	
 	var borderLine = Line2D.new()
