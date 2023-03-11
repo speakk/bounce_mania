@@ -116,8 +116,28 @@ func show_direction_indicator():
 	var direction = (get_global_mouse_position() - position).normalized()
 	$DirectionIndicator.set_direction(direction)
 
-#func _physics_process(delta):
-	
+var blink_speed = 0.2
+func blink():
+	$Circle/LeftEyeSprite.scale.y = 0
+	$Circle/RightEyeSprite.scale.y = 0
+	$Circle/Circle.scale.y = 0
+	$Circle/Circle2.scale.y = 0
+	get_tree().create_tween().tween_property($Circle/LeftEyeSprite, "scale", Vector2(1, 1), blink_speed)
+	get_tree().create_tween().tween_property($Circle/RightEyeSprite, "scale", Vector2(1, 1), blink_speed)
+	get_tree().create_tween().tween_property($Circle/Circle, "scale", Vector2(1, 1), blink_speed)
+	get_tree().create_tween().tween_property($Circle/Circle2, "scale", Vector2(1, 1), blink_speed)
+
+var last_blink = 0
+var blink_min_interval = 1000
+var blink_max_interval = 4000
+var blink_next = blink_min_interval
+func handle_blinking():
+	if blink_next < Time.get_ticks_msec():
+		blink()
+		blink_next = Time.get_ticks_msec() + randf_range(blink_min_interval, blink_max_interval)
+
+func _process(_delta):
+	handle_blinking()
 
 func _physics_process(delta):
 #	if Input.is_action_pressed("disable_bounce"):

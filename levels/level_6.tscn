@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://ldqkjrgk6oxu"]
 
 [ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_uc3ev"]
-[ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://level_features/world_bounds.tscn" id="2_5aiwn"]
+[ext_resource type="PackedScene" path="res://level_features/world_bounds.tscn" id="2_5aiwn"]
 [ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://level_features/player_marker.tscn" id="3_7pk4w"]
 [ext_resource type="PackedScene" path="res://level_features/obstacle.tscn" id="4_naiuf"]
 [ext_resource type="PackedScene" uid="uid://u0014comci1d" path="res://level_features/end_zone.tscn" id="5_ejrdu"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_02dy0"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y4xvh"]
 resource_local_to_scene = true
 friction = 0.2
 bounce = 0.1
@@ -17,7 +17,7 @@ _data = {
 }
 point_count = 12
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fhr17"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u2st1"]
 resource_local_to_scene = true
 friction = 0.2
 bounce = 0.1
@@ -28,7 +28,7 @@ _data = {
 }
 point_count = 10
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3vwev"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1kga"]
 resource_local_to_scene = true
 friction = 0.2
 bounce = 0.1
@@ -54,20 +54,20 @@ position = Vector2(-256, -160)
 
 [node name="Obstacle" parent="." index="3" instance=ExtResource("4_naiuf")]
 position = Vector2(-256, -192)
-physics_material_override = SubResource("PhysicsMaterial_02dy0")
+physics_material_override = SubResource("PhysicsMaterial_y4xvh")
 
 [node name="Path2D" type="Path2D" parent="Obstacle" index="0"]
 curve = SubResource("Curve2D_fgbxr")
 
 [node name="Obstacle2" parent="." index="4" instance=ExtResource("4_naiuf")]
-physics_material_override = SubResource("PhysicsMaterial_fhr17")
+physics_material_override = SubResource("PhysicsMaterial_u2st1")
 sticky = true
 
 [node name="Path2D" type="Path2D" parent="Obstacle2" index="0"]
 curve = SubResource("Curve2D_dniux")
 
 [node name="Obstacle3" parent="." index="5" instance=ExtResource("4_naiuf")]
-physics_material_override = SubResource("PhysicsMaterial_3vwev")
+physics_material_override = SubResource("PhysicsMaterial_w1kga")
 sticky = true
 
 [node name="Path2D" type="Path2D" parent="Obstacle3" index="0"]
@@ -79,5 +79,16 @@ position = Vector2(-448, 832)
 [node name="EndZoneRect" parent="EndZone" index="0"]
 offset_top = 64.0
 offset_right = 224.0
+
+[node name="Control" parent="EndZone" index="1"]
+offset_top = 64.0
+offset_right = 224.0
+
+[node name="PointLight2D" parent="EndZone" index="2"]
+position = Vector2(112, 144)
+scale = Vector2(1.744, 1.36)
+
+[node name="GPUParticles2D" parent="EndZone" index="3"]
+position = Vector2(112, 144)
 
 [editable path="EndZone"]
