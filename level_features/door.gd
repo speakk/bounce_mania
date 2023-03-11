@@ -1,4 +1,4 @@
-extends "res://obstacle.gd"
+extends "res://level_features/obstacle.gd"
 
 @export var opening_speed := 1.0
 @export var is_open := false

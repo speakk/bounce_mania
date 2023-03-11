@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://ce8dp4irhmg6e"]
 
 [ext_resource type="PackedScene" path="res://ui/star_section_container.tscn" id="1_kxwg6"]
 

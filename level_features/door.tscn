@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://cmn36nqdc5qhq"]
 
-[ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://level_features/obstacle.tscn" id="1_cepfx"]
+[ext_resource type="PackedScene" path="res://level_features/obstacle.tscn" id="1_cepfx"]
 [ext_resource type="Script" path="res://level_features/door.gd" id="2_w5sko"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_12b2b"]

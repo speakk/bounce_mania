@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://bk04nef1j1jyr"]
 
 [ext_resource type="PackedScene" uid="uid://djlr4c64qtm5x" path="res://circle.tscn" id="1_7rrkg"]
 [ext_resource type="Script" path="res://level_features/token.gd" id="1_61sx7"]

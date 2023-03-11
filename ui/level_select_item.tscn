@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bhwqfmk18sbkf"]
 
-[ext_resource type="PackedScene" uid="uid://6rq37jv77dnm" path="res://ui/star_section_container_small.tscn" id="1_8ecbe"]
+[ext_resource type="PackedScene" uid="uid://ce8dp4irhmg6e" path="res://ui/star_section_container_small.tscn" id="1_8ecbe"]
 [ext_resource type="Script" path="res://ui/level_select_item.gd" id="1_fdns2"]
 
 [node name="LevelSelectItem" type="MarginContainer"]

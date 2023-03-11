@@ -1,6 +1,6 @@
 extends Node2D
 
-var PARTICLES = preload("res://token_collect_particles.tscn")
+var PARTICLES = preload("res://level_features/token_collect_particles.tscn")
 
 var offsetY = 0
 

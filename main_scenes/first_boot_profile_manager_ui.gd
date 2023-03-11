@@ -1,4 +1,4 @@
-extends "res://profile_manager_ui.gd"
+extends "res://main_scenes/profile_manager_ui.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
