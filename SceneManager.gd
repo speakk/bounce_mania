@@ -1,9 +1,9 @@
 extends Node
 
-const IN_GAME_PATH = "res://in_game.tscn"
-const MAIN_MENU = "res://main_menu.tscn"
-const LEVEL_SELECTOR_PATH = "res://level_selector.tscn"
-const PROFILE_MANAGER_PATH = "res://profile_manager_ui.tscn"
+const IN_GAME_PATH = "res://main_scenes/in_game.tscn"
+const MAIN_MENU = "res://main_scenes/main_menu.tscn"
+const LEVEL_SELECTOR_PATH = "res://main_scenes/level_selector.tscn"
+const PROFILE_MANAGER_PATH = "res://main_scenes/profile_manager_ui.tscn"
 
 func _ready():
 	Events.new_game_pressed.connect(_new_game_pressed)

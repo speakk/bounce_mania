@@ -1,0 +1,206 @@
+[gd_scene load_steps=23 format=3]
+
+[ext_resource type="Texture2D" uid="uid://c1gsv1x1xdvhm" path="res://theball.png" id="1_pxrxn"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_q3836"]
+[ext_resource type="Shader" path="res://player/player.gdshader" id="2_v6el6"]
+[ext_resource type="Texture2D" uid="uid://bkpn6vqmcural" path="res://eyeball.png" id="3_nvob7"]
+[ext_resource type="PackedScene" path="res://player/direction_indicator.tscn" id="5_rns7b"]
+[ext_resource type="PackedScene" uid="uid://djlr4c64qtm5x" path="res://circle.tscn" id="6_ulotl"]
+[ext_resource type="PackedScene" path="res://player/fuse.tscn" id="7_1fjlq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vsbfn"]
+friction = 0.01
+rough = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yfkuu"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_e71ne"]
+colors = PackedColorArray(0.378906, 0.378906, 0.378906, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hsik0"]
+frequency = 0.604
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5u2t8"]
+width = 32
+height = 32
+color_ramp = SubResource("Gradient_e71ne")
+noise = SubResource("FastNoiseLite_hsik0")
+
+[sub_resource type="Curve" id="Curve_re2a7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7due3"]
+curve = SubResource("Curve_re2a7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j4he8"]
+emission_shape = 1
+emission_sphere_radius = 8.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_curve = SubResource("CurveTexture_7due3")
+color = Color(1, 0.941176, 0.52549, 1)
+turbulence_noise_strength = 17.1
+turbulence_noise_scale = 3.75
+turbulence_noise_speed = Vector3(0.5, 3, 0.5)
+turbulence_noise_speed_random = 6.84
+turbulence_influence_max = 0.77
+turbulence_initial_displacement_min = -3.7
+turbulence_initial_displacement_max = 8.5
+
+[sub_resource type="Gradient" id="Gradient_jonbj"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.210169, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.278431, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eyedu"]
+gradient = SubResource("Gradient_jonbj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dcf4"]
+shader = ExtResource("2_v6el6")
+shader_parameter/white_progress = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17rwd"]
+radius = 16.0312
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_382kn"]
+radius = 17.1172
+
+[sub_resource type="Gradient" id="Gradient_yn8l0"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tw2jf"]
+gradient = SubResource("Gradient_yn8l0")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Player" type="RigidBody2D" groups=["players"]]
+collision_layer = 4
+collision_mask = 19
+mass = 0.4
+physics_material_override = SubResource("PhysicsMaterial_vsbfn")
+continuous_cd = 2
+max_contacts_reported = 2
+contact_monitor = true
+freeze = true
+freeze_mode = 1
+linear_damp = 0.5
+script = ExtResource("1_q3836")
+
+[node name="Circle" parent="." instance=ExtResource("6_ulotl")]
+clip_children = 2
+light_mask = 2
+size = 17.0
+color = Color(0.4, 0.2, 0.6, 1)
+
+[node name="Circle" parent="Circle" instance=ExtResource("6_ulotl")]
+position = Vector2(-6, 5)
+size = 6.0
+color = Color(0.4, 0.2, 0.6, 1)
+
+[node name="Circle2" parent="Circle" instance=ExtResource("6_ulotl")]
+position = Vector2(7, 5)
+size = 6.0
+color = Color(0.4, 0.2, 0.6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Circle"]
+material = SubResource("CanvasItemMaterial_yfkuu")
+position = Vector2(-1.78814e-07, 0.499999)
+scale = Vector2(1.125, 1.09375)
+texture = SubResource("NoiseTexture2D_5u2t8")
+
+[node name="LeftEyeSprite" type="Sprite2D" parent="Circle"]
+texture = ExtResource("3_nvob7")
+
+[node name="RightEyeSprite" type="Sprite2D" parent="Circle"]
+texture = ExtResource("3_nvob7")
+
+[node name="DeadEyes" type="Node2D" parent="Circle"]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="Circle/DeadEyes"]
+position = Vector2(1, 0)
+points = PackedVector2Array(-10, 2, -3, 9)
+width = 2.0
+default_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[node name="Line2D2" type="Line2D" parent="Circle/DeadEyes"]
+position = Vector2(-2, 13)
+rotation = 1.77471
+points = PackedVector2Array(-10, 2, -3, 9)
+width = 2.0
+default_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[node name="Line2D3" type="Line2D" parent="Circle/DeadEyes"]
+position = Vector2(10, -3)
+rotation = -0.553317
+points = PackedVector2Array(-10, 2, -3, 9)
+width = 2.0
+default_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[node name="Line2D4" type="Line2D" parent="Circle/DeadEyes"]
+position = Vector2(14, 9)
+rotation = 1.22139
+points = PackedVector2Array(-10, 2, -3, 9)
+width = 2.0
+default_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[node name="TrailParticles" type="GPUParticles2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+emitting = false
+amount = 220
+process_material = SubResource("ParticleProcessMaterial_j4he8")
+texture = SubResource("GradientTexture2D_eyedu")
+lifetime = 30.0
+speed_scale = 12.0
+fixed_fps = 180
+trail_lifetime = 4.15
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_3dcf4")
+texture = ExtResource("1_pxrxn")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_17rwd")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_382kn")
+
+[node name="DirectionIndicator" parent="." instance=ExtResource("5_rns7b")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2.63281, 2.63281)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.8)
+texture = SubResource("GradientTexture2D_tw2jf")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-9, -14, -11, -16)
+width = 5.0
+default_color = Color(0.309804, 0.227451, 0.176471, 1)
+
+[node name="Fuse" parent="." instance=ExtResource("7_1fjlq")]
+position = Vector2(-11, -16)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

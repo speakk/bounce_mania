@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbgkebvfhld7h"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_ht7vc"]
-[ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://world_bounds.tscn" id="2_5k6wh"]
-[ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://player_marker.tscn" id="3_gb5ec"]
-[ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="4_uh7mk"]
-[ext_resource type="PackedScene" uid="uid://bschtylma2s1c" path="res://end_zone.tscn" id="5_yftek"]
+[ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://level_features/world_bounds.tscn" id="2_5k6wh"]
+[ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://level_features/player_marker.tscn" id="3_gb5ec"]
+[ext_resource type="PackedScene" path="res://level_features/obstacle.tscn" id="4_uh7mk"]
+[ext_resource type="PackedScene" uid="uid://u0014comci1d" path="res://level_features/end_zone.tscn" id="5_yftek"]
 
 [node name="Level7" instance=ExtResource("1_ht7vc")]
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-var OBSTACLE_SHADER = preload("res://obstacle.gdshader")
+var OBSTACLE_SHADER = preload("res://level_features/obstacle.gdshader")
 
 func _ready():
 	get_node("PlayerMarker").visible = false

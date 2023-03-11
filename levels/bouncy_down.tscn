@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://sqvogmrrkwph"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_b3o1g"]
-[ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://world_bounds.tscn" id="2_yfsp2"]
-[ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://player_marker.tscn" id="3_k15bk"]
-[ext_resource type="PackedScene" uid="uid://df0dkvvfodw3l" path="res://obstacle.tscn" id="4_5uro1"]
-[ext_resource type="PackedScene" uid="uid://bschtylma2s1c" path="res://end_zone.tscn" id="5_ampmt"]
+[ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://level_features/world_bounds.tscn" id="2_yfsp2"]
+[ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://level_features/player_marker.tscn" id="3_k15bk"]
+[ext_resource type="PackedScene" path="res://level_features/obstacle.tscn" id="4_5uro1"]
+[ext_resource type="PackedScene" uid="uid://u0014comci1d" path="res://level_features/end_zone.tscn" id="5_ampmt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0but2"]
 radius = 64.0
