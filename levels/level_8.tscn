@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3]
 
 [ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_wrubm"]
-[ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://level_features/world_bounds.tscn" id="2_p6bho"]
+[ext_resource type="PackedScene" path="res://level_features/world_bounds.tscn" id="2_p6bho"]
 [ext_resource type="PackedScene" uid="uid://u0014comci1d" path="res://level_features/end_zone.tscn" id="3_wcwls"]
 [ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://level_features/player_marker.tscn" id="4_3vmr8"]
 [ext_resource type="PackedScene" path="res://level_features/obstacle.tscn" id="5_g13ku"]
-[ext_resource type="PackedScene" path="res://level_features/door.tscn" id="6_xhkxp"]
-[ext_resource type="PackedScene" path="res://token.tscn" id="7_6a3nv"]
+[ext_resource type="PackedScene" uid="uid://cmn36nqdc5qhq" path="res://level_features/door.tscn" id="6_xhkxp"]
+[ext_resource type="PackedScene" uid="uid://bk04nef1j1jyr" path="res://level_features/token.tscn" id="7_6a3nv"]
 
 [node name="Level8" instance=ExtResource("1_wrubm")]
 

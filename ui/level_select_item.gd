@@ -2,10 +2,10 @@ extends MarginContainer
 
 signal selected(level_id)
 
-func set_details(level, is_available):
-	var description = "\n%s" % level.get("title") if level.get("title") else ""
+func set_details(level, is_available, level_index):
+	#var description = "\n%s" % level.get("title") if level.get("title") else ""
 	var button = %Button
-	button.text = "%s%s" % [level.name, description]
+	button.text = "%s. %s" % [level_index + 1, level.title]
 	if is_available:
 		#button.pressed.connect(_change_level.bind(level.id))
 		button.pressed.connect(func(): selected.emit(level.id))

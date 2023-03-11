@@ -1,11 +1,11 @@
 [gd_scene load_steps=31 format=3]
 
 [ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_roanr"]
-[ext_resource type="PackedScene" uid="uid://b7pyniqb6pe7h" path="res://level_features/world_bounds.tscn" id="2_obsfc"]
+[ext_resource type="PackedScene" path="res://level_features/world_bounds.tscn" id="2_obsfc"]
 [ext_resource type="PackedScene" uid="uid://u0014comci1d" path="res://level_features/end_zone.tscn" id="3_e7crl"]
 [ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://level_features/player_marker.tscn" id="4_lkufc"]
 [ext_resource type="PackedScene" path="res://level_features/obstacle.tscn" id="5_a7c48"]
-[ext_resource type="PackedScene" path="res://token.tscn" id="6_ggijf"]
+[ext_resource type="PackedScene" uid="uid://bk04nef1j1jyr" path="res://level_features/token.tscn" id="6_ggijf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ecdj"]
 resource_local_to_scene = true

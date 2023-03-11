@@ -23,7 +23,7 @@ func _refresh_level_list(player_name):
 	for i in Levels.levels.size():
 		var level_select_item = LEVEL_SELECT_ITEM.instantiate()
 		level_select_item.mouse_filter = MOUSE_FILTER_PASS
-		level_select_item.set_details(Levels.levels[i], i <= current_user_level)
+		level_select_item.set_details(Levels.levels[i], i <= current_user_level, i)
 		%LevelList.add_child(level_select_item)
 		level_select_item.selected.connect(_change_level)
 

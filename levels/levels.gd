@@ -2,7 +2,6 @@ extends Node
 
 const levels = [
 	{
-		name = "Level 1",
 		id = "level_1",
 		path = "res://levels/level_1.tscn",
 		stars = [5.5, 2.5, 2.4],
@@ -10,7 +9,6 @@ const levels = [
 		description = "a & d to move left/right.\nRight click to dash when the dash meter is full!\n"
 	},
 	{
-		name = "Level 2",
 		id = "level_2",
 		path = "res://levels/level_2.tscn",
 		stars = [5, 3.5, 2.8],
@@ -18,7 +16,6 @@ const levels = [
 		description = "Protip: Press r to quick restart the level if you mess up"
 	},
 	{
-		name = "Level 3",
 		id = "level_3",
 		path = "res://levels/level_3.tscn",
 		stars = [8, 6, 4.8],
@@ -26,7 +23,6 @@ const levels = [
 		description = "Collect the round tokens to open the door"
 	},
 	{
-		name = "Level 4",
 		id = "level_4",
 		path = "res://levels/level_4.tscn",
 		stars = [11, 9, 7.2],
@@ -34,14 +30,12 @@ const levels = [
 		description = "Hug walls to recharge your dash faster"
 	},
 	{
-		name = "Level 5",
 		id = "level_5",
 		path = "res://levels/level_5.tscn",
 		stars = [7, 5.5, 4.4],
 		title = "Back and Forth"
 	},
 	{
-		name = "Level 6",
 		id = "level_6",
 		path = "res://levels/level_6.tscn",
 		stars = [9, 6.5, 5.1],
@@ -49,39 +43,40 @@ const levels = [
 		description = "The darker walls don't bounce!"
 	},
 	{
-		name = "Level 7",
 		id = "level_7",
 		path = "res://levels/level_7.tscn",
 		stars = [8, 6.5, 5.3],
 		title = "Moves"
 	},
 	{
-		name = "Level 8",
 		id = "level_8",
 		path = "res://levels/level_8.tscn",
 		stars = [17, 10, 9.5],
 		title = "Grave"
 	},
 	{
-		name = "Level 9",
 		id = "level_9",
 		path = "res://levels/level_9.tscn",
 		stars = [11.5, 9, 8.15],
 		title = "Up and Down"
 	},
 	{
-		name = "Level 10",
 		id = "level_10",
 		path = "res://levels/level_10.tscn",
 		stars = [12, 9.5, 8.6],
 		title = "Up and Away"
 	},
 	{
-		name = "Level 11",
 		id = "level_11",
 		path = "res://levels/level_11.tscn",
 		stars = [15, 12.5, 11.5],
 		title = "It Gets Tough"
+	},
+	{
+		id = "level_12",
+		path = "res://levels/level_12.tscn",
+		stars = [28, 26, 25],
+		title = "Long Haul"
 	},
 ]
 
