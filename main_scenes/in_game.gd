@@ -27,6 +27,8 @@ func _ready():
 	Events.token_collected.connect(_token_collected)
 
 	Events.all_tokens_collected.connect(_all_tokens_collected)
+	
+	$OutsideBackground.texture = ResourceCache.OUTSIDE_BACKGROUND
 
 func _token_collected(token):
 	var all_tokens = get_tree().get_nodes_in_group("tokens")

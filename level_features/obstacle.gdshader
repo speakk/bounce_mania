@@ -15,7 +15,7 @@ void fragment() {
 		if (blurcolor.a < border_width) {
 			COLOR = border_color;
 		} else {
-			COLOR = color;
+			COLOR = color * 1.45 + vec4(0.2);
 		}
 	} else {
 		COLOR = blurcolor * vec4(mod_color.rgb, blurcolor.a);

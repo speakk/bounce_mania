@@ -49,5 +49,3 @@ material = SubResource("ShaderMaterial_jy0gb")
 position = Vector2(384, 384)
 scale = Vector2(2.875, 768.5)
 texture = SubResource("GradientTexture1D_j6adr")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]

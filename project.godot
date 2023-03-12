@@ -24,6 +24,7 @@ AudioPlayer="*res://audio_player.tscn"
 GlobalValues="*res://global_values.gd"
 ProfileManager="*res://ProfileManager.gd"
 Colors="*res://Colors.gd"
+ResourceCache="*res://ResourceCache.gd"
 
 [debug]
 

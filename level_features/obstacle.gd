@@ -13,7 +13,7 @@ var original_position
 
 const CIRCLE = preload("res://circle.tscn")
 
-const OBSTACLE_TEXTURE = preload("res://level_features/obstacle_texture.tres")
+#const OBSTACLE_TEXTURE = preload("res://level_features/obstacle_texture.tres")
 
 func create_light_occluder(polygon, new_position, new_rotation, new_scale) -> LightOccluder2D:
 	var lightOccluder = LightOccluder2D.new()
@@ -36,7 +36,9 @@ func create_draw_polygon(polygon, new_position, new_rotation, new_scale):
 	drawPolygon.scale = new_scale
 	drawPolygon.light_mask = 2
 	#drawPolygon.material = CanvasItemMaterial.new()
-	#drawPolygon.texture = OBSTACLE_TEXTURE
+	if not is_deadly:
+		drawPolygon.texture = ResourceCache.OUTSIDE_BACKGROUND
+		drawPolygon.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
 	#print("Setting texture yea?")
 	#drawPolygon.material = ShaderMaterial.new()
 	#drawPolygon.material.shader = POLYGON_SHADER
