@@ -22,6 +22,7 @@ shader = ExtResource("2_x75kb")
 shader_parameter/blur_amount = 2.515
 shader_parameter/mod_color = Color(1, 1, 1, 1)
 shader_parameter/border_color = Color(0.5, 1, 1, 1)
+shader_parameter/border_width = 0.9
 
 [sub_resource type="Gradient" id="Gradient_m4hfj"]
 

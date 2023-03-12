@@ -19,6 +19,7 @@ func _ready():
 	canvas_group.material.shader = OBSTACLE_SHADER
 	canvas_group.material.set_shader_parameter("mod_color", Color.BLACK)
 	canvas_group.material.set_shader_parameter("blur_amount", 2)
+	canvas_group.material.set_shader_parameter("border_width", 0.9)
 
 	var deadly_canvas_group = CanvasGroup.new()
 	deadly_canvas_group.material = ShaderMaterial.new()
@@ -28,6 +29,7 @@ func _ready():
 	deadly_canvas_group.fit_margin = 60
 	deadly_canvas_group.material.set_shader_parameter("blur_amount", 3)	
 	deadly_canvas_group.material.set_shader_parameter("mod_color", Color.RED)	
+	deadly_canvas_group.material.set_shader_parameter("border_width", 0.0)	
 	
 	for child in get_children():
 		if child is Obstacle:

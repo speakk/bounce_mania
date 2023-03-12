@@ -6,12 +6,13 @@ uniform float blur_amount : hint_range(0, 5);
 
 uniform vec4 mod_color : source_color = vec4(1.0,1.0,1.0,1.0);
 uniform vec4 border_color : source_color = vec4(0.5,1.0,1.0,1.0);
+uniform float border_width : hint_range(0.0, 1.0) = 0.9;
 
 void fragment() { 
     vec4 blurcolor = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount); 
     vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
 	if (color.a > 0.0) {
-		if (blurcolor.a < 0.9) {
+		if (blurcolor.a < border_width) {
 			COLOR = border_color;
 		} else {
 			COLOR = color;
