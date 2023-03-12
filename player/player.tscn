@@ -13,10 +13,10 @@ friction = 0.01
 rough = true
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yfkuu"]
-blend_mode = 3
 
 [sub_resource type="Gradient" id="Gradient_e71ne"]
-colors = PackedColorArray(0.378906, 0.378906, 0.378906, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.0982143, 0.8125)
+colors = PackedColorArray(0.625, 0.625, 0.625, 0.0588235, 1, 1, 1, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hsik0"]
 frequency = 0.604
@@ -114,7 +114,7 @@ position = Vector2(7, 5)
 size = 6.0
 color = Color(0.4, 0.2, 0.6, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Circle"]
+[node name="Noise" type="Sprite2D" parent="Circle"]
 material = SubResource("CanvasItemMaterial_yfkuu")
 position = Vector2(-1.78814e-07, 0.499999)
 scale = Vector2(1.125, 1.09375)
@@ -189,6 +189,7 @@ shape = SubResource("CircleShape2D_382kn")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(2.63281, 2.63281)
+energy = 0.7
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.8)
 texture = SubResource("GradientTexture2D_tw2jf")

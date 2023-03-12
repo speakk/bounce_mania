@@ -1,12 +1,17 @@
 extends Node2D
 
 var OBSTACLE_SHADER = preload("res://level_features/obstacle.gdshader")
+var canvas_group
+
+
+func _on_palette_changed(new_palette, _a, _b):
+	canvas_group.material.set_shader_parameter("border_color", new_palette.accent_b)
 
 func _ready():
 	get_node("PlayerMarker").visible = false
 	$TextureRect.modulate = Colors.background_a
 	
-	var canvas_group = CanvasGroup.new()
+	canvas_group = CanvasGroup.new()
 	canvas_group.material = ShaderMaterial.new()
 	canvas_group.use_mipmaps = true
 	canvas_group.clear_margin = 60
@@ -34,6 +39,9 @@ func _ready():
 	
 	add_child(canvas_group)
 	add_child(deadly_canvas_group)
+	
+	Events.palette_changed.connect(_on_palette_changed)
+	_on_palette_changed(Colors.get_current_palette(), null, null)
 
 func get_player_start_position():
 	return get_node("PlayerMarker").position

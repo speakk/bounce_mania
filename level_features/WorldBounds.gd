@@ -27,6 +27,7 @@ func _ready():
 	%Background.scale = $ColorRect.scale
 	%Background.texture.width = $ColorRect.size.x
 	%Background.texture.height = $ColorRect.size.y
+	
 #
 #	print("SIZE", $Background.texture.width, " vs ", $Background.texture.height)
 #
@@ -36,7 +37,7 @@ func _ready():
 	_on_palette_changed(Colors.get_current_palette(), null, null)
 
 func _process(delta):
-	#%Background.material.set_shader_parameter("offset", get_viewport().get_camera_2d().get_screen_center_position() / get_viewport().get_visible_rect().size)
+	%Background.material.set_shader_parameter("offset2", get_viewport().get_camera_2d().get_screen_center_position() / get_viewport().get_visible_rect().size)
 	pass
 
 func _on_palette_changed(new_palette, _a, _b):

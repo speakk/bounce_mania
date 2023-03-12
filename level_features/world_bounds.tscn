@@ -1,7 +1,11 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://031edd03tktf"]
 
 [ext_resource type="Script" path="res://level_features/WorldBounds.gd" id="1_stqbh"]
 [ext_resource type="Shader" path="res://level_features/world_bounds.gdshader" id="2_hs7t2"]
+[ext_resource type="Texture2D" uid="uid://0gnj5txwrjo5" path="res://assets/rock.jpg" id="4_imek5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s77sc"]
+load_path = "res://.godot/imported/rock.png-287df246b05da9994798407cdfe616b7.s3tc.ctex"
 
 [sub_resource type="Gradient" id="Gradient_punvi"]
 offsets = PackedFloat32Array(0, 0.0988593, 1)
@@ -23,10 +27,12 @@ noise = SubResource("FastNoiseLite_suway")
 shader = ExtResource("2_hs7t2")
 shader_parameter/mod_color = Color(0.156863, 0.172549, 0.352941, 1)
 shader_parameter/mod_color2 = Color(0.32549, 0.27451, 0.478431, 1)
+shader_parameter/offset2 = Vector2(0, 0)
 shader_parameter/speed = 0.02
 shader_parameter/speed2 = 0.01
 shader_parameter/bias = 0.5
 shader_parameter/texture2 = SubResource("NoiseTexture2D_lm3cn")
+shader_parameter/extra_texture = ExtResource("4_imek5")
 
 [sub_resource type="Gradient" id="Gradient_qqw2k"]
 interpolation_mode = 2
@@ -46,9 +52,16 @@ noise = SubResource("FastNoiseLite_7hgij")
 [node name="WorldBounds" type="Node2D"]
 script = ExtResource("1_stqbh")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(656, 288)
+texture = SubResource("CompressedTexture2D_s77sc")
+
 [node name="Background" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
+modulate = Color(1, 1, 1, 0.407843)
+self_modulate = Color(1, 1, 1, 0.270588)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_4k0go")
 scale = Vector2(1.25, 0.9375)

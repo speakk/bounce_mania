@@ -13,6 +13,8 @@ var original_position
 
 const CIRCLE = preload("res://circle.tscn")
 
+const OBSTACLE_TEXTURE = preload("res://level_features/obstacle_texture.tres")
+
 func create_light_occluder(polygon, new_position, new_rotation, new_scale) -> LightOccluder2D:
 	var lightOccluder = LightOccluder2D.new()
 	var occluder = OccluderPolygon2D.new()
@@ -33,6 +35,9 @@ func create_draw_polygon(polygon, new_position, new_rotation, new_scale):
 	drawPolygon.rotation = new_rotation
 	drawPolygon.scale = new_scale
 	drawPolygon.light_mask = 2
+	#drawPolygon.material = CanvasItemMaterial.new()
+	#drawPolygon.texture = OBSTACLE_TEXTURE
+	#print("Setting texture yea?")
 	#drawPolygon.material = ShaderMaterial.new()
 	#drawPolygon.material.shader = POLYGON_SHADER
 	#drawPolygon.material.set_shader_parameter("blur_amount", 5)
@@ -143,7 +148,7 @@ func _on_palette_changed(new_palette, _a, _b):
 		if child is Polygon2D or child is Circle or child is ColorRect:
 			child.color = new_palette.background_b * 1.5
 			child.color.h = wrapf(child.color.h - 0.1, 0, 1)
-			
+
 			if sticky:
 				child.color.v *= 0.9
 				child.color.s *= 0.9

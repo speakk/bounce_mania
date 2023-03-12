@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://odb66sy5mvpj"]
 
 [ext_resource type="Script" path="res://level_features/obstacle.gd" id="1_gewf1"]
 [ext_resource type="Shader" path="res://level_features/obstacle.gdshader" id="2_x75kb"]
@@ -21,6 +21,7 @@ fill_to = Vector2(1, 0.5)
 shader = ExtResource("2_x75kb")
 shader_parameter/blur_amount = 2.515
 shader_parameter/mod_color = Color(1, 1, 1, 1)
+shader_parameter/border_color = Color(0.5, 1, 1, 1)
 
 [sub_resource type="Gradient" id="Gradient_m4hfj"]
 
@@ -47,3 +48,5 @@ material = SubResource("ShaderMaterial_jy0gb")
 position = Vector2(384, 384)
 scale = Vector2(2.875, 768.5)
 texture = SubResource("GradientTexture1D_j6adr")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]

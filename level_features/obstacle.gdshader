@@ -5,12 +5,17 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform float blur_amount : hint_range(0, 5);
 
 uniform vec4 mod_color : source_color = vec4(1.0,1.0,1.0,1.0);
+uniform vec4 border_color : source_color = vec4(0.5,1.0,1.0,1.0);
 
 void fragment() { 
     vec4 blurcolor = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount); 
     vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
 	if (color.a > 0.0) {
-		COLOR = color;
+		if (blurcolor.a < 0.9) {
+			COLOR = border_color;
+		} else {
+			COLOR = color;
+		}
 	} else {
 		COLOR = blurcolor * vec4(mod_color.rgb, blurcolor.a);
 	}
