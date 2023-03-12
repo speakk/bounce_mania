@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://0gnj5txwrjo5" path="res://assets/rock.jpg" id="4_imek5"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s77sc"]
-load_path = "res://.godot/imported/rock.png-287df246b05da9994798407cdfe616b7.s3tc.ctex"
 
 [sub_resource type="Gradient" id="Gradient_punvi"]
 offsets = PackedFloat32Array(0, 0.0988593, 1)

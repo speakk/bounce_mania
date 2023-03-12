@@ -1,20 +1,13 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://ctjr4r8ysmfsj"]
 
 [ext_resource type="Script" path="res://ui/BounceChargeUI.gd" id="1_3ukfh"]
+[ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="2_wp4jy"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxlqb"]
-bg_color = Color(1, 0.94902, 0, 1)
-
-[sub_resource type="Gradient" id="Gradient_8bghf"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.333406, 0.375, 0.275004, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dxd0u"]
-gradient = SubResource("Gradient_8bghf")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4202"]
 
 [sub_resource type="Gradient" id="Gradient_05ppg"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.75, 0.686994, 0.513801, 1)
+colors = PackedColorArray(0.639029, 0.75, 0.561678, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_p6b05"]
 gradient = SubResource("Gradient_05ppg")
@@ -25,7 +18,15 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
+theme = ExtResource("2_wp4jy")
 script = ExtResource("1_3ukfh")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = -208.0
+offset_right = 120.0
+offset_bottom = -55.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -42,7 +43,7 @@ grow_vertical = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_gxlqb")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_w4202")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2
@@ -56,6 +57,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 120)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_wp4jy")
 max_value = 3.0
 step = 0.001
 fill_mode = 3
@@ -64,9 +66,14 @@ stretch_margin_left = 10
 stretch_margin_top = 10
 stretch_margin_right = 10
 stretch_margin_bottom = 10
-texture_under = SubResource("GradientTexture1D_dxd0u")
 texture_progress = SubResource("GradientTexture1D_p6b05")
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+text = "Dash charge"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87451, 1, 0.294118, 1)
 text = "Dash charge"

@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://bvnolpmg6t54n"]
 
 [ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="1_iie73"]
 [ext_resource type="Script" path="res://ui/main_ui.gd" id="2_hi10r"]
 [ext_resource type="PackedScene" path="res://ui/level_timer.tscn" id="2_uq0m6"]
-[ext_resource type="PackedScene" path="res://ui/bounce_charge_ui.tscn" id="3_adyeq"]
+[ext_resource type="PackedScene" uid="uid://ctjr4r8ysmfsj" path="res://ui/bounce_charge_ui.tscn" id="3_adyeq"]
 [ext_resource type="PackedScene" path="res://ui/level_timer_bar_ui.tscn" id="5_3wwil"]
 
 [sub_resource type="Theme" id="Theme_5n488"]
