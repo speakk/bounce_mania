@@ -28,6 +28,12 @@ func _ready():
 	%Background.texture.width = $ColorRect.size.x
 	%Background.texture.height = $ColorRect.size.y
 	
+	var outside_padding = 600
+	$OutsideBackground.texture = ResourceCache.OUTSIDE_BACKGROUND
+	$OutsideBackground.texture.width = $ColorRect.size.x + outside_padding
+	$OutsideBackground.texture.height = $ColorRect.size.y + outside_padding
+	$OutsideBackground.position = $ColorRect.position - Vector2($OutsideBackground.texture.width, $OutsideBackground.texture.height) / 2
+	
 #
 #	print("SIZE", $Background.texture.width, " vs ", $Background.texture.height)
 #
@@ -35,6 +41,13 @@ func _ready():
 	
 	Events.palette_changed.connect(_on_palette_changed)
 	_on_palette_changed(Colors.get_current_palette(), null, null)
+	
+	Events.level_loaded.connect(_level_loaded)
+
+func _level_loaded(level_id):
+	var index = Levels.get_level_index(level_id)
+	var background_no = fmod(index, ResourceCache.BACKGROUNDS.size())
+	%Background.material.set_shader_parameter("extra_texture", ResourceCache.BACKGROUNDS[background_no])
 
 func _process(delta):
 	%Background.material.set_shader_parameter("offset2", get_viewport().get_camera_2d().get_screen_center_position() / get_viewport().get_visible_rect().size)

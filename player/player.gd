@@ -15,6 +15,20 @@ extends RigidBody2D
 
 var bounce_on_timer: float = bounce_duration
 
+
+@export var slowdown_power_amount: float = 0.0:
+	set(value):
+		Events.slow_power_amount_changed.emit(value)
+		slowdown_power_amount = value
+		
+@export var slowdown_power_amount_max: float = 1.0
+@export var slowdown_usage_rate: float = 2
+@export var slowdown_recharge_rate: float = 0.5
+
+var slow_down_speed = 0.3
+var normal_speed = 1.0
+var time_lerp_speed = 0.2
+
 @onready var COLLISION_PARTICLES = preload("res://collision_particles.tscn")
 @onready var EXPLOSION_PARTICLES = preload("res://player/player_explosion.tscn")
 @onready var FUSE = preload("res://player/fuse.tscn")
@@ -68,6 +82,7 @@ func _level_max_time_reached():
 
 func _on_level_loaded(_a):
 	bounce_timer = dash_timeout
+	slowdown_power_amount = 0
 
 func get_input():
 	velocity = Vector2()
@@ -75,9 +90,9 @@ func get_input():
 		velocity.x += 1
 	if Input.is_action_pressed("left"):
 		velocity.x -= 1
-#	if Input.is_action_pressed("down"):
-#		velocity.y += 1
-#	if Input.is_action_pressed("up"):
+	#if Input.is_action_pressed("down"):
+	#	velocity.y += 1
+#	if Input.is_action_pressed("jump"):
 #		velocity.y -= 1
 	velocity = velocity.normalized() * speed
 	
@@ -136,9 +151,14 @@ func handle_blinking():
 		blink()
 		blink_next = Time.get_ticks_msec() + randf_range(blink_min_interval, blink_max_interval)
 
-func _process(_delta):
+func _process(delta):
 	handle_blinking()
-
+	if has_moved:
+		slowdown_power_amount += slowdown_recharge_rate * delta
+		print("Before clamp", slowdown_power_amount)
+		slowdown_power_amount = clampf(slowdown_power_amount, -1, slowdown_power_amount_max)
+		print("clamp, after", slowdown_power_amount)
+		
 func _physics_process(delta):
 #	if Input.is_action_pressed("disable_bounce"):
 #		physics_material_override.bounce = 0
@@ -147,6 +167,18 @@ func _physics_process(delta):
 #		physics_material_override.bounce = 0.5
 #		physics_material_override.friction = 0.01
 
+#	if Input.is_action_pressed("disable_bounce"):
+#		physics_material_override.friction = 1
+#	else:
+#		physics_material_override.friction = 0.01
+
+	if Input.is_action_pressed("slowdown") and slowdown_power_amount >= 0:
+		Engine.time_scale = lerpf(Engine.time_scale, slow_down_speed, time_lerp_speed)
+		slowdown_power_amount -= slowdown_usage_rate * delta
+		if slowdown_power_amount < 0:
+			slowdown_power_amount = -1
+	else:
+		Engine.time_scale = lerpf(Engine.time_scale, normal_speed, time_lerp_speed)
 	
 	get_input()
 	direct_eyes()
@@ -254,6 +286,15 @@ func _integrate_forces(state):
 			if not bouncing and has_moved:
 				if bounce_timer > 0:
 					bounce_timer -= 0.1
+			
+#			if Input.is_action_pressed("disable_bounce"):
+#				if point.distance_to(position) <= $Circle.size + 10:
+#					linear_velocity = Vector2(0,0)
+			#else:
+				#physics_material_override.friction = 0.01
+			
+			#if Input.is_action_just_pressed("jump"):
+			#	apply_central_impulse(Vector2(0, -100))
 			#shake_camera(linear_velocity)
 			#handle_squish(point, linear_velocity)
 			

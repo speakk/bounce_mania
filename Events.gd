@@ -18,6 +18,8 @@ signal player_dash_charged
 signal player_dash_charge_time_changed(value)
 signal player_died
 
+signal slow_power_amount_changed(value)
+
 signal new_game_pressed
 signal try_again_pressed
 signal level_change_pressed(level_id)

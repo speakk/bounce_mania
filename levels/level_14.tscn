@@ -1,0 +1,136 @@
+[gd_scene load_steps=13 format=3 uid="uid://lbkgmnr1ipkv"]
+
+[ext_resource type="PackedScene" uid="uid://b3exqcsiecey8" path="res://levels/base_level.tscn" id="1_r773k"]
+[ext_resource type="PackedScene" uid="uid://33t6axeo8umr" path="res://level_features/world_bounds.tscn" id="2_tk616"]
+[ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://level_features/player_marker.tscn" id="3_a0yvf"]
+[ext_resource type="PackedScene" uid="uid://u0014comci1d" path="res://level_features/end_zone.tscn" id="4_04uwv"]
+[ext_resource type="PackedScene" uid="uid://odb66sy5mvpj" path="res://level_features/obstacle.tscn" id="5_0tilt"]
+[ext_resource type="PackedScene" uid="uid://bk04nef1j1jyr" path="res://level_features/token.tscn" id="6_4rl7t"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2bw7j"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gff65"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ojrkj"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ch8mo"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oghdl"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ienfj"]
+resource_local_to_scene = true
+friction = 0.2
+bounce = 0.1
+
+[node name="Level14" instance=ExtResource("1_r773k")]
+
+[node name="TextureRect" parent="." index="0"]
+offset_top = -1248.0
+offset_right = 16933.0
+
+[node name="WorldBounds" parent="." index="1" instance=ExtResource("2_tk616")]
+position = Vector2(288, 0)
+
+[node name="ColorRect" type="ColorRect" parent="WorldBounds" index="0"]
+offset_left = 928.0
+offset_top = -416.0
+offset_right = 15589.0
+offset_bottom = 544.0
+color = Color(0.188235, 0.513726, 1, 1)
+
+[node name="PlayerMarker" parent="." index="2" instance=ExtResource("3_a0yvf")]
+position = Vector2(1536, 272)
+
+[node name="EndZone" parent="." index="3" instance=ExtResource("4_04uwv")]
+position = Vector2(15493, 416)
+
+[node name="EndZoneRect" parent="EndZone" index="0"]
+offset_left = 160.0
+offset_top = -96.0
+offset_right = 384.0
+offset_bottom = 32.0
+
+[node name="Control" parent="EndZone" index="1"]
+offset_left = 160.0
+offset_top = -96.0
+offset_right = 384.0
+offset_bottom = 32.0
+
+[node name="PointLight2D" parent="EndZone" index="2"]
+position = Vector2(272, -32)
+scale = Vector2(1.744, 1.168)
+
+[node name="GPUParticles2D" parent="EndZone" index="3"]
+position = Vector2(272, -32)
+
+[node name="Obstacle2" parent="." index="4" instance=ExtResource("5_0tilt")]
+position = Vector2(192, 128)
+physics_material_override = SubResource("PhysicsMaterial_2bw7j")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle2" index="0"]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(1216, 128, 1312, 160, 2081, 224, 2337, -64, 2593, 224, 3873, 288, 5026, 224, 5250, -64, 5634, 256, 5794, 256, 5794, 384, 992, 384, 992, -32, 1120, 0, 1248, 32)
+
+[node name="Obstacle3" parent="." index="5" instance=ExtResource("5_0tilt")]
+position = Vector2(192, 128)
+physics_material_override = SubResource("PhysicsMaterial_gff65")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle3" index="0"]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(992, -32, 1248, 32, 1825, 160, 2337, -160, 2849, -160, 3105, 160, 3393, -64, 3745, 0, 4225, -64, 4994, 160, 5250, -160, 5666, 192, 5666, 0, 5794, 0, 5794, -96, 5730, -96, 5666, -160, 5666, -336.307, 5762, -416, 992, -416)
+
+[node name="Obstacle4" parent="." index="6" instance=ExtResource("5_0tilt")]
+position = Vector2(192, 128)
+physics_material_override = SubResource("PhysicsMaterial_ojrkj")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle4" index="0"]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(5794, 256, 6690, 256, 6818, 128, 6818, -32, 6690, -192, 5922, -192, 5922, -288, 7971, -320, 8227, -160, 8803, -160, 9059, -32, 9763, -32, 10275, 288, 10595, -32, 10947, 288, 11300, -32, 11684, 288, 12068, -32, 12420, 256, 13572, 256, 13988, -320, 14180, -224, 14341, -320, 14501, -224, 14693, -320, 14917, -224, 15269, -224, 15429, -160, 15429, 288, 15653, 288, 15653, 384, 15429, 384, 5794, 384)
+
+[node name="Obstacle5" parent="." index="7" instance=ExtResource("5_0tilt")]
+position = Vector2(192, 128)
+physics_material_override = SubResource("PhysicsMaterial_ch8mo")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle5" index="0"]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(5666, -416, 8740.09, -416, 9091, -224, 9763, -224, 10627, -416, 11684, -256, 12196.6, -276.666, 12484, 160, 13156, 160, 13988, -416, 14887.4, -416, 15045, -320, 15493, -320, 15653, -160, 15653, -576, 992, -576, 992, -416)
+
+[node name="Obstacle6" parent="." index="8" instance=ExtResource("5_0tilt")]
+position = Vector2(192, 128)
+physics_material_override = SubResource("PhysicsMaterial_oghdl")
+is_deadly = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle6" index="0"]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(5922, 96, 6690, 96, 6530, 0, 6082, 0)
+
+[node name="Obstacle7" parent="." index="9" instance=ExtResource("5_0tilt")]
+position = Vector2(-2305, 160)
+physics_material_override = SubResource("PhysicsMaterial_ienfj")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacle7" index="0"]
+position = Vector2(0, 64)
+polygon = PackedVector2Array(5922, 96, 6690, 96, 6946, 64, 6690, 0, 5922, 0, 5826, 64)
+
+[node name="Token" parent="." index="10" instance=ExtResource("6_4rl7t")]
+position = Vector2(3969, 195)
+
+[node name="Token2" parent="." index="11" instance=ExtResource("6_4rl7t")]
+position = Vector2(6498, 32)
+
+[editable path="EndZone"]

@@ -1,26 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctjr4r8ysmfsj"]
+[gd_scene load_steps=7 format=3 uid="uid://cbdn4sw4h8mnc"]
 
-[ext_resource type="Script" path="res://ui/BounceChargeUI.gd" id="1_3ukfh"]
-[ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="2_wp4jy"]
+[ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="1_qn2vl"]
+[ext_resource type="Script" path="res://ui/slowdown_bar.gd" id="2_p0kts"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4temf"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxo8h"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4202"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enjh3"]
 
-[sub_resource type="Gradient" id="Gradient_md7g6"]
+[sub_resource type="Gradient" id="Gradient_05ppg"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0.639029, 0.75, 0.561678, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_p6b05"]
-gradient = SubResource("Gradient_md7g6")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_asdep"]
+gradient = SubResource("Gradient_05ppg")
 
-[node name="BounceChargeUI" type="PanelContainer"]
+[node name="SlowDownBar" type="PanelContainer"]
 custom_minimum_size = Vector2(120, 0)
 offset_right = 126.0
-offset_bottom = 171.0
-theme = ExtResource("2_wp4jy")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_4temf")
-script = ExtResource("1_3ukfh")
+offset_bottom = 201.0
+theme = ExtResource("1_qn2vl")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dxo8h")
+script = ExtResource("2_p0kts")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -39,7 +39,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_w4202")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_enjh3")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2
@@ -48,13 +48,13 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="BounceChargeProgressBar" type="TextureProgressBar" parent="VBoxContainer/PanelContainer/MarginContainer"]
+[node name="SlowDownProgressBar" type="TextureProgressBar" parent="VBoxContainer/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 120)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_wp4jy")
-max_value = 3.0
+theme = ExtResource("1_qn2vl")
+max_value = 1.0
 step = 0.001
 fill_mode = 3
 nine_patch_stretch = true
@@ -62,7 +62,7 @@ stretch_margin_left = 10
 stretch_margin_top = 10
 stretch_margin_right = 10
 stretch_margin_bottom = 10
-texture_progress = SubResource("GradientTexture1D_p6b05")
+texture_progress = SubResource("GradientTexture1D_asdep")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -71,11 +71,12 @@ theme_override_constants/margin_top = 30
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Dash charge"
+text = "Time Charge"
+horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87451, 1, 0.294118, 1)
-text = "Dash charge"
+text = "Time Charge"

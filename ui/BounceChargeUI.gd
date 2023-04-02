@@ -1,4 +1,4 @@
-extends Control
+extends PanelContainer
 
 var style_box = StyleBoxFlat.new()
 
@@ -23,25 +23,26 @@ func _ready():
 
 func _bounce_timer_changed(new_time):
 	current_bounce_time = new_time
+	print("new time", new_time)
 	#%BounceChargeProgressBar.value = lerpf(%BounceChargeProgressBar.value, dash_timeout - new_time, 0.5)
 
 func _player_bounce_started():
 	style_box.bg_color = Color(dashing_color)
 	%BounceChargeProgressBar.tint_progress = Color.WHITE
-	$VBoxContainer/Label.show()
-	$VBoxContainer/Label2.hide()
+	%Label.show()
+	%Label2.hide()
 
 func _player_dash_charged():
 	style_box.bg_color = Color(charge_ready_color)
 	%BounceChargeProgressBar.tint_progress = Color.YELLOW
-	$VBoxContainer/Label2.show()
-	$VBoxContainer/Label.hide()
+	%Label2.show()
+	%Label.hide()
 	
 func _player_bounce_ended():
 	style_box.bg_color = Color(charging_color)
 	%BounceChargeProgressBar.tint_progress = Color.WHITE
-	$VBoxContainer/Label.show()
-	$VBoxContainer/Label2.hide()
+	%Label.show()
+	%Label2.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

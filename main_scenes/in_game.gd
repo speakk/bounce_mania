@@ -28,7 +28,11 @@ func _ready():
 
 	Events.all_tokens_collected.connect(_all_tokens_collected)
 	
-	$OutsideBackground.texture = ResourceCache.OUTSIDE_BACKGROUND
+	# TODO: Okay so this will not scale to the size of the world of course...
+	# What was I thinking here anyway?
+	# Potential solution: Figure out how to make the texture repeat and then
+	# size this to be world size + some padding
+	#$OutsideBackground.texture = ResourceCache.OUTSIDE_BACKGROUND
 
 func _token_collected(token):
 	var all_tokens = get_tree().get_nodes_in_group("tokens")

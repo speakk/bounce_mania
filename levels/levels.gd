@@ -78,6 +78,36 @@ const levels = [
 		stars = [28, 26, 25],
 		title = "Long Haul"
 	},
+	{
+		id = "level_13",
+		path = "res://levels/level_13.tscn",
+		stars = [25, 23, 20.5],
+		title = "Return To Sender"
+	},
+	{
+		id = "level_14",
+		path = "res://levels/level_14.tscn",
+		stars = [23, 20, 18],
+		title = "Medium Peaks"
+	},
+	{
+		id = "level_15",
+		path = "res://levels/level_15.tscn",
+		stars = [23, 20, 18],
+		title = "Claustrophobic"
+	},
+	{
+		id = "level_16",
+		path = "res://levels/level_16.tscn",
+		stars = [12, 11, 9.9],
+		title = "Precision"
+	},
+	{
+		id = "level_17",
+		path = "res://levels/level_17.tscn",
+		stars = [30, 20, 18],
+		title = "imposiblru"
+	},
 ]
 
 var levels_by_id = {}

@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://031edd03tktf"]
+[gd_scene load_steps=11 format=3 uid="uid://33t6axeo8umr"]
 
 [ext_resource type="Script" path="res://level_features/WorldBounds.gd" id="1_stqbh"]
 [ext_resource type="Shader" path="res://level_features/world_bounds.gdshader" id="2_hs7t2"]
-[ext_resource type="Texture2D" uid="uid://0gnj5txwrjo5" path="res://assets/rock.jpg" id="4_imek5"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s77sc"]
+[ext_resource type="Texture2D" uid="uid://0gnj5txwrjo5" path="res://assets/backgrounds/rock.jpg" id="3_gndhd"]
 
 [sub_resource type="Gradient" id="Gradient_punvi"]
 offsets = PackedFloat32Array(0, 0.0988593, 1)
@@ -31,7 +29,7 @@ shader_parameter/speed = 0.02
 shader_parameter/speed2 = 0.01
 shader_parameter/bias = 0.5
 shader_parameter/texture2 = SubResource("NoiseTexture2D_lm3cn")
-shader_parameter/extra_texture = ExtResource("4_imek5")
+shader_parameter/extra_texture = ExtResource("3_gndhd")
 
 [sub_resource type="Gradient" id="Gradient_qqw2k"]
 interpolation_mode = 2
@@ -51,10 +49,16 @@ noise = SubResource("FastNoiseLite_7hgij")
 [node name="WorldBounds" type="Node2D"]
 script = ExtResource("1_stqbh")
 
+[node name="OutsideBackground" type="TextureRect" parent="."]
+offset_left = 688.0
+offset_top = 352.0
+offset_right = 688.0
+offset_bottom = 352.0
+scale = Vector2(2.60938, 2.00571)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(656, 288)
-texture = SubResource("CompressedTexture2D_s77sc")
 
 [node name="Background" type="Sprite2D" parent="."]
 unique_name_in_owner = true
