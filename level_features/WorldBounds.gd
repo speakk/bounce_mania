@@ -30,8 +30,8 @@ func _ready():
 	
 	var outside_padding = 600
 	$OutsideBackground.texture = ResourceCache.OUTSIDE_BACKGROUND
-	$OutsideBackground.texture.width = $ColorRect.size.x + outside_padding
-	$OutsideBackground.texture.height = $ColorRect.size.y + outside_padding
+	#$OutsideBackground.texture.width = $ColorRect.size.x + outside_padding
+	#$OutsideBackground.texture.height = $ColorRect.size.y + outside_padding
 	$OutsideBackground.position = $ColorRect.position - Vector2($OutsideBackground.texture.width, $OutsideBackground.texture.height) / 2
 	
 #
