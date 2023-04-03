@@ -25,7 +25,7 @@ var bounce_on_timer: float = bounce_duration
 @export var slowdown_usage_rate: float = 2
 @export var slowdown_recharge_rate: float = 0.5
 
-var slow_down_speed = 0.3
+var slow_down_speed = 0.23
 var normal_speed = 1.0
 var time_lerp_speed = 0.2
 
@@ -155,9 +155,7 @@ func _process(delta):
 	handle_blinking()
 	if has_moved:
 		slowdown_power_amount += slowdown_recharge_rate * delta
-		print("Before clamp", slowdown_power_amount)
 		slowdown_power_amount = clampf(slowdown_power_amount, -1, slowdown_power_amount_max)
-		print("clamp, after", slowdown_power_amount)
 		
 func _physics_process(delta):
 #	if Input.is_action_pressed("disable_bounce"):

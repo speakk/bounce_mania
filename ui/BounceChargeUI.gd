@@ -23,8 +23,6 @@ func _ready():
 
 func _bounce_timer_changed(new_time):
 	current_bounce_time = new_time
-	print("new time", new_time)
-	#%BounceChargeProgressBar.value = lerpf(%BounceChargeProgressBar.value, dash_timeout - new_time, 0.5)
 
 func _player_bounce_started():
 	style_box.bg_color = Color(dashing_color)

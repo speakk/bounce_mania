@@ -105,8 +105,16 @@ const levels = [
 	{
 		id = "level_17",
 		path = "res://levels/level_17.tscn",
-		stars = [30, 20, 18],
-		title = "imposiblru"
+		stars = [11, 9.5, 8],
+		title = "Tight Fit",
+		description = "Use the time slow down power to navigate tight fits!"
+	},
+	{
+		id = "level_18",
+		path = "res://levels/level_18.tscn",
+		stars = [11, 10, 8.5],
+		title = "Danger Zone",
+		description = "Use the time slow down power or you will perish"
 	},
 ]
 
