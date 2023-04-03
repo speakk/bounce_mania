@@ -170,21 +170,18 @@ func _physics_process(delta):
 #	else:
 #		physics_material_override.friction = 0.01
 
-	if Input.is_action_pressed("slowdown") and slowdown_power_amount >= 0:
-		Engine.time_scale = lerpf(Engine.time_scale, slow_down_speed, time_lerp_speed)
-		slowdown_power_amount -= slowdown_usage_rate * delta
-		if slowdown_power_amount < 0:
-			slowdown_power_amount = -1
-	else:
-		Engine.time_scale = lerpf(Engine.time_scale, normal_speed, time_lerp_speed)
+#	if Input.is_action_pressed("slowdown") and slowdown_power_amount >= 0:
+#		Engine.time_scale = lerpf(Engine.time_scale, slow_down_speed, time_lerp_speed)
+#		slowdown_power_amount -= slowdown_usage_rate * delta
+#		if slowdown_power_amount < 0:
+#			slowdown_power_amount = -1
+#	else:
+#		Engine.time_scale = lerpf(Engine.time_scale, normal_speed, time_lerp_speed)
 	
 	get_input()
 	direct_eyes()
 	show_direction_indicator()
-	
-	#fuse.global_position = global_position
-	#fuse.move_and_collide()
-	
+
 	if not bouncing and has_moved:
 		if bounce_timer > 0:
 			bounce_timer -= delta
