@@ -18,9 +18,31 @@ func _ready():
 	get_tree().node_added.connect(_on_SceneTree_node_added)
 	#Events.in_game_exited.connect(_on_in_game_exited)
 
+
 const volume_ceiling = -4
 const pitch_variation = 0.06
 
+var should_play_in_game_music := false
+
+var songs_length = 2
+
+@onready var song_players = [$InGameMusicPlayer, $InGameMusicPlayer2]
+var current_song_player_index = 1
+
+func get_current_in_game_music_player():
+	return song_players[current_song_player_index]
+	
+func _process(_delta):
+	if should_play_in_game_music:
+		var current_player = song_players[current_song_player_index]
+		if not current_player.playing:
+			print("Playing next")
+			var next_index = wrapi(current_song_player_index + 1, 0, song_players.size())
+			print("Next index", next_index)
+			var next_player = song_players[next_index]
+			current_song_player_index = next_index
+			next_player.play()
+			
 func _on_player_died():
 	$ExplosionStream.play()
 
@@ -28,8 +50,9 @@ func _on_token_collected(_a):
 	$TokenCollectStream.play()
 
 func _on_main_menu_entered():
-	if $InGameMusicPlayer.playing:
-		$InGameMusicPlayer.stop()
+	if get_current_in_game_music_player().playing:
+		get_current_in_game_music_player().stop()
+		should_play_in_game_music = false
 	
 	if not $MainMaenuStream.playing:
 		$MainMaenuStream.play()
@@ -37,9 +60,10 @@ func _on_main_menu_entered():
 func _on_in_game_entered():
 	if $MainMaenuStream.playing:
 		$MainMaenuStream.stop()
-		
-	if not $InGameMusicPlayer.playing:
-		$InGameMusicPlayer.play()
+	
+	should_play_in_game_music = true
+#	if not get_current_in_game_music_player().playing:
+#		get_current_in_game_music_player().play()
 
 #func _on_in_game_exited():
 	#if $InGameMusicPlayer.playing:

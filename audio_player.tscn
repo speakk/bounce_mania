@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqfck6t355lrt"]
+[gd_scene load_steps=15 format=3 uid="uid://dqfck6t355lrt"]
 
 [ext_resource type="Script" path="res://audio_player.gd" id="1_je5oi"]
 [ext_resource type="AudioStream" uid="uid://cop2ipputs5li" path="res://assets/sounds/main_menu.ogg" id="2_2phva"]
 [ext_resource type="AudioStream" uid="uid://43rvj6nk3hkj" path="res://assets/sounds/in_game_a.ogg" id="2_7s07k"]
+[ext_resource type="AudioStream" uid="uid://dyi8yitexjrm0" path="res://assets/sounds/speak-tragedy_and_hope.ogg" id="4_k2nim"]
 [ext_resource type="AudioStream" uid="uid://woyj4wliykdk" path="res://assets/sounds/metal_impact.ogg" id="4_ojpk3"]
 [ext_resource type="AudioStream" uid="uid://bbf7yh8wac2op" path="res://assets/sounds/dash.ogg" id="5_ftxth"]
 [ext_resource type="AudioStream" uid="uid://o0qj30d3jtx" path="res://assets/sounds/dash_meter_rise.ogg" id="6_e87aa"]
@@ -26,6 +27,11 @@ bus = &"Music"
 stream = ExtResource("2_7s07k")
 volume_db = -11.671
 pitch_scale = 1.1
+bus = &"Music"
+
+[node name="InGameMusicPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_k2nim")
+volume_db = -11.67
 bus = &"Music"
 
 [node name="CollisionStream" type="AudioStreamPlayer" parent="."]
