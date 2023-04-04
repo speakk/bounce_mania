@@ -6,10 +6,11 @@ size = Vector2(3.5, 10)
 [node name="FuseSegment" type="RigidBody2D"]
 collision_layer = 8
 collision_mask = 4
-mass = 0.06
+mass = 0.07
 inertia = 1.4
 gravity_scale = 0.57
 continuous_cd = 2
+angular_damp = 65.609
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

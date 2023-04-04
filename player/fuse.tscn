@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://dr8fu007djrvq"]
 
 [ext_resource type="PackedScene" uid="uid://xf2bsjrjw6gm" path="res://level_features/player_marker.tscn" id="1_holau"]
 [ext_resource type="Script" path="res://player/fuse.gd" id="1_svcp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2436"]
-size = Vector2(3, 2.75)
+size = Vector2(2, 2)
 
 [node name="Fuse" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 8
+motion_mode = 1
 script = ExtResource("1_svcp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

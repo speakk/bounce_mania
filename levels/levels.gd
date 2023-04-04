@@ -93,29 +93,9 @@ const levels = [
 	{
 		id = "level_15",
 		path = "res://levels/level_15.tscn",
-		stars = [23, 20, 18],
-		title = "Claustrophobic"
-	},
-	{
-		id = "level_16",
-		path = "res://levels/level_16.tscn",
 		stars = [12, 11, 9.9],
 		title = "Precision"
-	},
-	{
-		id = "level_17",
-		path = "res://levels/level_17.tscn",
-		stars = [11, 9.5, 8],
-		title = "Tight Fit",
-		description = "Use the time slow down power to navigate tight fits!"
-	},
-	{
-		id = "level_18",
-		path = "res://levels/level_18.tscn",
-		stars = [11, 10, 8.5],
-		title = "Danger Zone",
-		description = "Use the time slow down power or you will perish"
-	},
+	}
 ]
 
 var levels_by_id = {}
