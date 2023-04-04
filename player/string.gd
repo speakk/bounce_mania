@@ -20,12 +20,9 @@ var max_time := 0.0
 
 func _level_timer_changed(level_time):
 	var current_segment = round(originalRopeLength - (level_time / max_time * originalRopeLength) + 1)
-	print("Current", current_segment)
 	if current_segment != ropeLength:
 		ropeLength = current_segment
-		print("points before", pointCount)
 		pointCount = get_pointCount(ropeLength)
-		print("points after", pointCount)
 		resize_arrays()
 		
 		if pointCount <= 0 and has_node("Sparks"):

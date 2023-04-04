@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://djpi7igppoht"]
 
 [ext_resource type="Theme" uid="uid://b64f3uxca5mhe" path="res://main_theme.tres" id="1_pk045"]
 [ext_resource type="Script" path="res://main_scenes/first_boot_profile_manager_ui.gd" id="2_km8gs"]
@@ -30,7 +30,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Welcome to Glof! To begin, choose a name for yourself"
+text = "Welcome to Bounce Mania! To begin, choose a name for yourself"
 
 [node name="UserSelector" parent="VBoxContainer" instance=ExtResource("2_q301p")]
 unique_name_in_owner = true
