@@ -21,7 +21,7 @@ func init_state(level_id, time, current_user_level, finished_level_index, star_l
 				%NextLevelTipContainer.get_node("Label").text = "Congratulations, you unlocked the next level!"
 				%NextLevelButton.visible = true
 			else:
-				%NextLevelTipContainer.get_node("Label").text = "Congratulations, you beat the final level!"
+				%NextLevelTipContainer.get_node("Label").text = "Congratulations, you beat the game!! You are a winner!"
 		else:
 			%NextLevelTipContainer.get_node("Label").text = "Beat the bronze time limit (%ss) to advance to the next level!" % star_requirements[0]
 	elif not is_dead:

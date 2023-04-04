@@ -1,5 +1,6 @@
 extends Node2D
 
+# Credit for the original version of this: https://github.com/nezvers
 
 @export var ropeLength: float = 40
 var originalRopeLength: float = ropeLength
