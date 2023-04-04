@@ -1,7 +1,8 @@
 extends Node2D
 
 
-@export var ropeLength: float = 30
+@export var ropeLength: float = 40
+var originalRopeLength: float = ropeLength
 @export var constrain: float = 1	# distance between points
 @export var gravity: Vector2 = Vector2(0,9.8)
 @export var dampening: float = 0.9
@@ -14,7 +15,44 @@ var pos: PackedVector2Array
 var posPrev: PackedVector2Array
 var pointCount: int
 
+var max_time := 0.0
+
+func _level_timer_changed(level_time):
+	var current_segment = round(originalRopeLength - (level_time / max_time * originalRopeLength) + 1)
+	print("Current", current_segment)
+	if current_segment != ropeLength:
+		ropeLength = current_segment
+		print("points before", pointCount)
+		pointCount = get_pointCount(ropeLength)
+		print("points after", pointCount)
+		resize_arrays()
+		
+		if pointCount <= 0 and has_node("Sparks"):
+			$Sparks.queue_free()
+	
+	
+#	var current_segment = round(amount_of_segments - (level_time / max_time * amount_of_segments) + 1)
+#
+#	if current_segment < segments.size() + 1 and current_segment > 0:
+#		var last_segment = segments.back()
+#		var sparks = last_segment.get_node("sparks")
+#		last_segment.remove_child(sparks)
+#		last_segment.queue_free()
+#		segments.resize(segments.size() - 1)
+#
+#		var new_last = segments.back()
+#		if new_last:
+#			new_last.add_child(sparks)
+#			sparks.global_position = new_last.global_position - Vector2.from_angle(-new_last.rotation) * segment_length
+#			sparks.rotation = new_last.rotation
+
+func _level_loaded(level_id):
+	max_time = Levels.get_by_id(level_id).get("stars")[0]
+
 func _ready()->void:
+	Events.level_timer_changed.connect(_level_timer_changed)
+	Events.level_loaded.connect(_level_loaded)
+	
 	pointCount = get_pointCount(ropeLength)
 	resize_arrays()
 	init_position()
@@ -53,6 +91,8 @@ func _process(delta)->void:
 	update_points(delta)
 	update_constrain()
 	
+	if pos.size() > 0:
+		$Sparks.global_position = pos[pos.size() - 1]
 	#update_constrain()	#Repeat to get tighter rope
 	#update_constrain()
 	
@@ -60,8 +100,9 @@ func _process(delta)->void:
 	line2D.points = pos
 
 func set_start(p:Vector2)->void:
-	pos[0] = p
-	posPrev[0] = p
+	if pos.size() > 0:
+		pos[0] = p
+		posPrev[0] = p
 
 func set_last(p:Vector2)->void:
 	pos[pointCount-1] = p

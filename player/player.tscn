@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://fnn5oyw52hhg"]
+[gd_scene load_steps=23 format=3 uid="uid://fnn5oyw52hhg"]
 
 [ext_resource type="Texture2D" uid="uid://c1gsv1x1xdvhm" path="res://theball.png" id="1_pxrxn"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_q3836"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bkpn6vqmcural" path="res://eyeball.png" id="3_nvob7"]
 [ext_resource type="PackedScene" path="res://player/direction_indicator.tscn" id="5_rns7b"]
 [ext_resource type="PackedScene" uid="uid://djlr4c64qtm5x" path="res://circle.tscn" id="6_ulotl"]
-[ext_resource type="PackedScene" uid="uid://dr8fu007djrvq" path="res://player/fuse.tscn" id="7_1fjlq"]
 [ext_resource type="PackedScene" uid="uid://cvl46vbgipi3v" path="res://player/string.tscn" id="7_v3bmk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vsbfn"]
@@ -206,10 +205,6 @@ position = Vector2(-11, -16)
 ropeLength = 50.0
 constrain = 10.0
 dampening = 0.96
-
-[node name="Fuse" parent="." instance=ExtResource("7_1fjlq")]
-visible = false
-position = Vector2(-11, -16)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
