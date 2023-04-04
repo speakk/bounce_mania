@@ -5,6 +5,13 @@ const MAIN_MENU = "res://main_scenes/main_menu.tscn"
 const LEVEL_SELECTOR_PATH = "res://main_scenes/level_selector.tscn"
 const PROFILE_MANAGER_PATH = "res://main_scenes/profile_manager_ui.tscn"
 
+func _process(_delta):
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
 func _ready():
 	Events.new_game_pressed.connect(_new_game_pressed)
 	Events.try_again_pressed.connect(_try_again_pressed)
